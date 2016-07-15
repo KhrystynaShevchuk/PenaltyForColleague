@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "20CB0BD0067D1836BA63B265E34FEB4B70C04ADE",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "20CB0BD0067D1836BA63B265E34FEB4B70C04ADE" : 0,
+    "AD4E1642D7EB507BEB7428489208E916FE998CDA" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "B2E84E6B-6270-4741-B20D-CD2C55630035",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "20CB0BD0067D1836BA63B265E34FEB4B70C04ADE" : "PenaltyForColleague\/",
+    "AD4E1642D7EB507BEB7428489208E916FE998CDA" : "LocationTrack\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "PenaltyForColleague",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "PenaltyForColleague\/PenaltyForColleague.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/KhrystynaShevchuk\/PenaltyForColleague.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "20CB0BD0067D1836BA63B265E34FEB4B70C04ADE"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/KhrystynaShevchuk\/LocationTrack.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "AD4E1642D7EB507BEB7428489208E916FE998CDA"
+    }
+  ]
+}
