@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		A92D2AE61D37918600D79A36 /* PenaltyForColleagueTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A92D2AE51D37918600D79A36 /* PenaltyForColleagueTests.swift */; };
+		A93A892F1D3CF55200A6228E /* TeamMember.swift in Sources */ = {isa = PBXBuildFile; fileRef = A93A892E1D3CF55200A6228E /* TeamMember.swift */; };
+		A93A89311D3D11F000A6228E /* AddTeamMemberVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A93A89301D3D11F000A6228E /* AddTeamMemberVC.swift */; };
+		A93A89361D3D205500A6228E /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = A93A89341D3D205500A6228E /* Person.swift */; };
 		A94D32491D38E3D4008B2927 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A94D32471D38E3D4008B2927 /* AppDelegate.swift */; };
 		A94D324A1D38E3D4008B2927 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A94D32481D38E3D4008B2927 /* Info.plist */; };
 		A94D32501D38E3E9008B2927 /* PenaltyForColleague.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A94D324E1D38E3E9008B2927 /* PenaltyForColleague.xcdatamodeld */; };
@@ -18,7 +21,7 @@
 		A94D325E1D38EC25008B2927 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A94D325D1D38EC25008B2927 /* Assets.xcassets */; };
 		A94D32621D39091D008B2927 /* SettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A94D32611D39091D008B2927 /* SettingsVC.swift */; };
 		A94D32641D391035008B2927 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A94D32631D391035008B2927 /* Default-568h@2x.png */; };
-		A94D32661D3919D8008B2927 /* UsersVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A94D32651D3919D8008B2927 /* UsersVC.swift */; };
+		A94D32661D3919D8008B2927 /* TeamMembersVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A94D32651D3919D8008B2927 /* TeamMembersVC.swift */; };
 		A94D32691D391AC5008B2927 /* Cells.swift in Sources */ = {isa = PBXBuildFile; fileRef = A94D32681D391AC5008B2927 /* Cells.swift */; };
 /* End PBXBuildFile section */
 
@@ -37,6 +40,9 @@
 		A92D2AE11D37918600D79A36 /* PenaltyForColleagueTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PenaltyForColleagueTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A92D2AE51D37918600D79A36 /* PenaltyForColleagueTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PenaltyForColleagueTests.swift; sourceTree = "<group>"; };
 		A92D2AE71D37918600D79A36 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A93A892E1D3CF55200A6228E /* TeamMember.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeamMember.swift; sourceTree = "<group>"; };
+		A93A89301D3D11F000A6228E /* AddTeamMemberVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddTeamMemberVC.swift; sourceTree = "<group>"; };
+		A93A89341D3D205500A6228E /* Person.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
 		A94D32471D38E3D4008B2927 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A94D32481D38E3D4008B2927 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A94D324F1D38E3E9008B2927 /* PenaltyForColleague.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = PenaltyForColleague.xcdatamodel; sourceTree = "<group>"; };
@@ -47,7 +53,7 @@
 		A94D325D1D38EC25008B2927 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = ../../../../LocationTrack/LocationTracker/Assets.xcassets; sourceTree = "<group>"; };
 		A94D32611D39091D008B2927 /* SettingsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsVC.swift; sourceTree = "<group>"; };
 		A94D32631D391035008B2927 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
-		A94D32651D3919D8008B2927 /* UsersVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsersVC.swift; sourceTree = "<group>"; };
+		A94D32651D3919D8008B2927 /* TeamMembersVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeamMembersVC.swift; sourceTree = "<group>"; };
 		A94D32681D391AC5008B2927 /* Cells.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cells.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -109,6 +115,14 @@
 			path = PenaltyForColleagueTests;
 			sourceTree = "<group>";
 		};
+		A93A89321D3D204000A6228E /* CoreDataModels */ = {
+			isa = PBXGroup;
+			children = (
+				A93A89341D3D205500A6228E /* Person.swift */,
+			);
+			path = CoreDataModels;
+			sourceTree = "<group>";
+		};
 		A94D32461D38E3D4008B2927 /* Application */ = {
 			isa = PBXGroup;
 			children = (
@@ -121,8 +135,9 @@
 		A94D324B1D38E3E4008B2927 /* DataLayer */ = {
 			isa = PBXGroup;
 			children = (
-				A94D324C1D38E3E4008B2927 /* Models */,
+				A93A89321D3D204000A6228E /* CoreDataModels */,
 				A94D325B1D38E919008B2927 /* CoreDataStack.swift */,
+				A94D324C1D38E3E4008B2927 /* Models */,
 			);
 			path = DataLayer;
 			sourceTree = "<group>";
@@ -130,6 +145,7 @@
 		A94D324C1D38E3E4008B2927 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				A93A892E1D3CF55200A6228E /* TeamMember.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -166,7 +182,8 @@
 			children = (
 				A94D32561D38E3EF008B2927 /* MainVC.swift */,
 				A94D32611D39091D008B2927 /* SettingsVC.swift */,
-				A94D32651D3919D8008B2927 /* UsersVC.swift */,
+				A94D32651D3919D8008B2927 /* TeamMembersVC.swift */,
+				A93A89301D3D11F000A6228E /* AddTeamMemberVC.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -294,9 +311,12 @@
 				A94D32691D391AC5008B2927 /* Cells.swift in Sources */,
 				A94D32501D38E3E9008B2927 /* PenaltyForColleague.xcdatamodeld in Sources */,
 				A94D32591D38E3EF008B2927 /* MainVC.swift in Sources */,
+				A93A89361D3D205500A6228E /* Person.swift in Sources */,
+				A93A89311D3D11F000A6228E /* AddTeamMemberVC.swift in Sources */,
 				A94D325C1D38E919008B2927 /* CoreDataStack.swift in Sources */,
 				A94D32621D39091D008B2927 /* SettingsVC.swift in Sources */,
-				A94D32661D3919D8008B2927 /* UsersVC.swift in Sources */,
+				A93A892F1D3CF55200A6228E /* TeamMember.swift in Sources */,
+				A94D32661D3919D8008B2927 /* TeamMembersVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

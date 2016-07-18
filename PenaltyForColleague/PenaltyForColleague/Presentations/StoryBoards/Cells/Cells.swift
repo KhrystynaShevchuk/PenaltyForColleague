@@ -8,8 +8,13 @@
 
 import UIKit
 
-class UserCell: UITableViewCell {
+class SettingsCell: UITableViewCell {
     
-    @IBOutlet weak var userNameLabel: UIView!
-    @IBOutlet weak var iconImageView: UIView!
+    @IBOutlet weak var settingLabel: UILabel!
+}
+
+class TeamMembersCell: UITableViewCell {
+    
+    @IBOutlet weak var memberNameLabel: UILabel!
+    @IBOutlet weak var iconImageView: UIImageView!
 }

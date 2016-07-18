@@ -8,63 +8,77 @@
 
 import UIKit
 
+enum SettingType {
+    case TeamMembers
+    case TeamSettings
+    case Penalties
+    
+    func title() -> String {
+        switch self {
+        case .TeamMembers:
+            return "Team members"
+        case .TeamSettings:
+            return "Team settings"
+        case .Penalties:
+            return "Penalties"
+        }
+    }
+}
+
 class SettingsVC: UIViewController {
     
-    @IBOutlet weak var membersLabel: UILabel!
-    @IBOutlet weak var settingsLabel: UILabel!
-    @IBOutlet weak var penaltiesLabel: UILabel!
+    @IBOutlet weak var tableView: UITableView!
+    var settingType: SettingType!
+    
+    var items = [SettingType]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setTapGestures()
+        items = [SettingType.TeamMembers, SettingType.TeamSettings, SettingType.Penalties]
+        tableView.delegate = self
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
     
-    // MARK: - gestures setup
-    
-    private func setTapGestures() {
-        setTapGestOnMembersLabel()
-        setTapGestOnSettingsLabel()
-        setTapGestOnPenaltiesLabel()
-    }
-    
-    private func setTapGestOnMembersLabel() {
-        let gestureRecognizer = UITapGestureRecognizer(target: self, action:#selector(SettingsVC.tapToTeamMembers(_:)))
-        membersLabel.addGestureRecognizer(gestureRecognizer)
-    }
-    
-    private func setTapGestOnSettingsLabel() {
-        let gestureRecognizer = UITapGestureRecognizer(target: self, action:#selector(SettingsVC.tapToTeamSettings(_:)))
-        settingsLabel.addGestureRecognizer(gestureRecognizer)
-    }
-    
-    private func setTapGestOnPenaltiesLabel() {
-        let gestureRecognizer = UITapGestureRecognizer(target: self, action:#selector(SettingsVC.tapToPenalties(_:)))
-        penaltiesLabel.addGestureRecognizer(gestureRecognizer)
-    }
-    
-    // MARK: - gestures' actions
-    
-    func tapToTeamMembers(gestureRecognizer: UILongPressGestureRecognizer) {
-        print(" members vc")
-        
-        performSegueWithIdentifier("usersSegue", sender: nil)
-    }
-    
-    func tapToTeamSettings(gestureRecognizer: UILongPressGestureRecognizer) {
-        print(" team settings vc")
-    }
-    
-    func tapToPenalties(gestureRecognizer: UILongPressGestureRecognizer) {
-        print(" penalties vc")
-    }
-    
     // prepare for segue
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
+    }
+}
+
+extension SettingsVC: UITableViewDataSource, UITableViewDelegate {
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return items.count
+    }
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCellWithIdentifier("SettingsCell") as! SettingsCell
+        settingType = items[indexPath.row]
+        
+        cell.settingLabel.text = settingType.title()
+        
+        return cell
+    }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        
+        
+        if items[indexPath.row] == SettingType.TeamMembers {
+            print(" members vc")
+            performSegueWithIdentifier("usersSegue", sender: nil)
+        }
+        
+        if items[indexPath.row] == .TeamSettings {
+            print(" team settings vc")
+        }
+        
+        if items[indexPath.row] == .Penalties {
+            print(" penalties vc")
+        }
     }
 }
