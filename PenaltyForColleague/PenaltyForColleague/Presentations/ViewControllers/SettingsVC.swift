@@ -66,18 +66,15 @@ extension SettingsVC: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        let item = items[indexPath.row]
         
-        
-        if items[indexPath.row] == SettingType.TeamMembers {
+        switch item {
+        case .TeamMembers:
             print(" members vc")
             performSegueWithIdentifier("usersSegue", sender: nil)
-        }
-        
-        if items[indexPath.row] == .TeamSettings {
+        case .TeamSettings:
             print(" team settings vc")
-        }
-        
-        if items[indexPath.row] == .Penalties {
+        case .Penalties:
             print(" penalties vc")
         }
     }

@@ -14,6 +14,7 @@ class TeamMembersVC: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
     var members = [Person]()
+    let fileManager = NSFileManager()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,12 +48,28 @@ class TeamMembersVC: UIViewController {
         }
     }
     
+    
     @IBAction func addUserButton(sender: UIBarButtonItem) {
         performSegueWithIdentifier("addMemberSegue", sender: nil)
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    func receivePhoto (person: Person? ) -> UIImage? {
+        guard let person = person else {
+            return nil
+        }
         
+        let name = person.photoName!
+        if let data = FileSystem().getFile(name) {
+            let image = UIImage(data: data)
+            return image
+            
+        } else {
+            return nil
+        }
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+
     }
 }
 
@@ -64,12 +81,15 @@ extension TeamMembersVC: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("TeamMembersCell") as! TeamMembersCell
-        
+
         let person = members[indexPath.row]
-        // default image
         cell.iconImageView.image = UIImage(named: "userIcon")
-        cell.memberNameLabel.text = "\(person.name ?? "") \(person.surname ?? "")"
         
+        if let image = receivePhoto(person) {
+            cell.iconImageView.image = image
+        }
+        
+        cell.memberNameLabel.text = "\(person.name ?? "") \(person.surname ?? "")"
         return cell
     }
 }
