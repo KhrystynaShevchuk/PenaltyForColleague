@@ -17,7 +17,9 @@ class AddTeamMemberVC: UIViewController {
     @IBOutlet weak var photoImageView: UIImageView!
     
     let imagePicker = UIImagePickerController()
+    var editablePerson: Person?
     
+    //MARK: - vc life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -38,7 +40,7 @@ class AddTeamMemberVC: UIViewController {
     }
     
     @IBAction func tappedSaveButton(sender: UIBarButtonItem) {
-        guard let entityDescription = NSEntityDescription.entityForName("Person", inManagedObjectContext: CoreDataStack.sharedInstance.managedObjectContext) else {
+        guard let entityDescription = NSEntityDescription.personEntity() else {
             return
         }
         if nameTextfield.text != "" {
@@ -48,10 +50,10 @@ class AddTeamMemberVC: UIViewController {
             newTeamMember?.surname = surnameTextfield.text
             newTeamMember?.email = emailTextfield.text
             
-            if photoImageView.image != nil {
+            if let image = photoImageView.image {
                 let photoName = NSUUID().UUIDString
 
-                let imageData = UIImageJPEGRepresentation(photoImageView.image!, 0.5)
+                let imageData = UIImageJPEGRepresentation(image, 0.5)
                 FileSystem().saveFile(photoName, data: imageData!)
                 newTeamMember?.photoName = photoName
             }

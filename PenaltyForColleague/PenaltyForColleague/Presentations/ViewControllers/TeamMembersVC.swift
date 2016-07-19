@@ -13,6 +13,11 @@ class TeamMembersVC: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
+    //to delete !
+    let imagePicker = UIImagePickerController()
+    var selectedIndex: Int?
+    
+    
     var members = [Person]()
     let fileManager = NSFileManager()
     
@@ -91,5 +96,34 @@ extension TeamMembersVC: UITableViewDataSource, UITableViewDelegate {
         
         cell.memberNameLabel.text = "\(person.name ?? "") \(person.surname ?? "")"
         return cell
+    }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        selectedIndex = indexPath.row
+        
+        imagePicker.allowsEditing = false
+        imagePicker.sourceType = .PhotoLibrary
+        imagePicker.delegate = self
+        
+        presentViewController(imagePicker, animated: true, completion: nil)
+    }
+}
+
+extension TeamMembersVC: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
+        if let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage,
+        let selectedIndex = selectedIndex,
+        let photoName = members[selectedIndex].photoName {
+//            photoImageView.contentMode = .ScaleAspectFit
+//            photoImageView.image = pickedImage
+            
+            let imageData = UIImageJPEGRepresentation(pickedImage, 0.5)
+            FileSystem().saveFile(photoName, data: imageData!)
+            
+            tableView.reloadData()
+        }
+        
+        dismissViewControllerAnimated(true, completion: nil)
     }
 }
