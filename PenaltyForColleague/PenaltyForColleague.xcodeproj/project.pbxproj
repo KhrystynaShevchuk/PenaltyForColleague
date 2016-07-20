@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		A9075F9B1D3E61C400828C30 /* FileSaveHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9075F9A1D3E61C400828C30 /* FileSaveHelper.swift */; };
 		A9075F9D1D3E711200828C30 /* FileSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9075F9C1D3E711200828C30 /* FileSystem.swift */; };
 		A9075FA01D3E719200828C30 /* FileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9075F9F1D3E719200828C30 /* FileManager.swift */; };
 		A92D2AE61D37918600D79A36 /* PenaltyForColleagueTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A92D2AE51D37918600D79A36 /* PenaltyForColleagueTests.swift */; };
@@ -39,7 +38,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		A9075F9A1D3E61C400828C30 /* FileSaveHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileSaveHelper.swift; sourceTree = "<group>"; };
 		A9075F9C1D3E711200828C30 /* FileSystem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileSystem.swift; sourceTree = "<group>"; };
 		A9075F9F1D3E719200828C30 /* FileManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileManager.swift; sourceTree = "<group>"; };
 		A92D2ACA1D37918500D79A36 /* PenaltyForColleague.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PenaltyForColleague.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -153,7 +151,6 @@
 				A94D325B1D38E919008B2927 /* CoreDataStack.swift */,
 				A93A89321D3D204000A6228E /* CoreDataModels */,
 				A94D324C1D38E3E4008B2927 /* Models */,
-				A9075F9A1D3E61C400828C30 /* FileSaveHelper.swift */,
 				A9075F9C1D3E711200828C30 /* FileSystem.swift */,
 			);
 			path = DataLayer;
@@ -324,7 +321,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A9075F9B1D3E61C400828C30 /* FileSaveHelper.swift in Sources */,
 				A94D32491D38E3D4008B2927 /* AppDelegate.swift in Sources */,
 				A94D32691D391AC5008B2927 /* Cells.swift in Sources */,
 				A94D32501D38E3E9008B2927 /* PenaltyForColleague.xcdatamodeld in Sources */,
