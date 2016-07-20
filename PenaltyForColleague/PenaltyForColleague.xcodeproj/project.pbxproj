@@ -7,11 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-<<<<<<< HEAD
-=======
 		646554801D3EC61C00FA6279 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6465547F1D3EC61C00FA6279 /* Assets.xcassets */; };
 		646554821D3EC90400FA6279 /* NSEntityDescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 646554811D3EC90400FA6279 /* NSEntityDescription.swift */; };
->>>>>>> e15c2524620b3a0217f573ad25c142a4212204f1
 		A9075F9D1D3E711200828C30 /* FileSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9075F9C1D3E711200828C30 /* FileSystem.swift */; };
 		A9075FA01D3E719200828C30 /* FileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9075F9F1D3E719200828C30 /* FileManager.swift */; };
 		A92D2AE61D37918600D79A36 /* PenaltyForColleagueTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A92D2AE51D37918600D79A36 /* PenaltyForColleagueTests.swift */; };
@@ -29,6 +26,7 @@
 		A94D32641D391035008B2927 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A94D32631D391035008B2927 /* Default-568h@2x.png */; };
 		A94D32661D3919D8008B2927 /* TeamMembersVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A94D32651D3919D8008B2927 /* TeamMembersVC.swift */; };
 		A94D32691D391AC5008B2927 /* Cells.swift in Sources */ = {isa = PBXBuildFile; fileRef = A94D32681D391AC5008B2927 /* Cells.swift */; };
+		A9F603041D3FAAC900896E7D /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = A9F603031D3FAAC900896E7D /* .gitignore */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,11 +40,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-<<<<<<< HEAD
-=======
 		6465547F1D3EC61C00FA6279 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = PenaltyForColleague/Assets.xcassets; sourceTree = SOURCE_ROOT; };
 		646554811D3EC90400FA6279 /* NSEntityDescription.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSEntityDescription.swift; sourceTree = "<group>"; };
->>>>>>> e15c2524620b3a0217f573ad25c142a4212204f1
 		A9075F9C1D3E711200828C30 /* FileSystem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileSystem.swift; sourceTree = "<group>"; };
 		A9075F9F1D3E719200828C30 /* FileManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileManager.swift; sourceTree = "<group>"; };
 		A92D2ACA1D37918500D79A36 /* PenaltyForColleague.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PenaltyForColleague.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -67,6 +62,7 @@
 		A94D32631D391035008B2927 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		A94D32651D3919D8008B2927 /* TeamMembersVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeamMembersVC.swift; sourceTree = "<group>"; };
 		A94D32681D391AC5008B2927 /* Cells.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cells.swift; sourceTree = "<group>"; };
+		A9F603031D3FAAC900896E7D /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,6 +120,7 @@
 				A94D324D1D38E3E9008B2927 /* DataSourse */,
 				A94D32511D38E3EF008B2927 /* Presentations */,
 				A94D325A1D38E3FB008B2927 /* Resources */,
+				A9F603031D3FAAC900896E7D /* .gitignore */,
 			);
 			path = PenaltyForColleague;
 			sourceTree = "<group>";
@@ -312,6 +309,7 @@
 				A94D324A1D38E3D4008B2927 /* Info.plist in Resources */,
 				A94D32641D391035008B2927 /* Default-568h@2x.png in Resources */,
 				A94D32571D38E3EF008B2927 /* LaunchScreen.storyboard in Resources */,
+				A9F603041D3FAAC900896E7D /* .gitignore in Resources */,
 				646554801D3EC61C00FA6279 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
