@@ -179,6 +179,7 @@
                     <connections>
                         <outlet property="tableView" destination="JVw-2G-8KL" id="3Ge-J9-C3B"/>
                         <segue destination="YAS-lL-a07" kind="push" identifier="addMemberSegue" id="5vF-k9-BT6"/>
+                        <segue destination="YAS-lL-a07" kind="push" identifier="editMemberSegue" id="wWW-BM-O4w"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QhA-QP-prl" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -258,7 +259,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Dac-d3-w8c" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1849" y="68"/>
+            <point key="canvasLocation" x="1847" y="240"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="ahr-SB-zRm">
@@ -283,4 +284,7 @@
         <image name="settingsIcon" width="25" height="25"/>
         <image name="userIcon" width="50" height="50"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="wWW-BM-O4w"/>
+    </inferredMetricsTieBreakers>
 </document>

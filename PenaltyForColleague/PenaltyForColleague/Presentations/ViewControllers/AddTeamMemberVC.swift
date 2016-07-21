@@ -17,7 +17,9 @@ class AddTeamMemberVC: UIViewController {
     @IBOutlet weak var photoImageView: UIImageView!
     
     let imagePicker = UIImagePickerController()
-    var editablePerson: Person?
+    var editablePerson: TeamMember?
+    let person = TeamMember()
+
     
     //MARK: - vc life cycle
     override func viewDidLoad() {
@@ -25,6 +27,25 @@ class AddTeamMemberVC: UIViewController {
         
         imagePicker.delegate = self
         setTapGestureOnImageView()
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(true)
+        
+        prefillUserData()
+    }
+    
+    private func prefillUserData() {
+        photoImageView.image = UIImage(named: "userIcon")
+        
+        guard let user = editablePerson else {
+            return
+        }
+        
+        nameTextfield.text = user.name
+        surnameTextfield.text = user.surname
+        emailTextfield.text = user.email
+        photoImageView.image = user.photo ?? UIImage(named: "userIcon")
     }
     
     private func setTapGestureOnImageView() {
@@ -39,36 +60,18 @@ class AddTeamMemberVC: UIViewController {
         presentViewController(imagePicker, animated: true, completion: nil)
     }
     
+    private func fillInPersonData(person: TeamMember){
+        person.name = nameTextfield.text
+        person.surname = surnameTextfield.text
+        person.email = emailTextfield.text
+        person.photo = photoImageView.image
+    }
+    
     @IBAction func tappedSaveButton(sender: UIBarButtonItem) {
-        guard let entityDescription = NSEntityDescription.personEntity() else {
-            return
-        }
-        if nameTextfield.text != "" {
-            
-            let newTeamMember = NSManagedObject(entity: entityDescription, insertIntoManagedObjectContext: CoreDataStack.sharedInstance.managedObjectContext) as? Person
-            newTeamMember?.name = nameTextfield.text
-            newTeamMember?.surname = surnameTextfield.text
-            newTeamMember?.email = emailTextfield.text
-            
-            if let image = photoImageView.image {
-                let photoName = NSUUID().UUIDString
-
-                let imageData = UIImageJPEGRepresentation(image, 0.5)
-                FileSystem().saveFile(photoName, data: imageData!)
-                newTeamMember?.photoName = photoName
-            }
-            
-            print(newTeamMember)
-            
-            // Save object in reserve storage
-            do {
-                try newTeamMember?.managedObjectContext?.save()
-            } catch {
-                print(error)
-                let alert = UIAlertController(title: "Error", message: "Data weren't saved.", preferredStyle: .Alert)
-                alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
-                presentViewController(alert, animated: true, completion: nil)
-            }
+        
+        if (nameTextfield.text != "") {
+            fillInPersonData(person)
+            UserDBManager().savePersonData(person)
             navigationController?.popViewControllerAnimated(true)
         } else {
             let alert = UIAlertController(title: "You can't save changes", message: "Fill in the 'name' field", preferredStyle: .Alert)
@@ -84,6 +87,8 @@ extension AddTeamMemberVC: UIImagePickerControllerDelegate, UINavigationControll
         if let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
             photoImageView.contentMode = .ScaleAspectFit
             photoImageView.image = pickedImage
+            person.photo = pickedImage
+            person.photoName = NSUUID().UUIDString
         }
         
         dismissViewControllerAnimated(true, completion: nil)

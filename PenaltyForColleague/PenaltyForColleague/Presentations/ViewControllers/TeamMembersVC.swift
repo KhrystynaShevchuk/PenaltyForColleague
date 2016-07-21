@@ -13,13 +13,11 @@ class TeamMembersVC: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
-    //to delete !
-    let imagePicker = UIImagePickerController()
-    var selectedIndex: Int?
-    
-    
-    var members = [Person]()
+    var members = [TeamMember]()
     let fileManager = NSFileManager()
+    let dbManager = UserDBManager()
+    
+    var selectedPerson: TeamMember?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,54 +25,28 @@ class TeamMembersVC: UIViewController {
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(true)
-        getDataAboutMembers()
-    }
-    
-    // Get data
-    func getDataAboutMembers() {
-        // Initialize Fetch Request
-        let fetchRequest = NSFetchRequest()
         
-        // Create Entity Description
-        let entityDescription = NSEntityDescription.entityForName("Person", inManagedObjectContext: CoreDataStack.sharedInstance.managedObjectContext)
         
-        // Configure Fetch Request
-        fetchRequest.entity = entityDescription
-        
-        do {
-            let result = try CoreDataStack.sharedInstance.managedObjectContext.executeFetchRequest(fetchRequest)
-            members = result as! [Person]
-            print(result)
-            tableView.reloadData()
-            
-        } catch {
-            let fetchError = error as NSError
-            print(fetchError)
+        dbManager.getAllUsers { (users) in
+            if let users = users {
+                self.members = users
+                
+                dispatch_async(dispatch_get_main_queue(), { 
+                    self.tableView.reloadData()
+                })
+            }
         }
     }
-    
     
     @IBAction func addUserButton(sender: UIBarButtonItem) {
         performSegueWithIdentifier("addMemberSegue", sender: nil)
     }
     
-    func receivePhoto (person: Person? ) -> UIImage? {
-        guard let person = person else {
-            return nil
-        }
-        
-        let name = person.photoName!
-        if let data = FileSystem().getFile(name) {
-            let image = UIImage(data: data)
-            return image
-            
-        } else {
-            return nil
-        }
-    }
-    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-
+        if segue.identifier == "editMemberSegue" {
+            let vc = segue.destinationViewController as! AddTeamMemberVC
+            vc.editablePerson = selectedPerson
+        }
     }
 }
 
@@ -87,43 +59,20 @@ extension TeamMembersVC: UITableViewDataSource, UITableViewDelegate {
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("TeamMembersCell") as! TeamMembersCell
 
-        let person = members[indexPath.row]
+        let member = members[indexPath.row]
         cell.iconImageView.image = UIImage(named: "userIcon")
         
-        if let image = receivePhoto(person) {
-            cell.iconImageView.image = image
+        if (member.photo != nil) {
+            cell.iconImageView.image = member.photo
         }
         
-        cell.memberNameLabel.text = "\(person.name ?? "") \(person.surname ?? "")"
+        cell.memberNameLabel.text = "\(member.name ?? "") \(member.surname ?? "")"
         return cell
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        selectedIndex = indexPath.row
+        selectedPerson = members[indexPath.row]
         
-        imagePicker.allowsEditing = false
-        imagePicker.sourceType = .PhotoLibrary
-        imagePicker.delegate = self
-        
-        presentViewController(imagePicker, animated: true, completion: nil)
-    }
-}
-
-extension TeamMembersVC: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-    
-    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
-        if let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage,
-        let selectedIndex = selectedIndex,
-        let photoName = members[selectedIndex].photoName {
-//            photoImageView.contentMode = .ScaleAspectFit
-//            photoImageView.image = pickedImage
-            
-            let imageData = UIImageJPEGRepresentation(pickedImage, 0.5)
-            FileSystem().saveFile(photoName, data: imageData!)
-            
-            tableView.reloadData()
-        }
-        
-        dismissViewControllerAnimated(true, completion: nil)
+        performSegueWithIdentifier("editMemberSegue", sender: nil)
     }
 }

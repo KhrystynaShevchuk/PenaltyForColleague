@@ -10,15 +10,9 @@ import UIKit
 
 class TeamMember {
     
-    var name = String()
+    var name: String?
     var surname: String?
     var email: String?
-    var photo: String?
-    
-    init(name: String, surname: String, email: String, photo: String){
-        self.name = name
-        self.surname = surname
-        self.email = email
-        self.photo = photo
-    }
+    var photoName: String?
+    var photo: UIImage?
 }
