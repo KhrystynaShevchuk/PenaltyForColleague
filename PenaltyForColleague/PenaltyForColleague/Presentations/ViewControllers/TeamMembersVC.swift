@@ -19,6 +19,8 @@ class TeamMembersVC: UIViewController {
     
     var selectedPerson: TeamMember?
     
+    // MARK: - vc life cycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -27,7 +29,7 @@ class TeamMembersVC: UIViewController {
         super.viewWillAppear(true)
         
         
-        dbManager.getAllUsers { (users) in
+        dbManager.getAllTeamMembers { (users) in
             if let users = users {
                 self.members = users
                 
@@ -38,17 +40,25 @@ class TeamMembersVC: UIViewController {
         }
     }
     
+    // MARK: - IBActions
+    
     @IBAction func addUserButton(sender: UIBarButtonItem) {
         performSegueWithIdentifier("addMemberSegue", sender: nil)
     }
     
+    // MARK: - prepare for segue
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "editMemberSegue" {
             let vc = segue.destinationViewController as! AddTeamMemberVC
-            vc.editablePerson = selectedPerson
+            if let selectedPerson = selectedPerson {
+                vc.teamMember = selectedPerson
+            }
         }
     }
 }
+
+// MARK: - extension
 
 extension TeamMembersVC: UITableViewDataSource, UITableViewDelegate {
     

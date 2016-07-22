@@ -7,8 +7,11 @@
 //
 
 import UIKit
+import CoreData
 
 class TeamMember {
+    
+    var objectID: NSManagedObjectID?
     
     var name: String?
     var surname: String?

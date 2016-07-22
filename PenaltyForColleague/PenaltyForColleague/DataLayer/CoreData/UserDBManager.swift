@@ -11,27 +11,47 @@ import CoreData
 
 class UserDBManager {
     
-    func getPerson(userId: Int) -> Person? {
-        return nil
-    }
+    static var sharedInstance = UserDBManager()
     
-    func savePersonData(person: TeamMember) {
+//    func getPerson(userId: Int) -> Person? {
+//        return nil
+//    }
+    
+    func savePersonData(teamMember: TeamMember) throws {
         guard let entityDescription = NSEntityDescription.personEntity() else {
             return
         }
         
-        var newPerson = NSManagedObject(entity: entityDescription, insertIntoManagedObjectContext: CoreDataStack.sharedInstance.managedObjectContext) as! Person
-        newPerson = convertTeamMemberToPerson(person, newPerson: newPerson)
+        var person: Person = {
+            if let id = teamMember.objectID {
+                return CoreDataStack.sharedInstance.managedObjectContext.objectWithID(id) as! Person
+            } else {
+                return NSManagedObject(entity: entityDescription, insertIntoManagedObjectContext: CoreDataStack.sharedInstance.managedObjectContext) as! Person
+            }
+        }()
         
-        savePersonObjectInStorage(newPerson)
-        savePersonImage(person)
+        person = convertTeamMemberToPerson(teamMember, person: person) // convert as refilling
+        
+        try savePersonObjectInStorage(person)
+        savePersonImage(teamMember)
     }
     
-    func deletePerson(person: Person) {
-    
+    func deletePerson(teamMember: TeamMember) {
+        let managedObjectContext = CoreDataStack.sharedInstance.managedObjectContext
+        if let id = teamMember.objectID {
+            let person = managedObjectContext.objectWithID(id)
+            managedObjectContext.deleteObject(person)
+            
+            do {
+                try managedObjectContext.save()
+            } catch {
+                let saveError = error as NSError
+                print(saveError)
+            }
+        }
     }
     
-    func getAllUsers(completion: (users: [TeamMember]?) -> ()){
+    func getAllTeamMembers(completion: (users: [TeamMember]?) -> ()){
         let fetchRequest = NSFetchRequest()
         let entityDescription = NSEntityDescription.entityForName("Person", inManagedObjectContext: CoreDataStack.sharedInstance.managedObjectContext)
         fetchRequest.entity = entityDescription
@@ -56,32 +76,27 @@ class UserDBManager {
     
     // MARK: - Private
     
-    func savePersonImage(member: TeamMember) {
-        if let imagename = member.photoName, let image = member.photo {
+    private func savePersonImage(member: TeamMember) {
+        if let imagename = member.photoName,
+            let image = member.photo {
             
-            let imageData = UIImageJPEGRepresentation(image, 0.5)
+            let imageData = UIImageJPEGRepresentation(image, Constants.compresionQuality)
             FileSystem().saveFile(imagename, data: imageData!)
             member.photoName = imagename
         }
     }
     
-    private func savePersonObjectInStorage(newPerson: Person){
-        do {
-            try newPerson.managedObjectContext?.save()
-        } catch {
-            print(error)
-            let alert = UIAlertController(title: "Error", message: "Data weren't saved.", preferredStyle: .Alert)
-            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
-            AddTeamMemberVC().presentViewController(alert, animated: true, completion: nil)
-        }
+    private func savePersonObjectInStorage(person: Person) throws {
+        
+        try person.managedObjectContext?.save()
     }
     
-    private func receivePhoto (person: TeamMember?) -> UIImage? {
-        guard let person = person else {
+    private func receivePhoto (teamMember: TeamMember?) -> UIImage? {
+        guard let teamMember = teamMember else {
             return nil
         }
         
-        guard let name = person.photoName else {
+        guard let name = teamMember.photoName else {
             return nil
         }
         
@@ -95,6 +110,7 @@ class UserDBManager {
     
     private func convertPersonToTeamMember(person: Person) -> TeamMember {
         let member = TeamMember()
+        member.objectID = person.objectID
         member.name = person.name
         member.surname = person.surname
         member.email = person.email
@@ -104,12 +120,12 @@ class UserDBManager {
         return member
     }
     
-    private func convertTeamMemberToPerson(member: TeamMember, newPerson: Person) -> Person {
-        newPerson.name = member.name
-        newPerson.surname = member.surname
-        newPerson.email = member.email
-        newPerson.photoName = member.photoName
+    private func convertTeamMemberToPerson(member: TeamMember, person: Person) -> Person {
+        person.name = member.name
+        person.surname = member.surname
+        person.email = member.email
+        person.photoName = member.photoName
         
-        return newPerson
+        return person
     }
 }

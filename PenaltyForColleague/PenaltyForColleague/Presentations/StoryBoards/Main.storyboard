@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="kO4-s5-rPK">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="kO4-s5-rPK">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -48,7 +48,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="G7c-oO-pgc">
-                                <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="SettingsCell" id="hpn-kM-vuI" customClass="SettingsCell" customModule="PenaltyForColleague" customModuleProvider="target">
@@ -84,7 +84,7 @@
                         </subviews>
                         <color key="backgroundColor" red="0.82727746415905856" green="0.97369707870232403" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="G7c-oO-pgc" firstAttribute="top" secondItem="sUK-e2-b85" secondAttribute="bottom" id="46r-xz-6ft"/>
+                            <constraint firstItem="G7c-oO-pgc" firstAttribute="top" secondItem="sUK-e2-b85" secondAttribute="bottom" constant="-64" id="46r-xz-6ft"/>
                             <constraint firstItem="G7c-oO-pgc" firstAttribute="leading" secondItem="qCj-5W-lqA" secondAttribute="leading" id="TPi-tL-x3N"/>
                             <constraint firstItem="RGA-Yc-4Tu" firstAttribute="top" secondItem="G7c-oO-pgc" secondAttribute="bottom" id="aTg-t2-Dcm"/>
                             <constraint firstAttribute="trailing" secondItem="G7c-oO-pgc" secondAttribute="trailing" id="hIn-yV-bLV"/>
@@ -113,7 +113,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="JVw-2G-8KL">
-                                <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="sectionIndexBackgroundColor" red="1" green="0.96892798806469815" blue="0.81835585538463107" alpha="1" colorSpace="calibratedRGB"/>
                                 <prototypes>
@@ -165,7 +165,7 @@
                         <constraints>
                             <constraint firstItem="iHt-BS-mmJ" firstAttribute="top" secondItem="JVw-2G-8KL" secondAttribute="bottom" id="2kU-3J-GpP"/>
                             <constraint firstAttribute="trailing" secondItem="JVw-2G-8KL" secondAttribute="trailing" id="TVK-eb-6hv"/>
-                            <constraint firstItem="JVw-2G-8KL" firstAttribute="top" secondItem="hKF-cz-gPm" secondAttribute="bottom" id="ZwB-Ic-5mG"/>
+                            <constraint firstItem="JVw-2G-8KL" firstAttribute="top" secondItem="hKF-cz-gPm" secondAttribute="bottom" constant="-64" id="ZwB-Ic-5mG"/>
                             <constraint firstItem="JVw-2G-8KL" firstAttribute="leading" secondItem="HLY-YC-wqi" secondAttribute="leading" id="ngl-tw-1Yq"/>
                         </constraints>
                     </view>
@@ -186,7 +186,7 @@
             </objects>
             <point key="canvasLocation" x="1397" y="68"/>
         </scene>
-        <!--Add team member-->
+        <!--Team member-->
         <scene sceneID="o1r-h2-8Ut">
             <objects>
                 <viewController id="YAS-lL-a07" customClass="AddTeamMemberVC" customModule="PenaltyForColleague" customModuleProvider="target" sceneMemberID="viewController">
@@ -194,7 +194,7 @@
                         <viewControllerLayoutGuide type="top" id="LCy-gO-AyX"/>
                         <viewControllerLayoutGuide type="bottom" id="Qck-D4-Zsg"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="wmd-6T-YPE">
+                    <view key="view" contentMode="scaleAspectFit" id="wmd-6T-YPE">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -224,26 +224,47 @@
                                     <constraint firstAttribute="width" constant="130" id="aEF-Ps-RuB"/>
                                 </constraints>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9pT-XC-7WL">
+                                <rect key="frame" x="67" y="400" width="186" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="jle-JD-asD"/>
+                                </constraints>
+                                <state key="normal" title="Delete team member">
+                                    <attributedString key="attributedTitle">
+                                        <fragment content="Delete team member">
+                                            <attributes>
+                                                <font key="NSFont" size="15" name="HelveticaNeue"/>
+                                            </attributes>
+                                        </fragment>
+                                    </attributedString>
+                                </state>
+                                <connections>
+                                    <action selector="deleteButton:" destination="YAS-lL-a07" eventType="touchUpInside" id="sVC-Q8-fJ0"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="pRm-Uu-DWS" firstAttribute="top" secondItem="Yi9-Jl-muQ" secondAttribute="bottom" constant="27" id="5xp-LW-g6n"/>
                             <constraint firstItem="06I-wb-TtD" firstAttribute="centerX" secondItem="wmd-6T-YPE" secondAttribute="centerX" id="8EA-Ai-CQu"/>
                             <constraint firstAttribute="trailingMargin" secondItem="06I-wb-TtD" secondAttribute="trailing" id="8Y0-RC-cKH"/>
+                            <constraint firstItem="9pT-XC-7WL" firstAttribute="centerX" secondItem="pRm-Uu-DWS" secondAttribute="centerX" id="Oqd-gd-luB"/>
                             <constraint firstAttribute="trailingMargin" secondItem="tXH-2n-7Ud" secondAttribute="trailing" id="Syj-Hn-AAW"/>
                             <constraint firstItem="Yi9-Jl-muQ" firstAttribute="top" secondItem="tXH-2n-7Ud" secondAttribute="bottom" constant="25" id="U1D-F2-Pf3"/>
                             <constraint firstItem="06I-wb-TtD" firstAttribute="top" secondItem="LCy-gO-AyX" secondAttribute="bottom" constant="25" id="WGz-b5-hVc"/>
                             <constraint firstAttribute="leadingMargin" secondItem="06I-wb-TtD" secondAttribute="leading" id="b72-vA-9bb"/>
+                            <constraint firstItem="9pT-XC-7WL" firstAttribute="leading" secondItem="wmd-6T-YPE" secondAttribute="leadingMargin" constant="51" id="cdq-TL-2Dv"/>
                             <constraint firstAttribute="leadingMargin" secondItem="Yi9-Jl-muQ" secondAttribute="leading" id="ei4-HR-Awf"/>
                             <constraint firstAttribute="leadingMargin" secondItem="tXH-2n-7Ud" secondAttribute="leading" id="en4-V4-kB4"/>
                             <constraint firstItem="tXH-2n-7Ud" firstAttribute="centerX" secondItem="wmd-6T-YPE" secondAttribute="centerX" id="h6t-kO-5XA"/>
                             <constraint firstItem="Yi9-Jl-muQ" firstAttribute="centerX" secondItem="wmd-6T-YPE" secondAttribute="centerX" id="hkz-c4-tqb"/>
                             <constraint firstItem="tXH-2n-7Ud" firstAttribute="top" secondItem="06I-wb-TtD" secondAttribute="bottom" constant="25" id="l7R-4Y-tl5"/>
                             <constraint firstItem="pRm-Uu-DWS" firstAttribute="centerX" secondItem="Yi9-Jl-muQ" secondAttribute="centerX" id="oRQ-9A-iM3"/>
+                            <constraint firstItem="9pT-XC-7WL" firstAttribute="top" secondItem="pRm-Uu-DWS" secondAttribute="bottom" constant="14" id="vDL-eK-7ju"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Yi9-Jl-muQ" secondAttribute="trailing" id="yIz-4E-hua"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Add team member" id="Mim-Ei-GLb">
+                    <navigationItem key="navigationItem" title="Team member" id="Mim-Ei-GLb">
                         <barButtonItem key="rightBarButtonItem" systemItem="save" id="FEm-uT-Wym">
                             <connections>
                                 <action selector="tappedSaveButton:" destination="YAS-lL-a07" id="0xE-1D-OqF"/>
@@ -259,7 +280,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Dac-d3-w8c" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1847" y="240"/>
+            <point key="canvasLocation" x="1861" y="223"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="ahr-SB-zRm">

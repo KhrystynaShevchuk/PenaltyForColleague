@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		44CADD461D4237D100BF65B1 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44CADD451D4237D100BF65B1 /* Constants.swift */; };
 		646554801D3EC61C00FA6279 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6465547F1D3EC61C00FA6279 /* Assets.xcassets */; };
 		646554821D3EC90400FA6279 /* NSEntityDescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 646554811D3EC90400FA6279 /* NSEntityDescription.swift */; };
 		A9075F9D1D3E711200828C30 /* FileSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9075F9C1D3E711200828C30 /* FileSystem.swift */; };
@@ -41,6 +42,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		44CADD451D4237D100BF65B1 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		6465547F1D3EC61C00FA6279 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = PenaltyForColleague/Assets.xcassets; sourceTree = SOURCE_ROOT; };
 		646554811D3EC90400FA6279 /* NSEntityDescription.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSEntityDescription.swift; sourceTree = "<group>"; };
 		A9075F9C1D3E711200828C30 /* FileSystem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileSystem.swift; sourceTree = "<group>"; };
@@ -141,6 +143,7 @@
 			children = (
 				A94D32471D38E3D4008B2927 /* AppDelegate.swift */,
 				A94D32481D38E3D4008B2927 /* Info.plist */,
+				44CADD451D4237D100BF65B1 /* Constants.swift */,
 			);
 			path = Application;
 			sourceTree = "<group>";
@@ -220,8 +223,8 @@
 		A9F603061D3FD2F500896E7D /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
-				A9F603091D3FD2F500896E7D /* CoreDataStack.swift */,
 				A9F603071D3FD2F500896E7D /* CoreDataModels */,
+				A9F603091D3FD2F500896E7D /* CoreDataStack.swift */,
 				A9F6030C1D3FD3EC00896E7D /* UserDBManager.swift */,
 			);
 			path = CoreData;
@@ -344,6 +347,7 @@
 				646554821D3EC90400FA6279 /* NSEntityDescription.swift in Sources */,
 				A94D32691D391AC5008B2927 /* Cells.swift in Sources */,
 				A94D32501D38E3E9008B2927 /* PenaltyForColleague.xcdatamodeld in Sources */,
+				44CADD461D4237D100BF65B1 /* Constants.swift in Sources */,
 				A9075F9D1D3E711200828C30 /* FileSystem.swift in Sources */,
 				A94D32591D38E3EF008B2927 /* MainVC.swift in Sources */,
 				A9F6030B1D3FD2F500896E7D /* CoreDataStack.swift in Sources */,
