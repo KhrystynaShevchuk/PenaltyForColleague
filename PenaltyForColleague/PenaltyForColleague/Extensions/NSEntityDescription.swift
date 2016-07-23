@@ -14,6 +14,10 @@ extension NSEntityDescription {
         return entityForName("Person", context: managedObjectContext)
     }
     
+    class func teamEntity(managedObjectContext: NSManagedObjectContext = CoreDataStack.sharedInstance.managedObjectContext) -> NSEntityDescription? {
+        return entityForName("Team", context: managedObjectContext)
+    }
+    
     class func entityForName(name: String, context: NSManagedObjectContext = CoreDataStack.sharedInstance.managedObjectContext) -> NSEntityDescription? {
         return NSEntityDescription.entityForName(name, inManagedObjectContext: context)
     }

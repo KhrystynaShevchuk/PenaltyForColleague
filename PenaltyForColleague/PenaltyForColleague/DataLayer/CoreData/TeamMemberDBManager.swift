@@ -9,9 +9,9 @@
 import UIKit
 import CoreData
 
-class UserDBManager {
+class TeamMemberDBManager {
     
-    static var sharedInstance = UserDBManager()
+    static var sharedInstance = TeamMemberDBManager()
     
     //    func getPerson(userId: Int) -> Person? {
     //        return nil
@@ -53,7 +53,7 @@ class UserDBManager {
         }
     }
     
-    func getAllTeamMembers(completion: (users: [TeamMember]) -> ()){
+    func getAllTeamMembers(completion: (users: [TeamMember]) -> ()) {
         let fetchRequest = NSFetchRequest()
         let entityDescription = NSEntityDescription.entityForName("Person", inManagedObjectContext: CoreDataStack.sharedInstance.managedObjectContext)
         fetchRequest.entity = entityDescription
@@ -79,8 +79,56 @@ class UserDBManager {
     
     //MARK: - Team
     
-    func saveTeam(team: String) {
+    func getTeamMembers(completion: (teamMembers: TeamMembers) -> ()) {
+        let fetchRequest = NSFetchRequest()
+        let entityDescription = NSEntityDescription.teamEntity()
+        fetchRequest.entity = entityDescription
+        var teamMembersArray = [TeamMembers]()
         
+        do {
+            let result = try CoreDataStack.sharedInstance.managedObjectContext.executeFetchRequest(fetchRequest)
+            let teams = result as! [Team]
+            
+            for team in teams {
+                let teamMember = convertTeam(team)
+                teamMember.photo = receivePhoto(teamMember)
+                teamMembersArray.append(teamMember)
+            }
+            if let teamMembers = teamMembersArray[safe: 0] {
+                completion(teamMembers: teamMembers)
+            } else {
+                completion(teamMembers: TeamMembers())
+            }
+            
+        } catch {
+            let fetchError = error as NSError
+            print(fetchError)
+            completion(teamMembers: TeamMembers())
+        }
+    }
+    
+    func saveTeam(teamMembers: TeamMembers) {
+        guard let entityDescription = NSEntityDescription.teamEntity() else {
+            return
+        }
+        
+        var team: Team = {
+            if let id = teamMembers.objectID {
+                return CoreDataStack.sharedInstance.managedObjectContext.objectWithID(id) as! Team
+            } else {
+                return NSManagedObject(entity: entityDescription, insertIntoManagedObjectContext: CoreDataStack.sharedInstance.managedObjectContext) as! Team
+            }
+        }()
+        
+        team = convertTeamMembers(teamMembers, toTeam: team)
+        
+        do {
+            try saveTeamObjectInStorage(team)
+        } catch {
+            let saveError = error as NSError
+            print(saveError)
+        }
+        saveTeamLogoImage(teamMembers)
     }
     
     // MARK: - Private
@@ -100,9 +148,19 @@ class UserDBManager {
         try person.managedObjectContext?.save()
     }
     
-    private func receivePhoto (teamMember: TeamMember?) -> UIImage? {
+    private func receivePhoto(teamMember: TeamMember?) -> UIImage? {
         guard let teamMember = teamMember,
             let name = teamMember.photoName,
+            let data = FileSystem().getFile(name) else {
+                return nil
+        }
+        
+        return UIImage(data: data)
+    }
+    
+    private func receivePhoto(teamMembers: TeamMembers?) -> UIImage? {
+        guard let teamMembers = teamMembers,
+            let name = teamMembers.photoName,
             let data = FileSystem().getFile(name) else {
                 return nil
         }
@@ -130,5 +188,47 @@ class UserDBManager {
         person.photoName = member.photoName
         
         return person
+    }
+    
+    private func saveTeamObjectInStorage(managedTeam: Team) throws {
+        
+        try managedTeam.managedObjectContext?.save()
+    }
+    
+    private func saveTeamLogoImage(teamMembers: TeamMembers) {
+        if let imagename = teamMembers.photoName,
+            let image = teamMembers.photo {
+            
+            let imageData = UIImageJPEGRepresentation(image, Constants.compresionQuality)
+            FileSystem().saveFile(imagename, data: imageData!)
+            teamMembers.photoName = imagename
+        }
+    }
+    
+    private func receivePhoto (team: Team?) -> UIImage? {
+        guard let team = team,
+            let name = team.photoName,
+            let data = FileSystem().getFile(name) else {
+                return nil
+        }
+        
+        return UIImage(data: data)
+    }
+    
+    private func convertTeamMembers(teamMembers: TeamMembers, toTeam team: Team) -> Team {
+        team.name = teamMembers.name
+        team.photoName = teamMembers.photoName
+        
+        return team
+    }
+    
+    private func convertTeam(team: Team) -> TeamMembers {
+        let teamMembers = TeamMembers()
+        
+        teamMembers.objectID = team.objectID
+        teamMembers.name = team.name
+        teamMembers.photoName = team.photoName
+        
+        return teamMembers
     }
 }

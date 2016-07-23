@@ -10,6 +10,8 @@
 		4444DF7B1D43C40E005D7CE0 /* Array+Safe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4444DF7A1D43C40E005D7CE0 /* Array+Safe.swift */; };
 		4444DF7D1D43CA62005D7CE0 /* UIViewController+Alerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4444DF7C1D43CA62005D7CE0 /* UIViewController+Alerts.swift */; };
 		4444DF7F1D43D47E005D7CE0 /* GCD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4444DF7E1D43D47E005D7CE0 /* GCD.swift */; };
+		4444DF841D43F3C8005D7CE0 /* ManagedTeam.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4444DF821D43F3C8005D7CE0 /* ManagedTeam.swift */; };
+		4444DF871D43F502005D7CE0 /* Team.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4444DF861D43F502005D7CE0 /* Team.swift */; };
 		447807D31D43B2B6003304CF /* FileSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 447807D21D43B2B6003304CF /* FileSystem.swift */; };
 		447807D51D43BA3C003304CF /* UIImage+Defaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 447807D41D43BA3C003304CF /* UIImage+Defaults.swift */; };
 		44CADD461D4237D100BF65B1 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44CADD451D4237D100BF65B1 /* Constants.swift */; };
@@ -33,7 +35,7 @@
 		A9F603041D3FAAC900896E7D /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = A9F603031D3FAAC900896E7D /* .gitignore */; };
 		A9F6030A1D3FD2F500896E7D /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9F603081D3FD2F500896E7D /* Person.swift */; };
 		A9F6030B1D3FD2F500896E7D /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9F603091D3FD2F500896E7D /* CoreDataStack.swift */; };
-		A9F6030D1D3FD3EC00896E7D /* UserDBManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9F6030C1D3FD3EC00896E7D /* UserDBManager.swift */; };
+		A9F6030D1D3FD3EC00896E7D /* TeamMemberDBManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9F6030C1D3FD3EC00896E7D /* TeamMemberDBManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +52,8 @@
 		4444DF7A1D43C40E005D7CE0 /* Array+Safe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Array+Safe.swift"; sourceTree = "<group>"; };
 		4444DF7C1D43CA62005D7CE0 /* UIViewController+Alerts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Alerts.swift"; sourceTree = "<group>"; };
 		4444DF7E1D43D47E005D7CE0 /* GCD.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GCD.swift; sourceTree = "<group>"; };
+		4444DF821D43F3C8005D7CE0 /* ManagedTeam.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManagedTeam.swift; sourceTree = "<group>"; };
+		4444DF861D43F502005D7CE0 /* Team.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Team.swift; sourceTree = "<group>"; };
 		447807D21D43B2B6003304CF /* FileSystem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileSystem.swift; sourceTree = "<group>"; };
 		447807D41D43BA3C003304CF /* UIImage+Defaults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Defaults.swift"; sourceTree = "<group>"; };
 		44CADD451D4237D100BF65B1 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -76,7 +80,7 @@
 		A9F603031D3FAAC900896E7D /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		A9F603081D3FD2F500896E7D /* Person.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
 		A9F603091D3FD2F500896E7D /* CoreDataStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
-		A9F6030C1D3FD3EC00896E7D /* UserDBManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserDBManager.swift; path = CoreData/UserDBManager.swift; sourceTree = "<group>"; };
+		A9F6030C1D3FD3EC00896E7D /* TeamMemberDBManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TeamMemberDBManager.swift; path = CoreData/TeamMemberDBManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -176,7 +180,7 @@
 				A9F603061D3FD2F500896E7D /* CoreData */,
 				447807D11D43B2B6003304CF /* FileSystem */,
 				A94D324C1D38E3E4008B2927 /* Models */,
-				A9F6030C1D3FD3EC00896E7D /* UserDBManager.swift */,
+				A9F6030C1D3FD3EC00896E7D /* TeamMemberDBManager.swift */,
 			);
 			path = DataLayer;
 			sourceTree = "<group>";
@@ -185,6 +189,7 @@
 			isa = PBXGroup;
 			children = (
 				A93A892E1D3CF55200A6228E /* TeamMember.swift */,
+				4444DF861D43F502005D7CE0 /* Team.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -257,6 +262,7 @@
 			isa = PBXGroup;
 			children = (
 				A9F603081D3FD2F500896E7D /* Person.swift */,
+				4444DF821D43F3C8005D7CE0 /* ManagedTeam.swift */,
 			);
 			path = CoreDataModels;
 			sourceTree = "<group>";
@@ -368,10 +374,12 @@
 				447807D31D43B2B6003304CF /* FileSystem.swift in Sources */,
 				44CADD481D42793300BF65B1 /* TeamSettingsVC.swift in Sources */,
 				A94D32491D38E3D4008B2927 /* AppDelegate.swift in Sources */,
-				A9F6030D1D3FD3EC00896E7D /* UserDBManager.swift in Sources */,
+				4444DF841D43F3C8005D7CE0 /* ManagedTeam.swift in Sources */,
+				A9F6030D1D3FD3EC00896E7D /* TeamMemberDBManager.swift in Sources */,
 				646554821D3EC90400FA6279 /* NSEntityDescription.swift in Sources */,
 				A94D32691D391AC5008B2927 /* Cells.swift in Sources */,
 				4444DF7D1D43CA62005D7CE0 /* UIViewController+Alerts.swift in Sources */,
+				4444DF871D43F502005D7CE0 /* Team.swift in Sources */,
 				A94D32501D38E3E9008B2927 /* PenaltyForColleague.xcdatamodeld in Sources */,
 				44CADD461D4237D100BF65B1 /* Constants.swift in Sources */,
 				447807D51D43BA3C003304CF /* UIImage+Defaults.swift in Sources */,

@@ -29,7 +29,7 @@ class TeamMembersVC: UIViewController {
         super.viewWillAppear(true)
         
         
-        UserDBManager.sharedInstance.getAllTeamMembers { (users) in
+        TeamMemberDBManager.sharedInstance.getAllTeamMembers { (users) in
             self.members = users
             
             dispatch_async(dispatch_get_main_queue(), {

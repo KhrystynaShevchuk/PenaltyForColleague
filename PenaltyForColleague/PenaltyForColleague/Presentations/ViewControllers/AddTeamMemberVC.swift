@@ -80,7 +80,7 @@ class AddTeamMemberVC: UIViewController {
             fillInTeamMemberData(teamMember)
             
             do {
-                try UserDBManager.sharedInstance.saveTeamMember(teamMember)
+                try TeamMemberDBManager.sharedInstance.saveTeamMember(teamMember)
             } catch {
                 presentAlertWithTitle("Error", message: "Data weren't saved.")
             }
@@ -93,7 +93,7 @@ class AddTeamMemberVC: UIViewController {
     
     private func deleteTeamMemberData() {
         if let _ = teamMember.objectID {
-            UserDBManager.sharedInstance.deleteTeamMember(teamMember)
+            TeamMemberDBManager.sharedInstance.deleteTeamMember(teamMember)
             navigateBack()
         }
     }

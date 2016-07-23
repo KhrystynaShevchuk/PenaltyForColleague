@@ -4,6 +4,7 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
         <!--MainVC-->
@@ -113,32 +114,58 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Team name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hoW-s3-INm">
-                                <rect key="frame" x="64" y="87" width="108" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Team name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hoW-s3-INm">
+                                <rect key="frame" x="116" y="101" width="89" height="21"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="89" id="e8N-lR-fYU"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cCb-29-LlB">
-                                <rect key="frame" x="45" y="116" width="234" height="30"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cCb-29-LlB">
+                                <rect key="frame" x="39" y="147" width="242" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sE2-gz-ENS">
-                                <rect key="frame" x="45" y="225" width="230" height="133"/>
+                            <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="teamIcon" translatesAutoresizingMaskIntoConstraints="NO" id="sE2-gz-ENS">
+                                <rect key="frame" x="39" y="287" width="242" height="189"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Team logo" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jyw-8K-Ls4">
-                                <rect key="frame" x="64" y="190" width="108" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Team logo" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jyw-8K-Ls4">
+                                <rect key="frame" x="120" y="231" width="80" height="21"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="80" id="pob-AH-51d"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" red="0.99408068839008767" green="1" blue="0.94425054859964941" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="Jyw-8K-Ls4" firstAttribute="top" secondItem="cCb-29-LlB" secondAttribute="bottom" constant="54" id="2jB-Se-aBa"/>
+                            <constraint firstItem="cCb-29-LlB" firstAttribute="centerX" secondItem="Jyw-8K-Ls4" secondAttribute="centerX" id="624-jo-nm5"/>
+                            <constraint firstItem="cCb-29-LlB" firstAttribute="centerX" secondItem="sE2-gz-ENS" secondAttribute="centerX" id="ElA-ga-Xz7"/>
+                            <constraint firstItem="sE2-gz-ENS" firstAttribute="leading" secondItem="KGG-hP-THg" secondAttribute="leadingMargin" constant="23" id="FW3-8U-XXJ"/>
+                            <constraint firstItem="sE2-gz-ENS" firstAttribute="top" secondItem="Jyw-8K-Ls4" secondAttribute="bottom" constant="35" id="NQC-Wl-VTL"/>
+                            <constraint firstItem="cCb-29-LlB" firstAttribute="top" secondItem="hoW-s3-INm" secondAttribute="bottom" constant="25" id="WoI-By-xA9"/>
+                            <constraint firstItem="hoW-s3-INm" firstAttribute="centerX" secondItem="KGG-hP-THg" secondAttribute="centerX" id="YoL-ml-zF8"/>
+                            <constraint firstItem="sE2-gz-ENS" firstAttribute="height" secondItem="KGG-hP-THg" secondAttribute="height" multiplier="1/3" id="Z6R-DC-nsh"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="sE2-gz-ENS" secondAttribute="trailing" constant="23" id="dkg-wL-nSm"/>
+                            <constraint firstItem="cCb-29-LlB" firstAttribute="leading" secondItem="KGG-hP-THg" secondAttribute="leadingMargin" constant="23" id="fqu-H9-YA3"/>
+                            <constraint firstItem="cCb-29-LlB" firstAttribute="centerX" secondItem="hoW-s3-INm" secondAttribute="centerX" id="izx-uO-7b0"/>
+                            <constraint firstItem="hoW-s3-INm" firstAttribute="top" secondItem="Fic-Wi-Wlh" secondAttribute="bottom" constant="37" id="wnL-DX-rqg"/>
+                        </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Team settings" id="GcD-9C-4dl"/>
+                    <navigationItem key="navigationItem" title="Team settings" id="GcD-9C-4dl">
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="aO0-KC-2qY">
+                            <connections>
+                                <action selector="tappedSaveButton:" destination="zwo-BS-H6p" id="PKL-Tb-wpC"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="logoImageView" destination="sE2-gz-ENS" id="9BL-gG-gWp"/>
                         <outlet property="nameTextField" destination="cCb-29-LlB" id="3Cw-eB-mH3"/>
@@ -353,6 +380,7 @@
     </scenes>
     <resources>
         <image name="settingsIcon" width="25" height="25"/>
+        <image name="teamIcon" width="256" height="256"/>
         <image name="userIcon" width="50" height="50"/>
     </resources>
     <inferredMetricsTieBreakers>
