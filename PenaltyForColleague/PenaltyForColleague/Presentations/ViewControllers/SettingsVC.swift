@@ -23,19 +23,26 @@ enum SettingType {
             return "Penalties"
         }
     }
+    
+    static let allTypes = [SettingType.TeamMembers, SettingType.TeamSettings, SettingType.Penalties]
 }
+
+private let segueToMembersVC = "usersSegue"
+private let segueToTeamSettingsVC = "teamSettingsSegue"
 
 class SettingsVC: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
-    var settingType: SettingType!
     
+    var settingType: SettingType!
     var items = [SettingType]()
+    
+    // MARK: - VC life cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        items = [SettingType.TeamMembers, SettingType.TeamSettings, SettingType.Penalties]
+        items = SettingType.allTypes
         tableView.delegate = self
     }
     
@@ -43,11 +50,22 @@ class SettingsVC: UIViewController {
         super.didReceiveMemoryWarning()
     }
     
-    // prepare for segue
+    // MARK: - Navigation
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
     }
+    
+    private func navigateToMembersVC() {
+        performSegueWithIdentifier(segueToMembersVC, sender: nil)
+    }
+    
+    private func navigateToTeamSettingsVC() {
+        performSegueWithIdentifier(segueToTeamSettingsVC, sender: nil)
+    }
 }
+
+// MARK: - Table view
 
 extension SettingsVC: UITableViewDataSource, UITableViewDelegate {
     
@@ -56,7 +74,8 @@ extension SettingsVC: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("SettingsCell") as! SettingsCell
+        let cell = tableView.dequeueReusableCellWithIdentifier(SettingsCell.cellIdentifier) as! SettingsCell
+        
         settingType = items[indexPath.row]
         
         cell.settingLabel.text = settingType.title()
@@ -71,9 +90,10 @@ extension SettingsVC: UITableViewDataSource, UITableViewDelegate {
         switch item {
         case .TeamMembers:
             print(" members vc")
-            performSegueWithIdentifier("usersSegue", sender: nil)
+            navigateToMembersVC()
         case .TeamSettings:
             print(" team settings vc")
+            navigateToTeamSettingsVC()
         case .Penalties:
             print(" penalties vc")
         }

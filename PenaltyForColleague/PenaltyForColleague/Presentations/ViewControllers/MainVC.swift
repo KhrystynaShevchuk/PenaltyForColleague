@@ -8,22 +8,34 @@
 
 import UIKit
 
+private let segueToSettingsVC = "settingsSegue"
+
 class MainVC: UIViewController {
+    
+    // MARK: - VC life cycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
     }
     
-    @IBAction func tapSettingButton(sender: UIBarButtonItem) {
-        performSegueWithIdentifier("settingsSegue", sender: sender)
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
     }
+    
+    // MARK: - Actions
+    
+    @IBAction func tapSettingButton(sender: UIBarButtonItem) {
+        navigateToSettings(sender)
+    }
+    
+    // MARK: - Navigation
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
+    
+    private func navigateToSettings(sender: UIBarButtonItem) {
+        performSegueWithIdentifier(segueToSettingsVC, sender: sender)
     }
 }
 

@@ -94,11 +94,61 @@
                     <connections>
                         <outlet property="tableView" destination="G7c-oO-pgc" id="usn-uC-lan"/>
                         <segue destination="ODZ-dq-YM5" kind="push" identifier="usersSegue" id="3eC-aR-5FE"/>
+                        <segue destination="zwo-BS-H6p" kind="push" identifier="teamSettingsSegue" id="czM-bT-zTV"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8Rm-jY-gig" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1009" y="471"/>
+        </scene>
+        <!--Team settings-->
+        <scene sceneID="rFJ-YM-mtb">
+            <objects>
+                <viewController id="zwo-BS-H6p" customClass="TeamSettingsVC" customModule="PenaltyForColleague" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Fic-Wi-Wlh"/>
+                        <viewControllerLayoutGuide type="bottom" id="iwg-u5-SVC"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="KGG-hP-THg">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Team name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hoW-s3-INm">
+                                <rect key="frame" x="64" y="87" width="108" height="21"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cCb-29-LlB">
+                                <rect key="frame" x="45" y="116" width="234" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sE2-gz-ENS">
+                                <rect key="frame" x="45" y="225" width="230" height="133"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Team logo" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jyw-8K-Ls4">
+                                <rect key="frame" x="64" y="190" width="108" height="21"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="0.99408068839008767" green="1" blue="0.94425054859964941" alpha="1" colorSpace="calibratedRGB"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Team settings" id="GcD-9C-4dl"/>
+                    <connections>
+                        <outlet property="logoImageView" destination="sE2-gz-ENS" id="9BL-gG-gWp"/>
+                        <outlet property="nameTextField" destination="cCb-29-LlB" id="3Cw-eB-mH3"/>
+                        <outlet property="teamLogoLabel" destination="Jyw-8K-Ls4" id="iSp-DH-PwE"/>
+                        <outlet property="teamNameLabel" destination="hoW-s3-INm" id="bAb-Fl-RUN"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Le3-8m-y1F" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1443" y="689"/>
         </scene>
         <!--Team members-->
         <scene sceneID="eoe-s9-hxS">

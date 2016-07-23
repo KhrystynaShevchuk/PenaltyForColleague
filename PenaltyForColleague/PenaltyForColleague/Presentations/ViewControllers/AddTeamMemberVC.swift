@@ -18,42 +18,42 @@ class AddTeamMemberVC: UIViewController {
     let imagePicker = UIImagePickerController()
     var teamMember = TeamMember()
     
+    //MARK: - VC life cycle
     
-    //MARK: - vc life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
         imagePicker.delegate = self
-        setTapGestureOnImageView()
+        setUpTapGestureOnImageView()
     }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(true)
         
-        prefillUserData()
+        prefillTeamMemberData()
     }
     
-    // Mark: - private
+    // Mark: - Private
     
-    private func prefillUserData() {
-        photoImageView.image = UIImage(named: "userIcon")
+    private func prefillTeamMemberData() {
+        photoImageView.image = UIImage.defaultTeamMemberIcon()
         
         nameTextfield.text = teamMember.name
         surnameTextfield.text = teamMember.surname
         emailTextfield.text = teamMember.email
-        photoImageView.image = teamMember.photo ?? UIImage(named: "userIcon")
+        photoImageView.image = teamMember.photo ?? UIImage.defaultTeamMemberIcon()
     }
     
-    private func fillInPersonData(teamMember: TeamMember){
+    private func fillInTeamMemberData(teamMember: TeamMember){
         teamMember.name = nameTextfield.text
         teamMember.surname = surnameTextfield.text
         teamMember.email = emailTextfield.text
         teamMember.photo = photoImageView.image
     }
     
-    // MARK: - tap gesture
+    // MARK: - Tap gestures
     
-    private func setTapGestureOnImageView() {
+    private func setUpTapGestureOnImageView() {
         let gestureRecognizer = UITapGestureRecognizer(target: self, action:#selector(handleTap(_:)))
         photoImageView.addGestureRecognizer(gestureRecognizer)
     }
@@ -62,42 +62,50 @@ class AddTeamMemberVC: UIViewController {
         imagePicker.allowsEditing = false
         imagePicker.sourceType = .PhotoLibrary
         
-        presentViewController(imagePicker, animated: true, completion: nil)
+        presentViewController(imagePicker)
     }
     
-    // MARK: - IBActions
+    // MARK: - Actions
     
     @IBAction func tappedSaveButton(sender: UIBarButtonItem) {
-        
-        if (nameTextfield.text != "") {
-            fillInPersonData(teamMember)
-            
-            do {
-                try UserDBManager.sharedInstance.savePersonData(teamMember)
-            } catch {
-                print(error)
-                let alert = UIAlertController(title: "Error", message: "Data weren't saved.", preferredStyle: .Alert)
-                alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
-                AddTeamMemberVC().presentViewController(alert, animated: true, completion: nil)
-            }
-            
-            navigationController?.popViewControllerAnimated(true)
-        } else {
-            let alert = UIAlertController(title: "You can't save changes", message: "Fill in the 'name' field", preferredStyle: .Alert)
-            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
-            presentViewController(alert, animated: true, completion: nil)
-        }
+        saveTeamMemberData()
     }
     
     @IBAction func deleteButton(sender: UIButton) {
-        if (teamMember.objectID != nil) {
-            UserDBManager.sharedInstance.deletePerson(teamMember)
-            navigationController?.popViewControllerAnimated(true)
+        deleteTeamMemberData()
+    }
+    
+    private func saveTeamMemberData() {
+        if nameTextfield.text != "" {
+            fillInTeamMemberData(teamMember)
+            
+            do {
+                try UserDBManager.sharedInstance.saveTeamMember(teamMember)
+            } catch {
+                presentAlertWithTitle("Error", message: "Data weren't saved.")
+            }
+            
+            navigateBack()
+        } else {
+            presentAlertWithTitle("You can't save changes", message: "Fill in the 'name' field")
         }
+    }
+    
+    private func deleteTeamMemberData() {
+        if let _ = teamMember.objectID {
+            UserDBManager.sharedInstance.deleteTeamMember(teamMember)
+            navigateBack()
+        }
+    }
+    
+    //MARK: - Navigation
+    
+    private func navigateBack() {
+        navigationController?.popViewControllerAnimated(true)
     }
 }
 
-// MARK: - extension
+// MARK: - Image picker
 
 extension AddTeamMemberVC: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
@@ -107,7 +115,7 @@ extension AddTeamMemberVC: UIImagePickerControllerDelegate, UINavigationControll
             photoImageView.image = pickedImage
             
             teamMember.photoName = NSUUID().UUIDString
-            fillInPersonData(teamMember)
+            fillInTeamMemberData(teamMember)
         }
         dismissViewControllerAnimated(true, completion: nil)
     }
