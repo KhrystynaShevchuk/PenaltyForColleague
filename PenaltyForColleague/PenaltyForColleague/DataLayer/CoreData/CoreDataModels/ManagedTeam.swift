@@ -1,5 +1,5 @@
 //
-//  Team+CoreDataProperties.swift
+//  ManagedTeam.swift
 //  PenaltyForColleague
 //
 //  Created by IOS developer on 7/23/16.
@@ -12,7 +12,7 @@
 import Foundation
 import CoreData
 
-class Team: NSManagedObject {
+class ManagedTeam: NSManagedObject {
 
     @NSManaged var name: String?
     @NSManaged var photoName: String?

@@ -10,7 +10,7 @@ import UIKit
 
 extension UIImage {
     
-    class func defaultTeamMemberIcon() -> UIImage? {
+    class func defaultPersonIcon() -> UIImage? {
         return UIImage(named: "userIcon")
     }
 }

@@ -249,14 +249,14 @@
                     <navigationItem key="navigationItem" title="Team members" id="WGl-x7-6h4">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="NAW-eS-AFv">
                             <connections>
-                                <action selector="addUserButton:" destination="ODZ-dq-YM5" id="jG8-p5-gHl"/>
+                                <action selector="addPersonButton:" destination="ODZ-dq-YM5" id="dZb-Jj-4r2"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="JVw-2G-8KL" id="3Ge-J9-C3B"/>
-                        <segue destination="YAS-lL-a07" kind="push" identifier="addMemberSegue" id="5vF-k9-BT6"/>
-                        <segue destination="YAS-lL-a07" kind="push" identifier="editMemberSegue" id="wWW-BM-O4w"/>
+                        <segue destination="YAS-lL-a07" kind="push" identifier="addPersonSegue" id="5vF-k9-BT6"/>
+                        <segue destination="YAS-lL-a07" kind="push" identifier="editPersonSegue" id="wWW-BM-O4w"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QhA-QP-prl" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -266,7 +266,7 @@
         <!--Team member-->
         <scene sceneID="o1r-h2-8Ut">
             <objects>
-                <viewController id="YAS-lL-a07" customClass="AddTeamMemberVC" customModule="PenaltyForColleague" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="YAS-lL-a07" customClass="AddPersonVC" customModule="PenaltyForColleague" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="LCy-gO-AyX"/>
                         <viewControllerLayoutGuide type="bottom" id="Qck-D4-Zsg"/>

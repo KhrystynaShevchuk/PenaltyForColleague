@@ -1,5 +1,5 @@
 //
-//  TeamMembers.swift
+//  Person.swift
 //  PenaltyForColleague
 //
 //  Created by KhrystynaShevchuk on 7/18/16.
@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-class TeamMember {
+class Person {
     
     var objectID: NSManagedObjectID?
     

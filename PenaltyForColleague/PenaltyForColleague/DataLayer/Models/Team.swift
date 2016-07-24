@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-class TeamMembers {
+class Team {
     
     var objectID: NSManagedObjectID?
     

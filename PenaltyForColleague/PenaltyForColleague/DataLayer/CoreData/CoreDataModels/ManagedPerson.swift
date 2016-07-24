@@ -1,5 +1,5 @@
 //
-//  Person.swift
+//  ManagedPerson.swift
 //  PenaltyForColleague
 //
 //  Created by KhrystynaShevchuk on 7/18/16.
@@ -9,7 +9,7 @@
 import Foundation
 import CoreData
 
-class Person: NSManagedObject {
+class ManagedPerson: NSManagedObject {
 
     @NSManaged var photoName: String?
     @NSManaged var email: String?

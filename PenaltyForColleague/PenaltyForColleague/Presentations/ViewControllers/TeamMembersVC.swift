@@ -9,15 +9,15 @@
 import UIKit
 import CoreData
 
-private let segueToAddMember = "addMemberSegue"
-private let segueToEditMember = "editMemberSegue"
+private let segueToAddPerson = "addPersonSegue"
+private let segueToEditPerson = "editPersonSegue"
 
 class TeamMembersVC: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
-    var members = [TeamMember]()    
-    var selectedPerson: TeamMember?
+    var members = [Person]()
+    var selectedPerson: Person?
     
     // MARK: - VC life cycle
     
@@ -29,8 +29,8 @@ class TeamMembersVC: UIViewController {
         super.viewWillAppear(true)
         
         
-        TeamMemberDBManager.sharedInstance.getAllTeamMembers { (users) in
-            self.members = users
+        TeamMemberDBManager.sharedInstance.getAllPersons { (persons) in
+            self.members = persons
             
             dispatch_async(dispatch_get_main_queue(), {
                 self.tableView.reloadData()
@@ -40,27 +40,27 @@ class TeamMembersVC: UIViewController {
     
     // MARK: - Actions
     
-    @IBAction func addUserButton(sender: UIBarButtonItem) {
-        navigateToAddMember()
+    @IBAction func addPersonButton(sender: UIBarButtonItem) {
+        navigateToAddPerson()
     }
     
     // MARK: - Navigation
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == segueToEditMember {
-            let vc = segue.destinationViewController as! AddTeamMemberVC
+        if segue.identifier == segueToEditPerson {
+            let vc = segue.destinationViewController as! AddPersonVC
             if let selectedPerson = selectedPerson {
-                vc.teamMember = selectedPerson
+                vc.person = selectedPerson
             }
         }
     }
     
-    private func navigateToAddMember() {
-        performSegueWithIdentifier(segueToAddMember, sender: self)
+    private func navigateToAddPerson() {
+        performSegueWithIdentifier(segueToAddPerson, sender: self)
     }
     
-    private func navigateToEditMember() {
-        performSegueWithIdentifier(segueToEditMember, sender: self)
+    private func navigateToEditPerson() {
+        performSegueWithIdentifier(segueToEditPerson, sender: self)
     }
 }
 
@@ -75,10 +75,10 @@ extension TeamMembersVC: UITableViewDataSource, UITableViewDelegate {
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier(TeamMembersCell.cellIdentifier) as! TeamMembersCell
         
-        let member = members[safe: indexPath.row] ?? TeamMember() // without any crashes in more complicated actions with arrays
+        let person = members[safe: indexPath.row] ?? Person() // without any crashes in more complicated actions with arrays
         
-        cell.iconImageView.image = member.photo ?? UIImage.defaultTeamMemberIcon()
-        cell.memberNameLabel.text = "\(member.name ?? "") \(member.surname ?? "")"
+        cell.iconImageView.image = person.photo ?? UIImage.defaultPersonIcon()
+        cell.memberNameLabel.text = "\(person.name ?? "") \(person.surname ?? "")"
         
         return cell
     }
@@ -86,6 +86,6 @@ extension TeamMembersVC: UITableViewDataSource, UITableViewDelegate {
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         selectedPerson = members[indexPath.row]
         
-        navigateToEditMember()
+        navigateToEditPerson()
     }
 }

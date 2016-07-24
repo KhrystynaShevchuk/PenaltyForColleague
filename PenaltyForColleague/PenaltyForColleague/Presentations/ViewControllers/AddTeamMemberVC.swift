@@ -1,5 +1,5 @@
 //
-//  AddTeamMemberVC.swift
+//  AddPersonVC.swift
 //  PenaltyForColleague
 //
 //  Created by KhrystynaShevchuk on 7/18/16.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AddTeamMemberVC: UIViewController {
+class AddPersonVC: UIViewController {
     
     @IBOutlet weak var nameTextfield: UITextField!
     @IBOutlet weak var surnameTextfield: UITextField!
@@ -16,7 +16,7 @@ class AddTeamMemberVC: UIViewController {
     @IBOutlet weak var photoImageView: UIImageView!
     
     let imagePicker = UIImagePickerController()
-    var teamMember = TeamMember()
+    var person = Person()
     
     //MARK: - VC life cycle
     
@@ -30,25 +30,25 @@ class AddTeamMemberVC: UIViewController {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(true)
         
-        prefillTeamMemberData()
+        prefillPersonData()
     }
     
     // Mark: - Private
     
-    private func prefillTeamMemberData() {
-        photoImageView.image = UIImage.defaultTeamMemberIcon()
+    private func prefillPersonData() {
+        photoImageView.image = UIImage.defaultPersonIcon()
         
-        nameTextfield.text = teamMember.name
-        surnameTextfield.text = teamMember.surname
-        emailTextfield.text = teamMember.email
-        photoImageView.image = teamMember.photo ?? UIImage.defaultTeamMemberIcon()
+        nameTextfield.text = person.name
+        surnameTextfield.text = person.surname
+        emailTextfield.text = person.email
+        photoImageView.image = person.photo ?? UIImage.defaultPersonIcon()
     }
     
-    private func fillInTeamMemberData(teamMember: TeamMember){
-        teamMember.name = nameTextfield.text
-        teamMember.surname = surnameTextfield.text
-        teamMember.email = emailTextfield.text
-        teamMember.photo = photoImageView.image
+    private func fillInPersonData(person: Person){
+        person.name = nameTextfield.text
+        person.surname = surnameTextfield.text
+        person.email = emailTextfield.text
+        person.photo = photoImageView.image
     }
     
     // MARK: - Tap gestures
@@ -68,19 +68,19 @@ class AddTeamMemberVC: UIViewController {
     // MARK: - Actions
     
     @IBAction func tappedSaveButton(sender: UIBarButtonItem) {
-        saveTeamMemberData()
+        savePersonData()
     }
     
     @IBAction func deleteButton(sender: UIButton) {
-        deleteTeamMemberData()
+        deletePersonData()
     }
     
-    private func saveTeamMemberData() {
+    private func savePersonData() {
         if nameTextfield.text != "" {
-            fillInTeamMemberData(teamMember)
+            fillInPersonData(person)
             
             do {
-                try TeamMemberDBManager.sharedInstance.saveTeamMember(teamMember)
+                try TeamMemberDBManager.sharedInstance.savePerson(person)
             } catch {
                 presentAlertWithTitle("Error", message: "Data weren't saved.")
             }
@@ -91,9 +91,9 @@ class AddTeamMemberVC: UIViewController {
         }
     }
     
-    private func deleteTeamMemberData() {
-        if let _ = teamMember.objectID {
-            TeamMemberDBManager.sharedInstance.deleteTeamMember(teamMember)
+    private func deletePersonData() {
+        if let _ = person.objectID {
+            TeamMemberDBManager.sharedInstance.deletePerson(person)
             navigateBack()
         }
     }
@@ -107,15 +107,15 @@ class AddTeamMemberVC: UIViewController {
 
 // MARK: - Image picker
 
-extension AddTeamMemberVC: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+extension AddPersonVC: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
         if let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
             photoImageView.contentMode = .ScaleAspectFit
             photoImageView.image = pickedImage
             
-            teamMember.photoName = NSUUID().UUIDString
-            fillInTeamMemberData(teamMember)
+            person.photoName = NSUUID().UUIDString
+            fillInPersonData(person)
         }
         dismissViewControllerAnimated(true, completion: nil)
     }

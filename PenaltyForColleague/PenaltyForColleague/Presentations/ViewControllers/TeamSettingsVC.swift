@@ -16,7 +16,7 @@ class TeamSettingsVC: UIViewController {
     @IBOutlet weak var logoImageView: UIImageView!
     
     let imagePicker = UIImagePickerController()
-    var teamMembers = TeamMembers()
+    var team = Team()
     
     // MARK: - VC life cycle
     
@@ -26,11 +26,11 @@ class TeamSettingsVC: UIViewController {
         imagePicker.delegate = self
         setUpTapGestureOnImageView()
         
-        TeamMemberDBManager.sharedInstance.getTeamMembers { (teamMembers) in
-            self.teamMembers = teamMembers
+        TeamMemberDBManager.sharedInstance.getTeam{ (team) in
+            self.team = team
             
-            self.logoImageView.image = teamMembers.photo
-            self.nameTextField.text = teamMembers.name
+            self.logoImageView.image = team.photo
+            self.nameTextField.text = team.name
         }
         
         prefillTeamData()
@@ -45,13 +45,13 @@ class TeamSettingsVC: UIViewController {
     // MARK: - Private 
     
     private func prefillTeamData() {
-        logoImageView.image = teamMembers.photo ?? UIImage(named: "teamIcon")
-        nameTextField.text = teamMembers.name
+        logoImageView.image = team.photo ?? UIImage(named: "teamIcon")
+        nameTextField.text = team.name
     }
     
-    private func fillInTeamData(teamMembers: TeamMembers) {
-        teamMembers.name = nameTextField.text ?? ""
-        teamMembers.photo = logoImageView.image
+    private func fillInTeamData(team: Team) {
+        team.name = nameTextField.text ?? ""
+        team.photo = logoImageView.image
     }
     
     // MARK: - Tap gestures
@@ -76,9 +76,9 @@ class TeamSettingsVC: UIViewController {
     
     private func saveTeamData() {
         if nameTextField.text != "" {
-            fillInTeamData(teamMembers)
+            fillInTeamData(team)
             
-            TeamMemberDBManager.sharedInstance.saveTeam(teamMembers)
+            TeamMemberDBManager.sharedInstance.saveTeam(team)
             
             navigateBack()
         } else {
