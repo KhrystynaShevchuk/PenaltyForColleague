@@ -65,7 +65,9 @@ class TeamMemberDBManager {
             
             for member in members {
                 let person = convertManagedPersonToPerson(member)
-                receivePhoto(person)
+                if let photoName = person.photoName {
+                    receivePhoto(photoName)
+                }
                 persons.append(person)
             }
             completion(persons: persons)
@@ -91,7 +93,9 @@ class TeamMemberDBManager {
             
             for team in managedTeam {
                 let team = convertManagedTeamToTeam(team)
-                team.photo = receivePhoto(team)
+                if let photoName = team.photoName {
+                    team.photo = receivePhoto(photoName)
+                }
                 teamsArray.append(team)
             }
             if let teams = teamsArray[safe: 0] {
@@ -148,16 +152,6 @@ class TeamMemberDBManager {
         try managedPerson.managedObjectContext?.save()
     }
     
-    private func receivePhoto(person: Person?) -> UIImage? {
-        guard let teamMember = person,
-            let name = teamMember.photoName,
-            let data = FileSystem().getFile(name) else {
-                return nil
-        }
-        
-        return UIImage(data: data)
-    }
-    
     private func convertManagedPersonToPerson(managedPerson: ManagedPerson) -> Person {
         let person = Person()
         
@@ -166,8 +160,9 @@ class TeamMemberDBManager {
         person.surname = managedPerson.surname
         person.email = managedPerson.email
         person.photoName = managedPerson.photoName
-        person.photo = receivePhoto(person)
-        
+        if let photoName = person.photoName {
+            person.photo = receivePhoto(photoName)
+        }
         return person
     }
     
@@ -197,16 +192,6 @@ class TeamMemberDBManager {
         }
     }
     
-    private func receivePhoto(team: Team?) -> UIImage? {
-        guard let team = team,
-            let name = team.photoName,
-            let data = FileSystem().getFile(name) else {
-                return nil
-        }
-        
-        return UIImage(data: data)
-    }
-    
     private func convertTeamMembers(team: Team, toManagedTeam managedTeam: ManagedTeam) -> ManagedTeam {
         managedTeam.name = team.name
         managedTeam.photoName = team.photoName
@@ -222,5 +207,15 @@ class TeamMemberDBManager {
         team.photoName = managedTeam.photoName
         
         return team
+    }
+    
+    // MARK: - Common private funcs
+    
+    private func receivePhoto(photoName: String) -> UIImage? {
+        guard let data = FileSystem().getFile(photoName) else {
+            return nil
+        }
+        
+        return UIImage(data: data)
     }
 }
