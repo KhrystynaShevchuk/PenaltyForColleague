@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AddPersonVC: UIViewController {
+class AddOrEditPersonVC: UIViewController {
     
     @IBOutlet weak var nameTextfield: UITextField!
     @IBOutlet weak var surnameTextfield: UITextField!
@@ -80,7 +80,7 @@ class AddPersonVC: UIViewController {
             fillInPersonData(person)
             
             do {
-                try TeamMemberDBManager.sharedInstance.savePerson(person)
+                try TeamAndPersonDBManager.sharedInstance.savePerson(person)
             } catch {
                 presentAlertWithTitle("Error", message: "Data weren't saved.")
             }
@@ -93,7 +93,7 @@ class AddPersonVC: UIViewController {
     
     private func deletePersonData() {
         if let _ = person.objectID {
-            TeamMemberDBManager.sharedInstance.deletePerson(person)
+            TeamAndPersonDBManager.sharedInstance.deletePerson(person)
             navigateBack()
         }
     }
@@ -107,7 +107,7 @@ class AddPersonVC: UIViewController {
 
 // MARK: - Image picker
 
-extension AddPersonVC: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+extension AddOrEditPersonVC: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
         if let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {

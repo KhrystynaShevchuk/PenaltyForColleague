@@ -29,7 +29,7 @@ class TeamMembersVC: UIViewController {
         super.viewWillAppear(true)
         
         
-        TeamMemberDBManager.sharedInstance.getAllPersons { (persons) in
+        TeamAndPersonDBManager.sharedInstance.getAllPersons { (persons) in
             self.members = persons
             
             dispatch_async(dispatch_get_main_queue(), {
@@ -48,7 +48,7 @@ class TeamMembersVC: UIViewController {
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == segueToEditPerson {
-            let vc = segue.destinationViewController as! AddPersonVC
+            let vc = segue.destinationViewController as! AddOrEditPersonVC
             if let selectedPerson = selectedPerson {
                 vc.person = selectedPerson
             }

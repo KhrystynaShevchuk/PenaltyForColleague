@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="10174" systemVersion="15G31" minimumToolsVersion="Automatic">
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="10171" systemVersion="15F34" minimumToolsVersion="Automatic">
+    <entity name="Penalty" representedClassName=".ManagedPenalty" syncable="YES">
+        <attribute name="penalty" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
     <entity name="Person" representedClassName=".ManagedPerson" syncable="YES">
         <attribute name="email" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
@@ -13,5 +16,6 @@
     <elements>
         <element name="Person" positionX="-63" positionY="-18" width="128" height="105"/>
         <element name="Team" positionX="-63" positionY="9" width="128" height="75"/>
+        <element name="Penalty" positionX="-63" positionY="9" width="128" height="60"/>
     </elements>
 </model>

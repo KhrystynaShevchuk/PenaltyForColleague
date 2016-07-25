@@ -32,3 +32,8 @@ class TeamMembersCell: UITableViewCell, CellIdentifier {
     @IBOutlet weak var memberNameLabel: UILabel!
     @IBOutlet weak var iconImageView: UIImageView!
 }
+
+class PenaltiesCell: UITableViewCell, CellIdentifier {
+    
+    @IBOutlet weak var penaltyLabel: UILabel!
+}

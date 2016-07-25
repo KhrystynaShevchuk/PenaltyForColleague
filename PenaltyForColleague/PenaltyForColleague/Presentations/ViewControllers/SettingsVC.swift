@@ -29,6 +29,7 @@ enum SettingType {
 
 private let segueToMembersVC = "usersSegue"
 private let segueToTeamSettingsVC = "teamSettingsSegue"
+private let segueToPenaltiesVC = "penaltiesSegue"
 
 class SettingsVC: UIViewController {
     
@@ -63,6 +64,10 @@ class SettingsVC: UIViewController {
     private func navigateToTeamSettingsVC() {
         performSegueWithIdentifier(segueToTeamSettingsVC, sender: nil)
     }
+    
+    private func navigateToPenaltiesVC() {
+        performSegueWithIdentifier(segueToPenaltiesVC, sender: nil)
+    }
 }
 
 // MARK: - Table view
@@ -96,6 +101,7 @@ extension SettingsVC: UITableViewDataSource, UITableViewDelegate {
             navigateToTeamSettingsVC()
         case .Penalties:
             print(" penalties vc")
+            navigateToPenaltiesVC()
         }
     }
 }

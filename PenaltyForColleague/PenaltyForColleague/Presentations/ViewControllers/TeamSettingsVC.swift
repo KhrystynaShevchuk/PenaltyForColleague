@@ -26,7 +26,7 @@ class TeamSettingsVC: UIViewController {
         imagePicker.delegate = self
         setUpTapGestureOnImageView()
         
-        TeamMemberDBManager.sharedInstance.getTeam{ (team) in
+        TeamAndPersonDBManager.sharedInstance.getTeam{ (team) in
             self.team = team
             
             self.logoImageView.image = team.photo
@@ -78,7 +78,7 @@ class TeamSettingsVC: UIViewController {
         if nameTextField.text != "" {
             fillInTeamData(team)
             
-            TeamMemberDBManager.sharedInstance.saveTeam(team)
+            TeamAndPersonDBManager.sharedInstance.saveTeam(team)
             
             navigateBack()
         } else {

@@ -9,13 +9,9 @@
 import UIKit
 import CoreData
 
-class TeamMemberDBManager {
+class TeamAndPersonDBManager {
     
-    static var sharedInstance = TeamMemberDBManager()
-    
-    //    func getPerson(userId: Int) -> ManagedPerson? {
-    //        return nil
-    //    }
+    static var sharedInstance = TeamAndPersonDBManager()
     
     //MARK: - Puplic for Person
     

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="kO4-s5-rPK">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="kO4-s5-rPK">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -96,6 +96,7 @@
                         <outlet property="tableView" destination="G7c-oO-pgc" id="usn-uC-lan"/>
                         <segue destination="ODZ-dq-YM5" kind="push" identifier="usersSegue" id="3eC-aR-5FE"/>
                         <segue destination="zwo-BS-H6p" kind="push" identifier="teamSettingsSegue" id="czM-bT-zTV"/>
+                        <segue destination="Sih-YK-agA" kind="push" identifier="penaltiesSegue" id="gZS-3b-dVK"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8Rm-jY-gig" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -175,7 +176,146 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Le3-8m-y1F" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1443" y="689"/>
+            <point key="canvasLocation" x="1521" y="531"/>
+        </scene>
+        <!--PenaltiesVC-->
+        <scene sceneID="c0J-bl-dCY">
+            <objects>
+                <viewController id="Sih-YK-agA" customClass="PenaltiesVC" customModule="PenaltyForColleague" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="IaB-QC-mpf"/>
+                        <viewControllerLayoutGuide type="bottom" id="gTJ-I4-ffE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="xoY-Bh-v15">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="pHQ-WQ-ch6">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="PenaltiesCell" id="n9i-ov-Yrg" customClass="PenaltiesCell" customModule="PenaltyForColleague" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="92" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="n9i-ov-Yrg" id="g1n-96-XVo">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F7t-gz-qFm">
+                                                    <rect key="frame" x="16" y="11" width="287" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="F7t-gz-qFm" firstAttribute="leading" secondItem="g1n-96-XVo" secondAttribute="leadingMargin" constant="8" id="3xs-MS-9uA"/>
+                                                <constraint firstItem="F7t-gz-qFm" firstAttribute="centerY" secondItem="g1n-96-XVo" secondAttribute="centerY" id="E4e-Vc-l66"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="F7t-gz-qFm" secondAttribute="trailing" constant="9" id="rfX-1o-OVn"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="penaltyLabel" destination="F7t-gz-qFm" id="Uz5-I4-r3R"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="Sih-YK-agA" id="LcQ-wv-Gbd"/>
+                                    <outlet property="delegate" destination="Sih-YK-agA" id="Yab-i9-fKO"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="pHQ-WQ-ch6" firstAttribute="leading" secondItem="xoY-Bh-v15" secondAttribute="leading" id="4B7-9C-39T"/>
+                            <constraint firstItem="gTJ-I4-ffE" firstAttribute="top" secondItem="pHQ-WQ-ch6" secondAttribute="bottom" id="93a-uC-g9d"/>
+                            <constraint firstAttribute="trailing" secondItem="pHQ-WQ-ch6" secondAttribute="trailing" id="CUs-9V-Fxw"/>
+                            <constraint firstItem="pHQ-WQ-ch6" firstAttribute="top" secondItem="IaB-QC-mpf" secondAttribute="bottom" constant="-64" id="sV1-TD-eil"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="7AX-wU-bbZ">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="LdL-oI-v5w">
+                            <connections>
+                                <action selector="tappedAddButton:" destination="Sih-YK-agA" id="x3c-jX-T2A"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="tableView" destination="pHQ-WQ-ch6" id="mjO-ei-vqy"/>
+                        <segue destination="lqn-dl-GTo" kind="push" identifier="addPenaltySegue" id="xhs-yQ-n1w"/>
+                        <segue destination="lqn-dl-GTo" kind="push" identifier="editPenaltySegue" id="Cmj-LC-C2h"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Pbr-sc-qb7" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1404" y="1179"/>
+        </scene>
+        <!--Penalty-->
+        <scene sceneID="424-Or-xfw">
+            <objects>
+                <viewController id="lqn-dl-GTo" customClass="AddOrEditPenaltyVC" customModule="PenaltyForColleague" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="tTK-WT-bLs"/>
+                        <viewControllerLayoutGuide type="bottom" id="7os-T9-U5I"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="vXK-e5-ry8">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Fill in the penalty :" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0eu-Wb-j03">
+                                <rect key="frame" x="51" y="93" width="218" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="2Wk-21-OqI">
+                                <rect key="frame" x="22" y="127" width="276" height="162"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="162" id="ZaQ-Gm-mZc"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0k6-y0-YWZ">
+                                <rect key="frame" x="111" y="325" width="99" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="Qzk-4x-vZ0"/>
+                                </constraints>
+                                <state key="normal" title="Delete penalty"/>
+                                <connections>
+                                    <action selector="tappedDeleteButton:" destination="lqn-dl-GTo" eventType="touchUpInside" id="KHe-yi-Abu"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="0.97230426154704097" blue="0.95319686613809917" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="0eu-Wb-j03" firstAttribute="top" secondItem="tTK-WT-bLs" secondAttribute="bottom" constant="29" id="Hae-he-TFX"/>
+                            <constraint firstItem="0eu-Wb-j03" firstAttribute="leading" secondItem="vXK-e5-ry8" secondAttribute="leadingMargin" constant="35" id="OKv-Uc-cCf"/>
+                            <constraint firstItem="2Wk-21-OqI" firstAttribute="centerX" secondItem="vXK-e5-ry8" secondAttribute="centerX" id="bdN-3U-CSc"/>
+                            <constraint firstItem="2Wk-21-OqI" firstAttribute="top" secondItem="0eu-Wb-j03" secondAttribute="bottom" constant="13" id="cYd-UX-dd1"/>
+                            <constraint firstItem="0k6-y0-YWZ" firstAttribute="centerX" secondItem="vXK-e5-ry8" secondAttribute="centerX" id="ctY-Kb-ejw"/>
+                            <constraint firstItem="0k6-y0-YWZ" firstAttribute="top" secondItem="2Wk-21-OqI" secondAttribute="bottom" constant="36" id="dFt-Dv-W4n"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="2Wk-21-OqI" secondAttribute="trailing" constant="6" id="fAw-dY-7Sx"/>
+                            <constraint firstItem="2Wk-21-OqI" firstAttribute="leading" secondItem="vXK-e5-ry8" secondAttribute="leadingMargin" constant="6" id="jQC-Pf-FJJ"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="0eu-Wb-j03" secondAttribute="trailing" constant="35" id="tei-Sd-pQj"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Penalty" id="wIS-P3-M3f">
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="0lW-Nr-Eit">
+                            <connections>
+                                <action selector="tappedSaveButton:" destination="lqn-dl-GTo" id="bwz-Y5-65a"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="fillInPenaltyLabel" destination="0eu-Wb-j03" id="8r2-bu-ogt"/>
+                        <outlet property="penaltyTextView" destination="2Wk-21-OqI" id="X9o-Yf-rQb"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="m8m-Je-xpi" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1854" y="1316"/>
         </scene>
         <!--Team members-->
         <scene sceneID="eoe-s9-hxS">
@@ -261,12 +401,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QhA-QP-prl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1397" y="68"/>
+            <point key="canvasLocation" x="1404" y="-111"/>
         </scene>
         <!--Team member-->
         <scene sceneID="o1r-h2-8Ut">
             <objects>
-                <viewController id="YAS-lL-a07" customClass="AddPersonVC" customModule="PenaltyForColleague" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="YAS-lL-a07" customClass="AddOrEditPersonVC" customModule="PenaltyForColleague" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="LCy-gO-AyX"/>
                         <viewControllerLayoutGuide type="bottom" id="Qck-D4-Zsg"/>
@@ -357,7 +497,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Dac-d3-w8c" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1861" y="223"/>
+            <point key="canvasLocation" x="1861" y="3"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="ahr-SB-zRm">
@@ -385,5 +525,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="wWW-BM-O4w"/>
+        <segue reference="Cmj-LC-C2h"/>
     </inferredMetricsTieBreakers>
 </document>
