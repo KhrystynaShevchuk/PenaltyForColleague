@@ -23,8 +23,6 @@ enum SettingType {
             return "Penalties"
         }
     }
-    
-    static let allTypes = [SettingType.TeamMembers, SettingType.TeamSettings, SettingType.Penalties]
 }
 
 private let segueToMembersVC = "usersSegue"
@@ -36,27 +34,18 @@ class SettingsVC: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
     var settingType: SettingType!
-    var items = [SettingType]()
+    var items: [SettingType] = [.TeamMembers, .TeamSettings, .Penalties]
     
     // MARK: - VC life cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        items = SettingType.allTypes
         tableView.delegate = self
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
-    
     // MARK: - Navigation
-    
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        
-    }
-    
+ 
     private func navigateToMembersVC() {
         performSegueWithIdentifier(segueToMembersVC, sender: nil)
     }
@@ -94,13 +83,10 @@ extension SettingsVC: UITableViewDataSource, UITableViewDelegate {
         
         switch item {
         case .TeamMembers:
-            print(" members vc")
             navigateToMembersVC()
         case .TeamSettings:
-            print(" team settings vc")
             navigateToTeamSettingsVC()
         case .Penalties:
-            print(" penalties vc")
             navigateToPenaltiesVC()
         }
     }

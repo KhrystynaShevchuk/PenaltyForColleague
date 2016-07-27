@@ -7,13 +7,26 @@
 //
 
 import UIKit
-import CoreData
 
 class Team {
-    
-    var objectID: NSManagedObjectID?
-    
+        
+    var id: String = ""
     var name: String?
     var photoName: String? = NSUUID().UUIDString
     var photo: UIImage?
+    
+    init() {
+        id = NSUUID().UUIDString
+    }
+    
+    func updateTeamWithTeam(team: Team?) {
+        guard let team = team else {
+            return
+        }
+        
+        id = team.id
+        name = team.name
+        photoName = team.photoName
+        photo = team.photo
+    }
 }

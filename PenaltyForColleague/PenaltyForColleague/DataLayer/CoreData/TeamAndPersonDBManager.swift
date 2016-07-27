@@ -13,38 +13,43 @@ class TeamAndPersonDBManager {
     
     static var sharedInstance = TeamAndPersonDBManager()
     
-    //MARK: - Puplic for Person
+    //MARK: - Puplic Person
     
-    func savePerson(person: Person) throws {
+    func savePerson(person: Person, completion:(success: Bool)->()) {
         guard let entityDescription = NSEntityDescription.personEntity() else {
+            completion(success: false)
             return
         }
         
-        var managedPerson: ManagedPerson = {
-            if let id = person.objectID {
-                return CoreDataStack.sharedInstance.managedObjectContext.objectWithID(id) as! ManagedPerson
-            } else {
-                return NSManagedObject(entity: entityDescription, insertIntoManagedObjectContext: CoreDataStack.sharedInstance.managedObjectContext) as! ManagedPerson
-            }
-        }()
+        getManagedPerson(entityDescription, id: person.id) { (managedPerson) in
+            let saveManagedPerson = managedPerson.updateManagedPerson(managedPerson, withPerson: person)
+            self.savePersonObjectInStorage(saveManagedPerson)
+            self.savePersonImage(person)
+            
+            completion(success: true)
+        }
         
-        managedPerson = convertPersonToManagedPerson(person, managedPerson: managedPerson) // convert as refilling
-        
-        try savePersonObjectInStorage(managedPerson)
-        savePersonImage(person)
     }
     
     func deletePerson(person: Person) {
-        let managedObjectContext = CoreDataStack.sharedInstance.managedObjectContext
-        if let id = person.objectID {
-            let managedPerson = managedObjectContext.objectWithID(id)
-            managedObjectContext.deleteObject(managedPerson)
-            
-            do {
-                try managedObjectContext.save()
-            } catch {
-                let saveError = error as NSError
-                print(saveError)
+        if person.id.isEmpty {
+            return
+        }
+        
+        let fetchRequest = NSFetchRequest()
+        let entityDescription = NSEntityDescription.personEntity()
+        fetchRequest.entity = entityDescription
+        var managedPersons = [ManagedPerson]()
+        do {
+            managedPersons = try CoreDataStack.sharedInstance.managedObjectContext.executeFetchRequest(fetchRequest) as! [ManagedPerson]
+        } catch {
+            let saveError = error as NSError
+            print(saveError)
+        }
+        
+        for mPerson in managedPersons {
+            if person.id == mPerson.personId {
+                deletePersonObjectFromStorage(mPerson)
             }
         }
     }
@@ -60,12 +65,14 @@ class TeamAndPersonDBManager {
             let members = result as! [ManagedPerson]
             
             for member in members {
-                let person = convertManagedPersonToPerson(member)
+                let person = Person.updatePersonWith(managedPerson: member)
                 if let photoName = person.photoName {
                     receivePhoto(photoName)
                 }
+                
                 persons.append(person)
             }
+            
             completion(persons: persons)
             
         } catch {
@@ -75,63 +82,56 @@ class TeamAndPersonDBManager {
         }
     }
     
-    //MARK: - Public for Team
+    // MARK: - Private Person
     
-    func getTeam(completion: (team: Team) -> ()) {
+    private func getManagedPerson(entityDescription:NSEntityDescription, id: String, completion: (managedPerson: ManagedPerson) -> ()) {
+        getPersonForSave(id) { (managedPerson) in
+            if let person = managedPerson {
+                completion(managedPerson: person)
+            }
+            else {
+                let newPerson = NSManagedObject(entity: entityDescription, insertIntoManagedObjectContext: CoreDataStack.sharedInstance.managedObjectContext) as! ManagedPerson
+                
+                completion(managedPerson: newPerson)
+            }
+        }
+    }
+    
+    private func getPersonForSave(id: String, completion: (managedPerson: ManagedPerson?) -> ()) {
         let fetchRequest = NSFetchRequest()
-        let entityDescription = NSEntityDescription.teamEntity()
+        let entityDescription = NSEntityDescription.personEntity()
         fetchRequest.entity = entityDescription
-        var teamsArray = [Team]()
+        
+        let predicate = NSPredicate(format: "personId = %@", id)
+        fetchRequest.predicate = predicate
         
         do {
             let result = try CoreDataStack.sharedInstance.managedObjectContext.executeFetchRequest(fetchRequest)
-            let managedTeam = result as! [ManagedTeam]
+            let members = result as! [ManagedPerson]
             
-            for team in managedTeam {
-                let team = convertManagedTeamToTeam(team)
-                if let photoName = team.photoName {
-                    team.photo = receivePhoto(photoName)
-                }
-                teamsArray.append(team)
+            guard let member = members.first else {
+                completion(managedPerson: nil)
+                return
             }
-            if let teams = teamsArray[safe: 0] {
-                completion(team: teams)
-            } else {
-                completion(team: Team())
-            }
+            
+            completion(managedPerson: member)
             
         } catch {
             let fetchError = error as NSError
             print(fetchError)
-            completion(team: Team())
+            completion(managedPerson: nil)
         }
     }
     
-    func saveTeam(team: Team) {
-        guard let entityDescription = NSEntityDescription.teamEntity() else {
-            return
-        }
-        
-        var managedTeam: ManagedTeam = {
-            if let id = team.objectID {
-                return CoreDataStack.sharedInstance.managedObjectContext.objectWithID(id) as! ManagedTeam
-            } else {
-                return NSManagedObject(entity: entityDescription, insertIntoManagedObjectContext: CoreDataStack.sharedInstance.managedObjectContext) as! ManagedTeam
-            }
-        }()
-        
-        managedTeam = convertTeamMembers(team, toManagedTeam: managedTeam)
+    private func savePersonObjectInStorage(managedPerson: ManagedPerson) {
         
         do {
-            try saveTeamObjectInStorage(managedTeam)
+            try managedPerson.managedObjectContext?.save()
         } catch {
             let saveError = error as NSError
             print(saveError)
         }
-        saveTeamLogoImage(team)
     }
-    
-    // MARK: - Private for Person
     
     private func savePersonImage(person: Person) {
         if let imagename = person.photoName,
@@ -143,39 +143,103 @@ class TeamAndPersonDBManager {
         }
     }
     
-    private func savePersonObjectInStorage(managedPerson: ManagedPerson) throws {
-        
-        try managedPerson.managedObjectContext?.save()
-    }
-    
-    private func convertManagedPersonToPerson(managedPerson: ManagedPerson) -> Person {
-        let person = Person()
-        
-        person.objectID = managedPerson.objectID
-        person.name = managedPerson.name
-        person.surname = managedPerson.surname
-        person.email = managedPerson.email
-        person.photoName = managedPerson.photoName
-        if let photoName = person.photoName {
-            person.photo = receivePhoto(photoName)
+    private func deletePersonObjectFromStorage(managedPerson: ManagedPerson) {
+        CoreDataStack.sharedInstance.managedObjectContext.deleteObject(managedPerson)
+        do {
+            try CoreDataStack.sharedInstance.managedObjectContext.save()
+        } catch {
+            let saveError = error as NSError
+            print(saveError)
         }
-        return person
     }
     
-    private func convertPersonToManagedPerson(person: Person, managedPerson: ManagedPerson) -> ManagedPerson {
-        managedPerson.name = person.name
-        managedPerson.surname = person.surname
-        managedPerson.email = person.email
-        managedPerson.photoName = person.photoName
+    //MARK: - Public Team
+
+    
+    func saveTeam(team: Team, completion:(success: Bool)->()) {
+        guard let entityDescription = NSEntityDescription.teamEntity() else {
+            completion(success: false)
+            return
+        }
         
-        return managedPerson
+        getManagedTeam(entityDescription, id: team.id) { (managedTeam) in
+            let saveManagedTeam = managedTeam.updateManagedTeam(managedTeam, withTeam: team)
+            self.saveTeamObjectInStorage(saveManagedTeam)
+            self.saveTeamLogoImage(team)
+            
+            completion(success: true)
+        }
+    }
+    
+    func getCurrentTeam(team: Team) -> Team {
+        let fetchRequest = NSFetchRequest()
+        let entityDescription = NSEntityDescription.teamEntity()
+        fetchRequest.entity = entityDescription
+        var managedTeams = [ManagedTeam]()
+        
+        do {
+            managedTeams = try CoreDataStack.sharedInstance.managedObjectContext.executeFetchRequest(fetchRequest) as! [ManagedTeam]
+        } catch {
+            let saveError = error as NSError
+            print(saveError)
+        }
+        
+        let managedTeam = managedTeams.first
+        var currentTeam = Team()
+
+        if let mTeam = managedTeam {
+            currentTeam = team.updateTeamWith(managedTeam: mTeam)
+        }
+        
+        return currentTeam
     }
     
     // MARK: - Private for Team
     
-    private func saveTeamObjectInStorage(managedTeam: ManagedTeam) throws {
+    private func getManagedTeam(entityDescription: NSEntityDescription, id: String, completion: (managedTeam: ManagedTeam) -> ()) {
+        getTeamForSave(id) { (managedTeam) in
+            if let team = managedTeam {
+                completion(managedTeam: team)
+            } else{
+                let newTeam = NSManagedObject(entity: entityDescription, insertIntoManagedObjectContext: CoreDataStack.sharedInstance.managedObjectContext) as! ManagedTeam
+                completion(managedTeam: newTeam)
+            }
+        }
+    }
+    
+    private func getTeamForSave(id: String, completion: (managedTeam: ManagedTeam?) -> ()) {
+        let fetchRequest = NSFetchRequest()
+        let entityDescription = NSEntityDescription.teamEntity()
+        fetchRequest.entity = entityDescription
         
-        try managedTeam.managedObjectContext?.save()
+        let predicate = NSPredicate(format: "teamId = %@", id)
+        fetchRequest.predicate = predicate
+        
+        do {
+            let result = try CoreDataStack.sharedInstance.managedObjectContext.executeFetchRequest(fetchRequest)
+            let managedTeams = result as! [ManagedTeam]
+            
+            guard let team = managedTeams.first else {
+                completion(managedTeam: nil)
+                return
+            }
+            completion(managedTeam: team)
+            
+        } catch {
+            let fetchError = error as NSError
+            print(fetchError)
+            completion(managedTeam: nil)
+        }
+    }
+    
+    private func saveTeamObjectInStorage(managedTeam: ManagedTeam) {
+        
+        do {
+            try managedTeam.managedObjectContext?.save()
+        } catch {
+            let saveError = error as NSError
+            print(saveError)
+        }
     }
     
     private func saveTeamLogoImage(team: Team) {
@@ -188,26 +252,10 @@ class TeamAndPersonDBManager {
         }
     }
     
-    private func convertTeamMembers(team: Team, toManagedTeam managedTeam: ManagedTeam) -> ManagedTeam {
-        managedTeam.name = team.name
-        managedTeam.photoName = team.photoName
-        
-        return managedTeam
-    }
     
-    private func convertManagedTeamToTeam(managedTeam: ManagedTeam) -> Team {
-        let team = Team()
-        
-        team.objectID = managedTeam.objectID
-        team.name = managedTeam.name
-        team.photoName = managedTeam.photoName
-        
-        return team
-    }
+    // MARK: - Receive photo
     
-    // MARK: - Common private funcs
-    
-    private func receivePhoto(photoName: String) -> UIImage? {
+    func receivePhoto(photoName: String) -> UIImage? {
         guard let data = FileSystem().getFile(photoName) else {
             return nil
         }

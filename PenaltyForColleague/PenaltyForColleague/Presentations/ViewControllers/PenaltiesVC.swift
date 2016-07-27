@@ -27,6 +27,12 @@ class PenaltiesVC: UIViewController {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(true)
         
+        receiveData()
+    }
+    
+    // MARK: - Private
+    
+    private func receiveData() {
         PenaltyDBManager.sharedInstance.getAllPenalties { (penalties) in
             self.penalties = penalties
             
@@ -48,7 +54,7 @@ class PenaltiesVC: UIViewController {
         if segue.identifier == segueToEditPenalty {
             let vc = segue.destinationViewController as! AddOrEditPenaltyVC
             if let selectedPenalty = selectedPenalty {
-                vc.penalty = selectedPenalty
+                vc.existPenalty = selectedPenalty
             }
         }
     }
@@ -73,9 +79,7 @@ extension PenaltiesVC: UITableViewDataSource, UITableViewDelegate {
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier(PenaltiesCell.cellIdentifier) as! PenaltiesCell
         
-        let penalty = penalties[indexPath.row] ?? Penalty()
-        
-        cell.penaltyLabel.text = penalty.penaltyDescription ?? ""
+        cell.config(penalties[indexPath.row])
         
         return cell
     }

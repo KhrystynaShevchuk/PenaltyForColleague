@@ -11,6 +11,7 @@ import CoreData
 
 class ManagedPerson: NSManagedObject {
 
+    @NSManaged var personId: String?
     @NSManaged var photoName: String?
     @NSManaged var email: String?
     @NSManaged var surname: String?

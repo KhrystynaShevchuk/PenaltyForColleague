@@ -7,15 +7,30 @@
 //
 
 import UIKit
-import CoreData
 
 class Person {
-    
-    var objectID: NSManagedObjectID?
-    
+        
+    var id: String = ""
     var name: String?
     var surname: String?
     var email: String?
     var photoName: String?
     var photo: UIImage?
+    
+    init() {
+        id = NSUUID().UUIDString
+    }
+    
+    func updatePersonWithPerson(person: Person?) {
+        guard let person = person else {
+            return
+        }
+        
+        id = person.id
+        name = person.name
+        surname = person.surname
+        email = person.email
+        photoName = person.photoName
+        photo = person.photo
+    }
 }

@@ -12,7 +12,7 @@
 		4444DF841D43F3C8005D7CE0 /* ManagedTeam.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4444DF821D43F3C8005D7CE0 /* ManagedTeam.swift */; };
 		4444DF871D43F502005D7CE0 /* Team.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4444DF861D43F502005D7CE0 /* Team.swift */; };
 		447807D31D43B2B6003304CF /* FileSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 447807D21D43B2B6003304CF /* FileSystem.swift */; };
-		447807D51D43BA3C003304CF /* UIImage+Defaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 447807D41D43BA3C003304CF /* UIImage+Defaults.swift */; };
+		447807D51D43BA3C003304CF /* UIImage+Defaults+ReceivePhoto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 447807D41D43BA3C003304CF /* UIImage+Defaults+ReceivePhoto.swift */; };
 		44CADD461D4237D100BF65B1 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44CADD451D4237D100BF65B1 /* Constants.swift */; };
 		44CADD481D42793300BF65B1 /* TeamSettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44CADD471D42793300BF65B1 /* TeamSettingsVC.swift */; };
 		646554801D3EC61C00FA6279 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6465547F1D3EC61C00FA6279 /* Assets.xcassets */; };
@@ -29,7 +29,16 @@
 		A94D32621D39091D008B2927 /* SettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A94D32611D39091D008B2927 /* SettingsVC.swift */; };
 		A94D32641D391035008B2927 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A94D32631D391035008B2927 /* Default-568h@2x.png */; };
 		A94D32661D3919D8008B2927 /* TeamMembersVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A94D32651D3919D8008B2927 /* TeamMembersVC.swift */; };
-		A94D32691D391AC5008B2927 /* Cells.swift in Sources */ = {isa = PBXBuildFile; fileRef = A94D32681D391AC5008B2927 /* Cells.swift */; };
+		A981DBBE1D490B2300C0ED97 /* PenaltiesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A981DBBD1D490B2300C0ED97 /* PenaltiesCell.swift */; };
+		A981DBC01D490B4A00C0ED97 /* SettingsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A981DBBF1D490B4A00C0ED97 /* SettingsCell.swift */; };
+		A981DBC31D490D0500C0ED97 /* BaseCellProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A981DBC21D490D0500C0ED97 /* BaseCellProtocol.swift */; };
+		A9CFE5571D47441D004E357C /* TeamMembersCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9CFE5561D47441D004E357C /* TeamMembersCell.swift */; };
+		A9CFE5591D475533004E357C /* Person+Convert.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9CFE5581D475533004E357C /* Person+Convert.swift */; };
+		A9CFE55B1D4767F5004E357C /* ManagedPerson+Convert.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9CFE55A1D4767F5004E357C /* ManagedPerson+Convert.swift */; };
+		A9CFE55D1D476896004E357C /* ManagedTeam+Convert.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9CFE55C1D476896004E357C /* ManagedTeam+Convert.swift */; };
+		A9CFE55F1D476902004E357C /* Team+Convert.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9CFE55E1D476902004E357C /* Team+Convert.swift */; };
+		A9CFE5611D47697F004E357C /* Penalty+Convert.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9CFE5601D47697F004E357C /* Penalty+Convert.swift */; };
+		A9CFE5631D4769BF004E357C /* ManagedPenalty+Convert.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9CFE5621D4769BF004E357C /* ManagedPenalty+Convert.swift */; };
 		A9DC52F21D46295E00A1F284 /* NSEntityDescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9DC52F11D46295E00A1F284 /* NSEntityDescription.swift */; };
 		A9DC52F41D462BF700A1F284 /* PenaltiesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9DC52F31D462BF700A1F284 /* PenaltiesVC.swift */; };
 		A9DC52FB1D462E0F00A1F284 /* ManagedPenalty.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9DC52F91D462E0F00A1F284 /* ManagedPenalty.swift */; };
@@ -58,7 +67,7 @@
 		4444DF821D43F3C8005D7CE0 /* ManagedTeam.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManagedTeam.swift; sourceTree = "<group>"; };
 		4444DF861D43F502005D7CE0 /* Team.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Team.swift; sourceTree = "<group>"; };
 		447807D21D43B2B6003304CF /* FileSystem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileSystem.swift; sourceTree = "<group>"; };
-		447807D41D43BA3C003304CF /* UIImage+Defaults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Defaults.swift"; sourceTree = "<group>"; };
+		447807D41D43BA3C003304CF /* UIImage+Defaults+ReceivePhoto.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Defaults+ReceivePhoto.swift"; sourceTree = "<group>"; };
 		44CADD451D4237D100BF65B1 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		44CADD471D42793300BF65B1 /* TeamSettingsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeamSettingsVC.swift; sourceTree = "<group>"; };
 		6465547F1D3EC61C00FA6279 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = PenaltyForColleague/Assets.xcassets; sourceTree = SOURCE_ROOT; };
@@ -78,7 +87,16 @@
 		A94D32611D39091D008B2927 /* SettingsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsVC.swift; sourceTree = "<group>"; };
 		A94D32631D391035008B2927 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		A94D32651D3919D8008B2927 /* TeamMembersVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeamMembersVC.swift; sourceTree = "<group>"; };
-		A94D32681D391AC5008B2927 /* Cells.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cells.swift; sourceTree = "<group>"; };
+		A981DBBD1D490B2300C0ED97 /* PenaltiesCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PenaltiesCell.swift; sourceTree = "<group>"; };
+		A981DBBF1D490B4A00C0ED97 /* SettingsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsCell.swift; sourceTree = "<group>"; };
+		A981DBC21D490D0500C0ED97 /* BaseCellProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseCellProtocol.swift; sourceTree = "<group>"; };
+		A9CFE5561D47441D004E357C /* TeamMembersCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeamMembersCell.swift; sourceTree = "<group>"; };
+		A9CFE5581D475533004E357C /* Person+Convert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Person+Convert.swift"; sourceTree = "<group>"; };
+		A9CFE55A1D4767F5004E357C /* ManagedPerson+Convert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ManagedPerson+Convert.swift"; sourceTree = "<group>"; };
+		A9CFE55C1D476896004E357C /* ManagedTeam+Convert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ManagedTeam+Convert.swift"; sourceTree = "<group>"; };
+		A9CFE55E1D476902004E357C /* Team+Convert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Team+Convert.swift"; sourceTree = "<group>"; };
+		A9CFE5601D47697F004E357C /* Penalty+Convert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Penalty+Convert.swift"; sourceTree = "<group>"; };
+		A9CFE5621D4769BF004E357C /* ManagedPenalty+Convert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ManagedPenalty+Convert.swift"; sourceTree = "<group>"; };
 		A9DC52F11D46295E00A1F284 /* NSEntityDescription.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSEntityDescription.swift; sourceTree = "<group>"; };
 		A9DC52F31D462BF700A1F284 /* PenaltiesVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PenaltiesVC.swift; sourceTree = "<group>"; };
 		A9DC52F91D462E0F00A1F284 /* ManagedPenalty.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManagedPenalty.swift; sourceTree = "<group>"; };
@@ -121,7 +139,7 @@
 			isa = PBXGroup;
 			children = (
 				A9075F9F1D3E719200828C30 /* FileManager.swift */,
-				447807D41D43BA3C003304CF /* UIImage+Defaults.swift */,
+				447807D41D43BA3C003304CF /* UIImage+Defaults+ReceivePhoto.swift */,
 				4444DF7A1D43C40E005D7CE0 /* Array+Safe.swift */,
 				4444DF7C1D43CA62005D7CE0 /* UIViewController+Alerts.swift */,
 			);
@@ -194,8 +212,11 @@
 			isa = PBXGroup;
 			children = (
 				A93A892E1D3CF55200A6228E /* Person.swift */,
+				A9CFE5581D475533004E357C /* Person+Convert.swift */,
 				4444DF861D43F502005D7CE0 /* Team.swift */,
+				A9CFE55E1D476902004E357C /* Team+Convert.swift */,
 				A9DC52FC1D462E6C00A1F284 /* Penalty.swift */,
+				A9CFE5601D47697F004E357C /* Penalty+Convert.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -211,6 +232,7 @@
 		A94D32511D38E3EF008B2927 /* Presentations */ = {
 			isa = PBXGroup;
 			children = (
+				A9CFE5531D4741A3004E357C /* Cells */,
 				A94D32551D38E3EF008B2927 /* ViewControllers */,
 				A94D32521D38E3EF008B2927 /* StoryBoards */,
 			);
@@ -222,7 +244,6 @@
 			children = (
 				A94D32541D38E3EF008B2927 /* Main.storyboard */,
 				A94D32531D38E3EF008B2927 /* LaunchScreen.storyboard */,
-				A94D32671D391ABB008B2927 /* Cells */,
 			);
 			path = StoryBoards;
 			sourceTree = "<group>";
@@ -249,10 +270,21 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
-		A94D32671D391ABB008B2927 /* Cells */ = {
+		A981DBC11D490D0500C0ED97 /* CellProtocols */ = {
 			isa = PBXGroup;
 			children = (
-				A94D32681D391AC5008B2927 /* Cells.swift */,
+				A981DBC21D490D0500C0ED97 /* BaseCellProtocol.swift */,
+			);
+			path = CellProtocols;
+			sourceTree = "<group>";
+		};
+		A9CFE5531D4741A3004E357C /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				A981DBC11D490D0500C0ED97 /* CellProtocols */,
+				A9CFE5561D47441D004E357C /* TeamMembersCell.swift */,
+				A981DBBD1D490B2300C0ED97 /* PenaltiesCell.swift */,
+				A981DBBF1D490B4A00C0ED97 /* SettingsCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -281,8 +313,11 @@
 			isa = PBXGroup;
 			children = (
 				A9F603081D3FD2F500896E7D /* ManagedPerson.swift */,
+				A9CFE55A1D4767F5004E357C /* ManagedPerson+Convert.swift */,
 				4444DF821D43F3C8005D7CE0 /* ManagedTeam.swift */,
+				A9CFE55C1D476896004E357C /* ManagedTeam+Convert.swift */,
 				A9DC52F91D462E0F00A1F284 /* ManagedPenalty.swift */,
+				A9CFE5621D4769BF004E357C /* ManagedPenalty+Convert.swift */,
 			);
 			path = CoreDataModels;
 			sourceTree = "<group>";
@@ -391,32 +426,41 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A9CFE55B1D4767F5004E357C /* ManagedPerson+Convert.swift in Sources */,
 				447807D31D43B2B6003304CF /* FileSystem.swift in Sources */,
 				44CADD481D42793300BF65B1 /* TeamSettingsVC.swift in Sources */,
 				A9DC52FF1D4634BD00A1F284 /* AddOrEditPenaltyVC.swift in Sources */,
 				A9DC53011D463DF100A1F284 /* PenaltyDBManager.swift in Sources */,
+				A9CFE55F1D476902004E357C /* Team+Convert.swift in Sources */,
 				A9DC52F41D462BF700A1F284 /* PenaltiesVC.swift in Sources */,
 				A94D32491D38E3D4008B2927 /* AppDelegate.swift in Sources */,
+				A9CFE5591D475533004E357C /* Person+Convert.swift in Sources */,
 				4444DF841D43F3C8005D7CE0 /* ManagedTeam.swift in Sources */,
 				A9F6030D1D3FD3EC00896E7D /* TeamAndPersonDBManager.swift in Sources */,
-				A94D32691D391AC5008B2927 /* Cells.swift in Sources */,
+				A9CFE55D1D476896004E357C /* ManagedTeam+Convert.swift in Sources */,
 				A9DC52F21D46295E00A1F284 /* NSEntityDescription.swift in Sources */,
 				4444DF7D1D43CA62005D7CE0 /* UIViewController+Alerts.swift in Sources */,
+				A981DBC01D490B4A00C0ED97 /* SettingsCell.swift in Sources */,
 				4444DF871D43F502005D7CE0 /* Team.swift in Sources */,
 				A94D32501D38E3E9008B2927 /* PenaltyForColleague.xcdatamodeld in Sources */,
 				44CADD461D4237D100BF65B1 /* Constants.swift in Sources */,
-				447807D51D43BA3C003304CF /* UIImage+Defaults.swift in Sources */,
+				A9CFE5631D4769BF004E357C /* ManagedPenalty+Convert.swift in Sources */,
+				A981DBC31D490D0500C0ED97 /* BaseCellProtocol.swift in Sources */,
+				447807D51D43BA3C003304CF /* UIImage+Defaults+ReceivePhoto.swift in Sources */,
 				A9DC52FD1D462E6C00A1F284 /* Penalty.swift in Sources */,
 				A9DC52FB1D462E0F00A1F284 /* ManagedPenalty.swift in Sources */,
 				A94D32591D38E3EF008B2927 /* MainVC.swift in Sources */,
 				A9F6030B1D3FD2F500896E7D /* CoreDataStack.swift in Sources */,
 				A9F6030A1D3FD2F500896E7D /* ManagedPerson.swift in Sources */,
+				A9CFE5571D47441D004E357C /* TeamMembersCell.swift in Sources */,
+				A9CFE5611D47697F004E357C /* Penalty+Convert.swift in Sources */,
 				4444DF7B1D43C40E005D7CE0 /* Array+Safe.swift in Sources */,
 				A93A89311D3D11F000A6228E /* AddOrEditPersonVC.swift in Sources */,
 				A9075FA01D3E719200828C30 /* FileManager.swift in Sources */,
 				A94D32621D39091D008B2927 /* SettingsVC.swift in Sources */,
 				A93A892F1D3CF55200A6228E /* Person.swift in Sources */,
 				A94D32661D3919D8008B2927 /* TeamMembersVC.swift in Sources */,
+				A981DBBE1D490B2300C0ED97 /* PenaltiesCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

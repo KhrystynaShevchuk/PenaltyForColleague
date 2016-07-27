@@ -11,5 +11,6 @@ import CoreData
 
 class ManagedPenalty: NSManagedObject {
 
+    @NSManaged var penaltyId: String?
     @NSManaged var penalty: String?
 }

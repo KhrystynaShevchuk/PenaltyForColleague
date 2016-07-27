@@ -23,23 +23,11 @@ class TeamSettingsVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        team = TeamAndPersonDBManager.sharedInstance.getCurrentTeam(team)
+        prefillTeamData()
+
         imagePicker.delegate = self
         setUpTapGestureOnImageView()
-        
-        TeamAndPersonDBManager.sharedInstance.getTeam{ (team) in
-            self.team = team
-            
-            self.logoImageView.image = team.photo
-            self.nameTextField.text = team.name
-        }
-        
-        prefillTeamData()
-    }
-    
-    override func viewWillAppear(animated: Bool) {
-        super.viewWillAppear(true)
-        
-        
     }
     
     // MARK: - Private 
@@ -50,8 +38,31 @@ class TeamSettingsVC: UIViewController {
     }
     
     private func fillInTeamData(team: Team) {
-        team.name = nameTextField.text ?? ""
+        team.name = nameTextField.text
         team.photo = logoImageView.image
+    }
+    
+    private func saveTeamData() {
+        fillInTeamData(team)
+        
+        if nameTextField.text == "" {
+            presentAlertWithTitle("You can't save changes", message: "Fill in the 'name' field")
+            return
+        }
+        
+        TeamAndPersonDBManager.sharedInstance.saveTeam(team) { (success) in
+            if success {
+                self.navigateBack()
+            }
+            else {
+                self.presentAlertWithTitle("Error", message: "Data weren't saved.")
+            }
+        }
+    }
+    
+    private func updateTeamImage(image: UIImage) {
+        team.photoName = NSUUID().UUIDString
+        team.photo = image
     }
     
     // MARK: - Tap gestures
@@ -74,18 +85,6 @@ class TeamSettingsVC: UIViewController {
         saveTeamData()
     }
     
-    private func saveTeamData() {
-        if nameTextField.text != "" {
-            fillInTeamData(team)
-            
-            TeamAndPersonDBManager.sharedInstance.saveTeam(team)
-            
-            navigateBack()
-        } else {
-            presentAlertWithTitle("You can't save changes", message: "Fill in the 'name' field")
-        }
-    }
-    
     //MARK: - Navigation
     
     private func navigateBack() {
@@ -101,6 +100,7 @@ extension TeamSettingsVC: UIImagePickerControllerDelegate, UINavigationControlle
         if let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
             logoImageView.contentMode = .ScaleAspectFit
             logoImageView.image = pickedImage
+            team.photo = pickedImage
         }
         dismissViewControllerAnimated(true, completion: nil)
     }

@@ -30,12 +30,7 @@ class MainVC: UIViewController {
     
     // MARK: - Navigation
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        
-    }
-    
     private func navigateToSettings(sender: UIBarButtonItem) {
         performSegueWithIdentifier(segueToSettingsVC, sender: sender)
     }
 }
-

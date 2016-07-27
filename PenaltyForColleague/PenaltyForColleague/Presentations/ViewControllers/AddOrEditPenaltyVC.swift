@@ -12,8 +12,10 @@ class AddOrEditPenaltyVC: UIViewController {
     
     @IBOutlet weak var fillInPenaltyLabel: UILabel!
     @IBOutlet weak var penaltyTextView: UITextView!
+    @IBOutlet weak var deleteButton: UIButton!
     
-    var penalty = Penalty()
+    var existPenalty: Penalty?
+    var penaltyToSave = Penalty()
     
     // MARK: - VC life cycle
     
@@ -35,35 +37,49 @@ class AddOrEditPenaltyVC: UIViewController {
     
     // MARK: - Private
     
-    private func fillInPenaltyData() {
-        penalty.penaltyDescription = penaltyTextView.text
+    private func prefillPenaltyData() {
+        if existPenalty == nil {
+            isDeleteButtonVisible(false)
+            return
+        }
+        
+        isDeleteButtonVisible(true)
+        penaltyToSave.updatePenaltyWithPenalty(existPenalty)
+        penaltyTextView.text = penaltyToSave.penaltyDescription
     }
     
-    private func prefillPenaltyData() {
-        penaltyTextView.text = penalty.penaltyDescription
+    private func fillInPenaltyData() {
+        penaltyToSave.penaltyDescription = penaltyTextView.text
     }
     
     private func savePenaltyData() {
-        if penaltyTextView.text != "" {
-            fillInPenaltyData()
-            
-            do {
-                try PenaltyDBManager.sharedInstance.savePenalty(penalty)
-            } catch {
-                presentAlertWithTitle("Error", message: "Data weren't saved.")
+        fillInPenaltyData()
+
+        if penaltyToSave.penaltyDescription?.characters.count == 0 {
+            presentAlertWithTitle("You can't save changes", message: "Fill in the 'Penalty description' field")
+            return
+        }
+        
+        PenaltyDBManager.sharedInstance.savePenalty(penaltyToSave) { (success) in
+            if success {
+                self.navigateBack()
+            } else {
+                self.presentAlertWithTitle("Error", message: "Data weren't saved.")
             }
-            
-            navigateBack()
-        } else {
-            presentAlertWithTitle("Error", message: "Data weren't saved.")
         }
     }
     
     private func deletePenalty() {
-        if penalty.objectID != nil {
-            PenaltyDBManager.sharedInstance.deletePenalty(penalty)
+            PenaltyDBManager.sharedInstance.deletePenalty(penaltyToSave)
             
             navigateBack()
+    }
+    
+    private func isDeleteButtonVisible(visible: Bool) {
+        if visible {
+            deleteButton.hidden = false
+        } else {
+            deleteButton.hidden = true
         }
     }
     

@@ -28,7 +28,12 @@ class TeamMembersVC: UIViewController {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(true)
         
-        
+        receiveData()
+    }
+    
+    // MARK: - Private
+    
+    private func receiveData() {
         TeamAndPersonDBManager.sharedInstance.getAllPersons { (persons) in
             self.members = persons
             
@@ -41,7 +46,7 @@ class TeamMembersVC: UIViewController {
     // MARK: - Actions
     
     @IBAction func addPersonButton(sender: UIBarButtonItem) {
-        navigateToAddPerson()
+        navigateToAddPerson(sender)
     }
     
     // MARK: - Navigation
@@ -50,13 +55,13 @@ class TeamMembersVC: UIViewController {
         if segue.identifier == segueToEditPerson {
             let vc = segue.destinationViewController as! AddOrEditPersonVC
             if let selectedPerson = selectedPerson {
-                vc.person = selectedPerson
+                vc.existPerson = selectedPerson
             }
         }
     }
     
-    private func navigateToAddPerson() {
-        performSegueWithIdentifier(segueToAddPerson, sender: self)
+    private func navigateToAddPerson(sender: UIBarButtonItem) {
+        performSegueWithIdentifier(segueToAddPerson, sender: sender)
     }
     
     private func navigateToEditPerson() {
@@ -75,11 +80,8 @@ extension TeamMembersVC: UITableViewDataSource, UITableViewDelegate {
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier(TeamMembersCell.cellIdentifier) as! TeamMembersCell
         
-        let person = members[safe: indexPath.row] ?? Person() // without any crashes in more complicated actions with arrays
-        
-        cell.iconImageView.image = person.photo ?? UIImage.defaultPersonIcon()
-        cell.memberNameLabel.text = "\(person.name ?? "") \(person.surname ?? "")"
-        
+        cell.config(members[indexPath.row])
+
         return cell
     }
     

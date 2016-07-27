@@ -44,4 +44,3 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         CoreDataStack.sharedInstance.saveContext()
     }
 }
-

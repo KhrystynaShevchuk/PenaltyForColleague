@@ -14,41 +14,83 @@ class AddOrEditPersonVC: UIViewController {
     @IBOutlet weak var surnameTextfield: UITextField!
     @IBOutlet weak var emailTextfield: UITextField!
     @IBOutlet weak var photoImageView: UIImageView!
+    @IBOutlet weak var deleteButton: UIButton!
     
     let imagePicker = UIImagePickerController()
-    var person = Person()
+    
+    var existPerson: Person?
+    var personToSave = Person()
     
     //MARK: - VC life cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        prefillPersonData()
+        
         imagePicker.delegate = self
         setUpTapGestureOnImageView()
-    }
-    
-    override func viewWillAppear(animated: Bool) {
-        super.viewWillAppear(true)
-        
-        prefillPersonData()
     }
     
     // Mark: - Private
     
     private func prefillPersonData() {
-        photoImageView.image = UIImage.defaultPersonIcon()
+        photoImageView.image = personToSave.photo ?? UIImage.defaultPersonIcon()
+        if existPerson == nil {
+            isDeleteButtonVisible(false)
+            return
+        }
+        isDeleteButtonVisible(true)
         
-        nameTextfield.text = person.name
-        surnameTextfield.text = person.surname
-        emailTextfield.text = person.email
-        photoImageView.image = person.photo ?? UIImage.defaultPersonIcon()
+        personToSave.updatePersonWithPerson(existPerson)
+        
+        nameTextfield.text = personToSave.name
+        surnameTextfield.text = personToSave.surname
+        emailTextfield.text = personToSave.email
+    }
+   
+    private func fillInPersonData(){
+        personToSave.name = nameTextfield.text
+        personToSave.surname = surnameTextfield.text
+        personToSave.email = emailTextfield.text
+        personToSave.photo = photoImageView.image
     }
     
-    private func fillInPersonData(person: Person){
-        person.name = nameTextfield.text
-        person.surname = surnameTextfield.text
-        person.email = emailTextfield.text
-        person.photo = photoImageView.image
+    private func savePersonData() {
+        fillInPersonData()
+        
+        if personToSave.name?.characters.count == 0 {
+            presentAlertWithTitle("You can't save changes", message: "Fill in the 'name' field")
+            return
+        }
+        
+        TeamAndPersonDBManager.sharedInstance.savePerson(personToSave) { (success) in
+            if success {
+                self.navigateBack()
+            }
+            else {
+                self.presentAlertWithTitle("Error", message: "Data weren't saved.")
+            }
+        }
+    }
+    
+    private func deletePersonData() {
+        TeamAndPersonDBManager.sharedInstance.deletePerson(personToSave)
+        navigateBack()
+    }
+    
+    
+    private func updatePersonImage(image: UIImage) {
+        personToSave.photoName = NSUUID().UUIDString
+        personToSave.photo = image
+    }
+    
+    private func isDeleteButtonVisible(visible: Bool) {
+        if visible {
+            deleteButton.hidden = false
+        } else {
+            deleteButton.hidden = true
+        }
     }
     
     // MARK: - Tap gestures
@@ -71,31 +113,8 @@ class AddOrEditPersonVC: UIViewController {
         savePersonData()
     }
     
-    @IBAction func deleteButton(sender: UIButton) {
+    @IBAction func tappedDeleteButton(sender: UIButton) {
         deletePersonData()
-    }
-    
-    private func savePersonData() {
-        if nameTextfield.text != "" {
-            fillInPersonData(person)
-            
-            do {
-                try TeamAndPersonDBManager.sharedInstance.savePerson(person)
-            } catch {
-                presentAlertWithTitle("Error", message: "Data weren't saved.")
-            }
-            
-            navigateBack()
-        } else {
-            presentAlertWithTitle("You can't save changes", message: "Fill in the 'name' field")
-        }
-    }
-    
-    private func deletePersonData() {
-        if let _ = person.objectID {
-            TeamAndPersonDBManager.sharedInstance.deletePerson(person)
-            navigateBack()
-        }
     }
     
     //MARK: - Navigation
@@ -113,9 +132,9 @@ extension AddOrEditPersonVC: UIImagePickerControllerDelegate, UINavigationContro
         if let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
             photoImageView.contentMode = .ScaleAspectFit
             photoImageView.image = pickedImage
+            personToSave.photo = pickedImage
             
-            person.photoName = NSUUID().UUIDString
-            fillInPersonData(person)
+            updatePersonImage(pickedImage)
         }
         dismissViewControllerAnimated(true, completion: nil)
     }

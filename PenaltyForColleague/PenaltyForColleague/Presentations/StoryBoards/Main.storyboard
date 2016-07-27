@@ -204,7 +204,7 @@
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F7t-gz-qFm">
                                                     <rect key="frame" x="16" y="11" width="287" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -265,7 +265,7 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Fill in the penalty :" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0eu-Wb-j03">
                                 <rect key="frame" x="51" y="93" width="218" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="2Wk-21-OqI">
@@ -309,6 +309,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="deleteButton" destination="0k6-y0-YWZ" id="T7i-Y5-xm9"/>
                         <outlet property="fillInPenaltyLabel" destination="0eu-Wb-j03" id="8r2-bu-ogt"/>
                         <outlet property="penaltyTextView" destination="2Wk-21-OqI" id="X9o-Yf-rQb"/>
                     </connections>
@@ -456,7 +457,7 @@
                                     </attributedString>
                                 </state>
                                 <connections>
-                                    <action selector="deleteButton:" destination="YAS-lL-a07" eventType="touchUpInside" id="sVC-Q8-fJ0"/>
+                                    <action selector="tappedDeleteButton:" destination="YAS-lL-a07" eventType="touchUpInside" id="VkP-xy-ZmN"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -489,6 +490,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="deleteButton" destination="9pT-XC-7WL" id="pKq-lJ-Z94"/>
                         <outlet property="emailTextfield" destination="Yi9-Jl-muQ" id="CUT-qn-Ns8"/>
                         <outlet property="nameTextfield" destination="06I-wb-TtD" id="5bA-ZE-eCi"/>
                         <outlet property="photoImageView" destination="pRm-Uu-DWS" id="MmQ-00-0cq"/>

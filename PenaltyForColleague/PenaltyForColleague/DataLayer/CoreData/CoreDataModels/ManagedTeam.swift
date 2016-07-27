@@ -11,7 +11,7 @@ import CoreData
 
 class ManagedTeam: NSManagedObject {
 
+    @NSManaged var teamId: String?
     @NSManaged var name: String?
     @NSManaged var photoName: String?
-
 }
