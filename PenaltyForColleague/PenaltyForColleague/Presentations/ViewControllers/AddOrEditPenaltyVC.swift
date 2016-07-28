@@ -14,6 +14,8 @@ class AddOrEditPenaltyVC: UIViewController {
     @IBOutlet weak var penaltyTextView: UITextView!
     @IBOutlet weak var deleteButton: UIButton!
     
+    let penaltyDBManager = PenaltyDBManager()
+    
     var existPenalty: Penalty?
     var penaltyToSave = Penalty()
     
@@ -60,7 +62,7 @@ class AddOrEditPenaltyVC: UIViewController {
             return
         }
         
-        PenaltyDBManager.sharedInstance.savePenalty(penaltyToSave) { (success) in
+        penaltyDBManager.savePenalty(penaltyToSave) { (success) in
             if success {
                 self.navigateBack()
             } else {
@@ -70,7 +72,7 @@ class AddOrEditPenaltyVC: UIViewController {
     }
     
     private func deletePenalty() {
-            PenaltyDBManager.sharedInstance.deletePenalty(penaltyToSave)
+            penaltyDBManager.deletePenalty(penaltyToSave)
             
             navigateBack()
     }

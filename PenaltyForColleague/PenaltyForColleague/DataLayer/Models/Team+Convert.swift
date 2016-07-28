@@ -17,7 +17,7 @@ extension Team {
         team.name = managedTeam.name
         team.photoName = managedTeam.photoName
         if let photoName = managedTeam.photoName {
-            team.photo = TeamAndPersonDBManager.sharedInstance.receivePhoto(photoName)
+            team.photo = UIImage.receivePhoto(photoName)
         }
         
         return team

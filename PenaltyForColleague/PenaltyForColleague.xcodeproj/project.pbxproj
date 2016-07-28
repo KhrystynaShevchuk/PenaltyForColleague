@@ -39,6 +39,8 @@
 		A9CFE55F1D476902004E357C /* Team+Convert.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9CFE55E1D476902004E357C /* Team+Convert.swift */; };
 		A9CFE5611D47697F004E357C /* Penalty+Convert.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9CFE5601D47697F004E357C /* Penalty+Convert.swift */; };
 		A9CFE5631D4769BF004E357C /* ManagedPenalty+Convert.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9CFE5621D4769BF004E357C /* ManagedPenalty+Convert.swift */; };
+		A9D857521D49F41C00267353 /* BaseDBManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9D857511D49F41C00267353 /* BaseDBManager.swift */; };
+		A9D857541D4A533000267353 /* TeamDBManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9D857531D4A533000267353 /* TeamDBManager.swift */; };
 		A9DC52F21D46295E00A1F284 /* NSEntityDescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9DC52F11D46295E00A1F284 /* NSEntityDescription.swift */; };
 		A9DC52F41D462BF700A1F284 /* PenaltiesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9DC52F31D462BF700A1F284 /* PenaltiesVC.swift */; };
 		A9DC52FB1D462E0F00A1F284 /* ManagedPenalty.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9DC52F91D462E0F00A1F284 /* ManagedPenalty.swift */; };
@@ -48,7 +50,7 @@
 		A9F603041D3FAAC900896E7D /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = A9F603031D3FAAC900896E7D /* .gitignore */; };
 		A9F6030A1D3FD2F500896E7D /* ManagedPerson.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9F603081D3FD2F500896E7D /* ManagedPerson.swift */; };
 		A9F6030B1D3FD2F500896E7D /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9F603091D3FD2F500896E7D /* CoreDataStack.swift */; };
-		A9F6030D1D3FD3EC00896E7D /* TeamAndPersonDBManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9F6030C1D3FD3EC00896E7D /* TeamAndPersonDBManager.swift */; };
+		A9F6030D1D3FD3EC00896E7D /* PersonDBManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9F6030C1D3FD3EC00896E7D /* PersonDBManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -97,6 +99,8 @@
 		A9CFE55E1D476902004E357C /* Team+Convert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Team+Convert.swift"; sourceTree = "<group>"; };
 		A9CFE5601D47697F004E357C /* Penalty+Convert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Penalty+Convert.swift"; sourceTree = "<group>"; };
 		A9CFE5621D4769BF004E357C /* ManagedPenalty+Convert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ManagedPenalty+Convert.swift"; sourceTree = "<group>"; };
+		A9D857511D49F41C00267353 /* BaseDBManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseDBManager.swift; sourceTree = "<group>"; };
+		A9D857531D4A533000267353 /* TeamDBManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeamDBManager.swift; sourceTree = "<group>"; };
 		A9DC52F11D46295E00A1F284 /* NSEntityDescription.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSEntityDescription.swift; sourceTree = "<group>"; };
 		A9DC52F31D462BF700A1F284 /* PenaltiesVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PenaltiesVC.swift; sourceTree = "<group>"; };
 		A9DC52F91D462E0F00A1F284 /* ManagedPenalty.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManagedPenalty.swift; sourceTree = "<group>"; };
@@ -106,7 +110,7 @@
 		A9F603031D3FAAC900896E7D /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		A9F603081D3FD2F500896E7D /* ManagedPerson.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManagedPerson.swift; sourceTree = "<group>"; };
 		A9F603091D3FD2F500896E7D /* CoreDataStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
-		A9F6030C1D3FD3EC00896E7D /* TeamAndPersonDBManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeamAndPersonDBManager.swift; sourceTree = "<group>"; };
+		A9F6030C1D3FD3EC00896E7D /* PersonDBManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonDBManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -300,11 +304,13 @@
 		A9F603061D3FD2F500896E7D /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
-				A9F6030C1D3FD3EC00896E7D /* TeamAndPersonDBManager.swift */,
+				A9D857511D49F41C00267353 /* BaseDBManager.swift */,
+				A9F6030C1D3FD3EC00896E7D /* PersonDBManager.swift */,
 				A9DC53001D463DF100A1F284 /* PenaltyDBManager.swift */,
 				A9F603091D3FD2F500896E7D /* CoreDataStack.swift */,
 				A9F603071D3FD2F500896E7D /* CoreDataModels */,
 				A9DC52F01D46295E00A1F284 /* Extensions */,
+				A9D857531D4A533000267353 /* TeamDBManager.swift */,
 			);
 			path = CoreData;
 			sourceTree = "<group>";
@@ -436,13 +442,14 @@
 				A94D32491D38E3D4008B2927 /* AppDelegate.swift in Sources */,
 				A9CFE5591D475533004E357C /* Person+Convert.swift in Sources */,
 				4444DF841D43F3C8005D7CE0 /* ManagedTeam.swift in Sources */,
-				A9F6030D1D3FD3EC00896E7D /* TeamAndPersonDBManager.swift in Sources */,
+				A9F6030D1D3FD3EC00896E7D /* PersonDBManager.swift in Sources */,
 				A9CFE55D1D476896004E357C /* ManagedTeam+Convert.swift in Sources */,
 				A9DC52F21D46295E00A1F284 /* NSEntityDescription.swift in Sources */,
 				4444DF7D1D43CA62005D7CE0 /* UIViewController+Alerts.swift in Sources */,
 				A981DBC01D490B4A00C0ED97 /* SettingsCell.swift in Sources */,
 				4444DF871D43F502005D7CE0 /* Team.swift in Sources */,
 				A94D32501D38E3E9008B2927 /* PenaltyForColleague.xcdatamodeld in Sources */,
+				A9D857541D4A533000267353 /* TeamDBManager.swift in Sources */,
 				44CADD461D4237D100BF65B1 /* Constants.swift in Sources */,
 				A9CFE5631D4769BF004E357C /* ManagedPenalty+Convert.swift in Sources */,
 				A981DBC31D490D0500C0ED97 /* BaseCellProtocol.swift in Sources */,
@@ -452,6 +459,7 @@
 				A94D32591D38E3EF008B2927 /* MainVC.swift in Sources */,
 				A9F6030B1D3FD2F500896E7D /* CoreDataStack.swift in Sources */,
 				A9F6030A1D3FD2F500896E7D /* ManagedPerson.swift in Sources */,
+				A9D857521D49F41C00267353 /* BaseDBManager.swift in Sources */,
 				A9CFE5571D47441D004E357C /* TeamMembersCell.swift in Sources */,
 				A9CFE5611D47697F004E357C /* Penalty+Convert.swift in Sources */,
 				4444DF7B1D43C40E005D7CE0 /* Array+Safe.swift in Sources */,

@@ -16,6 +16,8 @@ class AddOrEditPersonVC: UIViewController {
     @IBOutlet weak var photoImageView: UIImageView!
     @IBOutlet weak var deleteButton: UIButton!
     
+    let personDBManager = PersonDBManager()
+    
     let imagePicker = UIImagePickerController()
     
     var existPerson: Person?
@@ -35,7 +37,7 @@ class AddOrEditPersonVC: UIViewController {
     // Mark: - Private
     
     private func prefillPersonData() {
-        photoImageView.image = personToSave.photo ?? UIImage.defaultPersonIcon()
+        photoImageView.image = UIImage.defaultPersonIcon()
         if existPerson == nil {
             isDeleteButtonVisible(false)
             return
@@ -47,6 +49,7 @@ class AddOrEditPersonVC: UIViewController {
         nameTextfield.text = personToSave.name
         surnameTextfield.text = personToSave.surname
         emailTextfield.text = personToSave.email
+        photoImageView.image = personToSave.photo ?? UIImage.defaultPersonIcon()
     }
    
     private func fillInPersonData(){
@@ -64,7 +67,7 @@ class AddOrEditPersonVC: UIViewController {
             return
         }
         
-        TeamAndPersonDBManager.sharedInstance.savePerson(personToSave) { (success) in
+        personDBManager.savePerson(personToSave) { (success) in
             if success {
                 self.navigateBack()
             }
@@ -75,10 +78,9 @@ class AddOrEditPersonVC: UIViewController {
     }
     
     private func deletePersonData() {
-        TeamAndPersonDBManager.sharedInstance.deletePerson(personToSave)
+        personDBManager.deletePerson(personToSave)
         navigateBack()
     }
-    
     
     private func updatePersonImage(image: UIImage) {
         personToSave.photoName = NSUUID().UUIDString

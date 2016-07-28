@@ -9,9 +9,7 @@
 import UIKit
 import CoreData
 
-class PenaltyDBManager {
-    
-    static var sharedInstance = PenaltyDBManager()
+class PenaltyDBManager: BaseDBManager {
     
     // MARK: - Public
     
@@ -21,118 +19,73 @@ class PenaltyDBManager {
             return
         }
         
-        getManagedPenalty(entityDescription, id: penalty.id) { (managedPenalty) in
-            let saveManagedPenalty = managedPenalty.updateManagedPenalty(managedPenalty, withPenalty: penalty)
-            self.savePenaltyObjectInStorage(saveManagedPenalty)
+        saveWith(entityDescription: entityDescription, id: penalty.id) { (managedPenalty) in
+            
+            guard let mPenalty = managedPenalty else {
+                completion(success: false)
+                return
+            }
+            let saveManagedPenalty = mPenalty.updateManagedPenalty(mPenalty, withPenalty: penalty)
+            
+            self.saveObjectInStorage(saveManagedPenalty as NSManagedObject)
             
             completion(success: true)
         }
     }
     
     func getAllPenalties(completion: (penalties: [Penalty]) -> ()) {
-        let fetchRequest = NSFetchRequest()
-        let entityDescription = NSEntityDescription.penaltyEntity()
-        fetchRequest.entity = entityDescription
+        
+        guard let entityDescription = NSEntityDescription.penaltyEntity() else {
+            completion(penalties: [])
+            return
+        }
+        
         var penalties = [Penalty]()
         
-        do {
-            let result = try CoreDataStack.sharedInstance.managedObjectContext.executeFetchRequest(fetchRequest)
-            let managedPenalties = result as! [ManagedPenalty]
-            
+        getAllItems(entityDescription) { (objects) in
+            guard let managedPenalties = objects as? [ManagedPenalty] else {
+                completion(penalties: [])
+                return
+            }
             for managedPenalty in managedPenalties {
-                var penalty = Penalty()
-                penalty = Penalty.updatePenaltyWith(managedPenalty: managedPenalty)
+                let penalty = Penalty.updatePenaltyWith(managedPenalty: managedPenalty)
+                
                 penalties.append(penalty)
             }
             completion(penalties: penalties)
-            
-        } catch {
-            let fetchError = error as NSError
-            print(fetchError)
-            completion(penalties: penalties)
         }
     }
-    
+
     func deletePenalty(penalty: Penalty) {
         if penalty.id.isEmpty {
             return
         }
         
-        let fetchRequest = NSFetchRequest()
-        let entityDescription = NSEntityDescription.penaltyEntity()
-        fetchRequest.entity = entityDescription
-        var managedPenalties = [ManagedPenalty]()
-        do {
-            managedPenalties = try CoreDataStack.sharedInstance.managedObjectContext.executeFetchRequest(fetchRequest) as! [ManagedPenalty]
-        } catch {
-            let saveError = error as NSError
-            print(saveError)
+        guard let entityDescription = NSEntityDescription.penaltyEntity() else {
+            return
         }
         
-        
-        for mPenalty in managedPenalties {
-            if penalty.id == mPenalty.penaltyId {
-                deletePenaltyObjectFromStorage(mPenalty)
-            }
+        let predicate = NSPredicate(format: "penaltyId = %@", penalty.id)
+        deleteItem(entityDescription, predicate: predicate) { (success) in
+            
         }
     }
     
     // MARK: - Private
-    
-    private func getManagedPenalty(entityDescription: NSEntityDescription, id: String, completion: (managedPenalty: ManagedPenalty) -> ()) {
-        getPenaltyForSave(id) { (managedPenalty) in
-            if let penalty = managedPenalty {
-                completion(managedPenalty: penalty)
-            } else {
+
+    private func saveWith(entityDescription entityDescription: NSEntityDescription, id: String, completion:(managedPenalty: ManagedPenalty?)->()) {
+        
+        let predicate = NSPredicate(format: "penaltyId = %@", id)
+        
+        saveItem(entityDescription, predicate: predicate) { (object) in
+            guard let managedPenalty = object as? ManagedPenalty else {
+                
                 let newPenalty = NSManagedObject(entity: entityDescription, insertIntoManagedObjectContext: CoreDataStack.sharedInstance.managedObjectContext) as! ManagedPenalty
                 
                 completion(managedPenalty: newPenalty)
-            }
-        }
-    }
-    
-    private func getPenaltyForSave(id: String, completion: (managedPenalty: ManagedPenalty?) -> ()) {
-        let fetchRequest = NSFetchRequest()
-        let entityDescription = NSEntityDescription.penaltyEntity()
-        fetchRequest.entity = entityDescription
-        
-        let predicate = NSPredicate(format: "penaltyId = %@", id)
-        fetchRequest.predicate = predicate
-        
-        do {
-            let result = try CoreDataStack.sharedInstance.managedObjectContext.executeFetchRequest(fetchRequest)
-            let managedPenalties = result as! [ManagedPenalty]
-            
-            guard let mPenalty = managedPenalties.first else {
-                completion(managedPenalty: nil)
                 return
             }
-            
-            completion(managedPenalty: mPenalty)
-        } catch {
-            let fetchError = error as NSError
-            print(fetchError)
-            completion(managedPenalty: nil)
-        }
-    }
-        
-    private func deletePenaltyObjectFromStorage(managedPenalty: ManagedPenalty) {
-        CoreDataStack.sharedInstance.managedObjectContext.deleteObject(managedPenalty)
-        do {
-            try CoreDataStack.sharedInstance.managedObjectContext.save()
-        } catch {
-            let saveError = error as NSError
-            print(saveError)
-        }
-    }
-    
-    private func savePenaltyObjectInStorage(managedPenalty: ManagedPenalty) {
-        
-        do {
-            try managedPenalty.managedObjectContext?.save()
-        } catch {
-            let savedError = error as NSError
-            print(savedError)
+            completion(managedPenalty: managedPenalty)
         }
     }
 }

@@ -19,7 +19,7 @@ extension Person {
         person.email = managedPerson.email
         person.photoName = managedPerson.photoName
         if let photoName = person.photoName {
-            person.photo = TeamAndPersonDBManager.sharedInstance.receivePhoto(photoName)
+            person.photo = UIImage.receivePhoto(photoName)
         }
         return person
     }

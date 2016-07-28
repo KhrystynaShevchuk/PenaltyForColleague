@@ -15,6 +15,8 @@ class PenaltiesVC: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
+    let penaltyDBManager = PenaltyDBManager()
+    
     var penalties = [Penalty]()
     var selectedPenalty: Penalty?
     
@@ -33,7 +35,7 @@ class PenaltiesVC: UIViewController {
     // MARK: - Private
     
     private func receiveData() {
-        PenaltyDBManager.sharedInstance.getAllPenalties { (penalties) in
+        penaltyDBManager.getAllPenalties { (penalties) in
             self.penalties = penalties
             
             dispatch_async(dispatch_get_main_queue(), {

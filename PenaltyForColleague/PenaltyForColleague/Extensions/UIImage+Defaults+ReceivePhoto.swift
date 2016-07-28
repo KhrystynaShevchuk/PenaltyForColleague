@@ -10,7 +10,19 @@ import UIKit
 
 extension UIImage {
     
+    // MARK: - Default icons
+    
     class func defaultPersonIcon() -> UIImage? {
         return UIImage(named: "userIcon")
+    }
+    
+    // MARK: - Receive photo
+    
+    class func receivePhoto(photoName: String) -> UIImage? {
+        guard let data = FileSystem().getFile(photoName) else {
+            return nil
+        }
+        
+        return UIImage(data: data)
     }
 }

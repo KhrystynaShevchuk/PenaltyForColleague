@@ -17,13 +17,14 @@ class TeamSettingsVC: UIViewController {
     
     let imagePicker = UIImagePickerController()
     var team = Team()
+    let teamDBManager = TeamDBManager()
     
     // MARK: - VC life cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        team = TeamAndPersonDBManager.sharedInstance.getCurrentTeam(team)
+        team = teamDBManager.getCurrentTeam(team)
         prefillTeamData()
 
         imagePicker.delegate = self
@@ -50,7 +51,7 @@ class TeamSettingsVC: UIViewController {
             return
         }
         
-        TeamAndPersonDBManager.sharedInstance.saveTeam(team) { (success) in
+        teamDBManager.saveTeam(team) { (success) in
             if success {
                 self.navigateBack()
             }

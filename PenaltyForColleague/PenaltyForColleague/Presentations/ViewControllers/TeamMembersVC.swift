@@ -16,6 +16,8 @@ class TeamMembersVC: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
+    let personDBManager = PersonDBManager()
+    
     var members = [Person]()
     var selectedPerson: Person?
     
@@ -34,7 +36,7 @@ class TeamMembersVC: UIViewController {
     // MARK: - Private
     
     private func receiveData() {
-        TeamAndPersonDBManager.sharedInstance.getAllPersons { (persons) in
+        personDBManager.getAllPersons { (persons) in
             self.members = persons
             
             dispatch_async(dispatch_get_main_queue(), {
@@ -69,7 +71,7 @@ class TeamMembersVC: UIViewController {
     }
 }
 
-// MARK: - extension
+// MARK: - Table view
 
 extension TeamMembersVC: UITableViewDataSource, UITableViewDelegate {
     
