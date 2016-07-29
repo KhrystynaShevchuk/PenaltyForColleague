@@ -51,6 +51,8 @@
 		A9F6030A1D3FD2F500896E7D /* ManagedPerson.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9F603081D3FD2F500896E7D /* ManagedPerson.swift */; };
 		A9F6030B1D3FD2F500896E7D /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9F603091D3FD2F500896E7D /* CoreDataStack.swift */; };
 		A9F6030D1D3FD3EC00896E7D /* PersonDBManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9F6030C1D3FD3EC00896E7D /* PersonDBManager.swift */; };
+		A9FF57681D4B8207000ACEDE /* GetPersonProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9FF57671D4B8207000ACEDE /* GetPersonProtocol.swift */; };
+		A9FF576A1D4BAD40000ACEDE /* RandomPenaltyVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9FF57691D4BAD40000ACEDE /* RandomPenaltyVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -111,6 +113,8 @@
 		A9F603081D3FD2F500896E7D /* ManagedPerson.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManagedPerson.swift; sourceTree = "<group>"; };
 		A9F603091D3FD2F500896E7D /* CoreDataStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		A9F6030C1D3FD3EC00896E7D /* PersonDBManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonDBManager.swift; sourceTree = "<group>"; };
+		A9FF57671D4B8207000ACEDE /* GetPersonProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetPersonProtocol.swift; sourceTree = "<group>"; };
+		A9FF57691D4BAD40000ACEDE /* RandomPenaltyVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RandomPenaltyVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -236,6 +240,7 @@
 		A94D32511D38E3EF008B2927 /* Presentations */ = {
 			isa = PBXGroup;
 			children = (
+				A9FF57661D4B81DF000ACEDE /* Protocols */,
 				A9CFE5531D4741A3004E357C /* Cells */,
 				A94D32551D38E3EF008B2927 /* ViewControllers */,
 				A94D32521D38E3EF008B2927 /* StoryBoards */,
@@ -262,6 +267,7 @@
 				44CADD471D42793300BF65B1 /* TeamSettingsVC.swift */,
 				A9DC52F31D462BF700A1F284 /* PenaltiesVC.swift */,
 				A9DC52FE1D4634BD00A1F284 /* AddOrEditPenaltyVC.swift */,
+				A9FF57691D4BAD40000ACEDE /* RandomPenaltyVC.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -304,12 +310,12 @@
 		A9F603061D3FD2F500896E7D /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
-				A9D857511D49F41C00267353 /* BaseDBManager.swift */,
-				A9F6030C1D3FD3EC00896E7D /* PersonDBManager.swift */,
-				A9DC53001D463DF100A1F284 /* PenaltyDBManager.swift */,
-				A9F603091D3FD2F500896E7D /* CoreDataStack.swift */,
 				A9F603071D3FD2F500896E7D /* CoreDataModels */,
 				A9DC52F01D46295E00A1F284 /* Extensions */,
+				A9D857511D49F41C00267353 /* BaseDBManager.swift */,
+				A9F603091D3FD2F500896E7D /* CoreDataStack.swift */,
+				A9DC53001D463DF100A1F284 /* PenaltyDBManager.swift */,
+				A9F6030C1D3FD3EC00896E7D /* PersonDBManager.swift */,
 				A9D857531D4A533000267353 /* TeamDBManager.swift */,
 			);
 			path = CoreData;
@@ -326,6 +332,14 @@
 				A9CFE5621D4769BF004E357C /* ManagedPenalty+Convert.swift */,
 			);
 			path = CoreDataModels;
+			sourceTree = "<group>";
+		};
+		A9FF57661D4B81DF000ACEDE /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				A9FF57671D4B8207000ACEDE /* GetPersonProtocol.swift */,
+			);
+			path = Protocols;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -441,6 +455,7 @@
 				A9DC52F41D462BF700A1F284 /* PenaltiesVC.swift in Sources */,
 				A94D32491D38E3D4008B2927 /* AppDelegate.swift in Sources */,
 				A9CFE5591D475533004E357C /* Person+Convert.swift in Sources */,
+				A9FF576A1D4BAD40000ACEDE /* RandomPenaltyVC.swift in Sources */,
 				4444DF841D43F3C8005D7CE0 /* ManagedTeam.swift in Sources */,
 				A9F6030D1D3FD3EC00896E7D /* PersonDBManager.swift in Sources */,
 				A9CFE55D1D476896004E357C /* ManagedTeam+Convert.swift in Sources */,
@@ -467,6 +482,7 @@
 				A9075FA01D3E719200828C30 /* FileManager.swift in Sources */,
 				A94D32621D39091D008B2927 /* SettingsVC.swift in Sources */,
 				A93A892F1D3CF55200A6228E /* Person.swift in Sources */,
+				A9FF57681D4B8207000ACEDE /* GetPersonProtocol.swift in Sources */,
 				A94D32661D3919D8008B2927 /* TeamMembersVC.swift in Sources */,
 				A981DBBE1D490B2300C0ED97 /* PenaltiesCell.swift in Sources */,
 			);

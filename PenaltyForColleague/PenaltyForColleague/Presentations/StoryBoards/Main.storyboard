@@ -30,34 +30,61 @@
                                     <constraint firstAttribute="height" constant="50" id="opK-2p-Oh3"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pick person" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dJ3-tY-0Zy">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add people on settings" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dJ3-tY-0Zy">
                                 <rect key="frame" x="100" y="116" width="192" height="21"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wOT-Q7-7jZ">
-                                <rect key="frame" x="123" y="167" width="74" height="30"/>
+                            <button opaque="NO" contentMode="scaleAspectFill" layoutMarginsFollowReadableWidth="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MqE-fv-tc2">
+                                <rect key="frame" x="84" y="112" width="208" height="30"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="74" id="0wd-q2-1bm"/>
-                                    <constraint firstAttribute="height" constant="30" id="hJQ-gx-Svw"/>
+                                    <constraint firstAttribute="height" constant="30" id="Vwb-Hy-1ep"/>
                                 </constraints>
-                                <state key="normal" title="Button"/>
+                                <state key="normal" title="Pick person  :)">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
                                 <connections>
-                                    <action selector="tappedPickChangeButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ORe-z4-U4T"/>
+                                    <action selector="tappedPickPersonButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Y4S-1d-zzV"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bdo-v8-ae6">
+                                <rect key="frame" x="68" y="443" width="185" height="68"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="185" id="MY6-U2-00F"/>
+                                    <constraint firstAttribute="height" constant="68" id="mte-6G-aKE"/>
+                                </constraints>
+                                <color key="tintColor" red="0.57175240224205792" green="0.84039358262955077" blue="1" alpha="0.80114140070921991" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Get penalty for failer">
+                                    <attributedString key="attributedTitle">
+                                        <fragment content="Get penalty for failer">
+                                            <attributes>
+                                                <color key="NSColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                                <font key="NSFont" size="16" name="HelveticaNeue"/>
+                                                <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                            </attributes>
+                                        </fragment>
+                                    </attributedString>
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="tappedGetPenaltyButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ddt-Wp-3UN"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="wOT-Q7-7jZ" firstAttribute="top" secondItem="dJ3-tY-0Zy" secondAttribute="bottom" constant="30" id="8bL-Gz-R7P"/>
-                            <constraint firstItem="wOT-Q7-7jZ" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="QXa-om-z1f"/>
+                            <constraint firstItem="bdo-v8-ae6" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="80Q-RV-vTN"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="MqE-fv-tc2" secondAttribute="trailing" constant="12" id="E13-Ea-9au"/>
+                            <constraint firstItem="MqE-fv-tc2" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="48" id="NAq-qu-Tz6"/>
                             <constraint firstItem="sd9-da-wfG" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="38" id="ShO-Pc-8nW"/>
                             <constraint firstAttribute="trailingMargin" secondItem="dJ3-tY-0Zy" secondAttribute="trailing" constant="12" id="UTk-XK-Bus"/>
                             <constraint firstItem="dJ3-tY-0Zy" firstAttribute="leading" secondItem="sd9-da-wfG" secondAttribute="trailing" constant="24" id="VBx-MO-p0i"/>
+                            <constraint firstItem="MqE-fv-tc2" firstAttribute="leading" secondItem="sd9-da-wfG" secondAttribute="trailing" constant="8" id="cde-n6-jWe"/>
                             <constraint firstItem="sd9-da-wfG" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="10" id="lrB-Db-qf3"/>
                             <constraint firstItem="dJ3-tY-0Zy" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="52" id="sJX-CM-8rE"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="bdo-v8-ae6" secondAttribute="bottom" constant="57" id="xB4-VS-QRP"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="61C-9f-bAF">
@@ -69,15 +96,18 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="getPenaltyButton" destination="bdo-v8-ae6" id="BiY-6u-8HI"/>
                         <outlet property="imageView" destination="sd9-da-wfG" id="w40-E6-Y4I"/>
                         <outlet property="nameLabel" destination="dJ3-tY-0Zy" id="Hyo-x8-LrO"/>
-                        <outlet property="pickChangeButton" destination="wOT-Q7-7jZ" id="Uo1-AD-Ert"/>
+                        <outlet property="pickPersonButton" destination="MqE-fv-tc2" id="IAE-uo-l1b"/>
                         <segue destination="8jF-Dm-1tJ" kind="push" identifier="settingsSegue" id="Agy-hl-WcJ"/>
+                        <segue destination="ODZ-dq-YM5" kind="push" identifier="pickPersonSegue" id="qX0-L5-cFS"/>
+                        <segue destination="U46-2n-c2W" kind="push" identifier="generatePenaltyForFailerSegue" id="WxO-OE-TPG"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="624" y="471"/>
+            <point key="canvasLocation" x="560" y="198"/>
         </scene>
         <!--Settings-->
         <scene sceneID="GIz-74-ztj">
@@ -220,6 +250,67 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Le3-8m-y1F" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1521" y="531"/>
+        </scene>
+        <!--Random PenaltyVC-->
+        <scene sceneID="Hsa-zi-bOh">
+            <objects>
+                <viewController id="U46-2n-c2W" customClass="RandomPenaltyVC" customModule="PenaltyForColleague" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="SEL-2x-45w"/>
+                        <viewControllerLayoutGuide type="bottom" id="Ezs-NJ-oi7"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="948-6I-bdf">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="person" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fmy-LW-qdp">
+                                <rect key="frame" x="29" y="92" width="263" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="should do :" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tgi-M1-KZh">
+                                <rect key="frame" x="54" y="157" width="213" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="penalty" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c7i-CO-ZYK">
+                                <rect key="frame" x="29" y="215" width="263" height="21"/>
+                                <accessibility key="accessibilityConfiguration">
+                                    <accessibilityTraits key="traits" staticText="YES" updatesFrequently="YES"/>
+                                </accessibility>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="0.92183576218034013" blue="0.97552038856548273" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="tgi-M1-KZh" firstAttribute="leading" secondItem="948-6I-bdf" secondAttribute="leadingMargin" constant="38" id="1fI-N7-I6k"/>
+                            <constraint firstItem="Fmy-LW-qdp" firstAttribute="top" secondItem="SEL-2x-45w" secondAttribute="bottom" constant="28" id="3VS-Wd-z7B"/>
+                            <constraint firstItem="tgi-M1-KZh" firstAttribute="centerX" secondItem="948-6I-bdf" secondAttribute="centerX" id="6fK-RK-UD3"/>
+                            <constraint firstItem="tgi-M1-KZh" firstAttribute="top" secondItem="Fmy-LW-qdp" secondAttribute="bottom" constant="44" id="Cv1-ZQ-0lJ"/>
+                            <constraint firstItem="c7i-CO-ZYK" firstAttribute="centerX" secondItem="948-6I-bdf" secondAttribute="centerX" id="F3c-n2-OrP"/>
+                            <constraint firstItem="c7i-CO-ZYK" firstAttribute="top" secondItem="tgi-M1-KZh" secondAttribute="bottom" constant="37" id="FBL-7G-UhR"/>
+                            <constraint firstItem="Fmy-LW-qdp" firstAttribute="leading" secondItem="948-6I-bdf" secondAttribute="leadingMargin" constant="13" id="Mz5-vm-dS7"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="c7i-CO-ZYK" secondAttribute="trailing" constant="12" id="ZSm-ak-w0u"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="tgi-M1-KZh" secondAttribute="trailing" constant="37" id="hU4-Il-pqN"/>
+                            <constraint firstItem="c7i-CO-ZYK" firstAttribute="leading" secondItem="948-6I-bdf" secondAttribute="leadingMargin" constant="13" id="rJv-3k-nwM"/>
+                            <constraint firstItem="Fmy-LW-qdp" firstAttribute="centerX" secondItem="948-6I-bdf" secondAttribute="centerX" id="s0K-Xh-9Gl"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Fmy-LW-qdp" secondAttribute="trailing" constant="12" id="tu6-R1-AfB"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="AyW-gv-PFa"/>
+                    <connections>
+                        <outlet property="nameLabel" destination="Fmy-LW-qdp" id="VHp-oR-3wK"/>
+                        <outlet property="penaltyLabel" destination="c7i-CO-ZYK" id="m2A-dg-JfC"/>
+                        <outlet property="shouldDoLabel" destination="tgi-M1-KZh" id="nPp-rA-tIQ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="T9w-P1-SwS" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="672" y="1128"/>
         </scene>
         <!--PenaltiesVC-->
         <scene sceneID="c0J-bl-dCY">
@@ -438,6 +529,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="addPersonBarButton" destination="NAW-eS-AFv" id="1pc-ze-8Uc"/>
                         <outlet property="tableView" destination="JVw-2G-8KL" id="3Ge-J9-C3B"/>
                         <segue destination="YAS-lL-a07" kind="push" identifier="addPersonSegue" id="5vF-k9-BT6"/>
                         <segue destination="YAS-lL-a07" kind="push" identifier="editPersonSegue" id="wWW-BM-O4w"/>
@@ -569,6 +661,7 @@
         <image name="userIcon" width="50" height="50"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="qX0-L5-cFS"/>
         <segue reference="wWW-BM-O4w"/>
         <segue reference="Cmj-LC-C2h"/>
     </inferredMetricsTieBreakers>

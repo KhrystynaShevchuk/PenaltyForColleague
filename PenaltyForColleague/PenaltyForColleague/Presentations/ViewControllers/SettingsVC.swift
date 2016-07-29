@@ -45,6 +45,14 @@ class SettingsVC: UIViewController {
     }
     
     // MARK: - Navigation
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == segueToMembersVC {
+            if let vc = segue.destinationViewController as? TeamMembersVC {
+                vc.vc = self
+            }
+        }
+    }
  
     private func navigateToMembersVC() {
         performSegueWithIdentifier(segueToMembersVC, sender: nil)

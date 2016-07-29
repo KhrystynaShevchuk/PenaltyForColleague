@@ -15,8 +15,12 @@ private let segueToEditPerson = "editPersonSegue"
 class TeamMembersVC: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var addPersonBarButton: UIBarButtonItem!
     
     let personDBManager = PersonDBManager()
+    
+    var vc: UIViewController?
+    var delegate: GetPersonProtocol?
     
     var members = [Person]()
     var selectedPerson: Person?
@@ -25,6 +29,15 @@ class TeamMembersVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        switch vc {
+        case is MainVC:
+            self.addPersonBarButton?.tintColor = UIColor.clearColor()
+            self.addPersonBarButton?.enabled = false
+        default:
+            return
+        }
+
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -83,13 +96,25 @@ extension TeamMembersVC: UITableViewDataSource, UITableViewDelegate {
         let cell = tableView.dequeueReusableCellWithIdentifier(TeamMembersCell.cellIdentifier) as! TeamMembersCell
         
         cell.config(members[indexPath.row])
-
+    
         return cell
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        selectedPerson = members[indexPath.row]
+        selectedPerson = members[indexPath.row]        
         
-        navigateToEditPerson()
+        switch vc {
+        case is MainVC:
+            if let person = selectedPerson {
+                delegate?.getPerson(person)
+            }
+            navigationController?.popToRootViewControllerAnimated(true)
+
+        case is SettingsVC:
+            navigateToEditPerson()
+            
+        default:
+            return
+        }
     }
 }

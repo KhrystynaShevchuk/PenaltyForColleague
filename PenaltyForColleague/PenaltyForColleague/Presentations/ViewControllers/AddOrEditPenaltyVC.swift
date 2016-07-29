@@ -72,9 +72,8 @@ class AddOrEditPenaltyVC: UIViewController {
     }
     
     private func deletePenalty() {
-            penaltyDBManager.deletePenalty(penaltyToSave)
-            
-            navigateBack()
+        penaltyDBManager.deletePenalty(penaltyToSave)
+        navigateBack()
     }
     
     private func isDeleteButtonVisible(visible: Bool) {
