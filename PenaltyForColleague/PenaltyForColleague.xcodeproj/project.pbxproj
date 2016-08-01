@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		4444DF7B1D43C40E005D7CE0 /* Array+Safe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4444DF7A1D43C40E005D7CE0 /* Array+Safe.swift */; };
 		4444DF7D1D43CA62005D7CE0 /* UIViewController+Alerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4444DF7C1D43CA62005D7CE0 /* UIViewController+Alerts.swift */; };
 		4444DF841D43F3C8005D7CE0 /* ManagedTeam.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4444DF821D43F3C8005D7CE0 /* ManagedTeam.swift */; };
 		4444DF871D43F502005D7CE0 /* Team.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4444DF861D43F502005D7CE0 /* Team.swift */; };
@@ -47,6 +46,7 @@
 		A9DC52FD1D462E6C00A1F284 /* Penalty.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9DC52FC1D462E6C00A1F284 /* Penalty.swift */; };
 		A9DC52FF1D4634BD00A1F284 /* AddOrEditPenaltyVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9DC52FE1D4634BD00A1F284 /* AddOrEditPenaltyVC.swift */; };
 		A9DC53011D463DF100A1F284 /* PenaltyDBManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9DC53001D463DF100A1F284 /* PenaltyDBManager.swift */; };
+		A9F12F1C1D4F71EF00E014DC /* Array+RandomItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9F12F1B1D4F71EF00E014DC /* Array+RandomItem.swift */; };
 		A9F603041D3FAAC900896E7D /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = A9F603031D3FAAC900896E7D /* .gitignore */; };
 		A9F6030A1D3FD2F500896E7D /* ManagedPerson.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9F603081D3FD2F500896E7D /* ManagedPerson.swift */; };
 		A9F6030B1D3FD2F500896E7D /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9F603091D3FD2F500896E7D /* CoreDataStack.swift */; };
@@ -66,7 +66,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		4444DF7A1D43C40E005D7CE0 /* Array+Safe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Array+Safe.swift"; sourceTree = "<group>"; };
 		4444DF7C1D43CA62005D7CE0 /* UIViewController+Alerts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Alerts.swift"; sourceTree = "<group>"; };
 		4444DF821D43F3C8005D7CE0 /* ManagedTeam.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManagedTeam.swift; sourceTree = "<group>"; };
 		4444DF861D43F502005D7CE0 /* Team.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Team.swift; sourceTree = "<group>"; };
@@ -109,6 +108,7 @@
 		A9DC52FC1D462E6C00A1F284 /* Penalty.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Penalty.swift; sourceTree = "<group>"; };
 		A9DC52FE1D4634BD00A1F284 /* AddOrEditPenaltyVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddOrEditPenaltyVC.swift; sourceTree = "<group>"; };
 		A9DC53001D463DF100A1F284 /* PenaltyDBManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PenaltyDBManager.swift; sourceTree = "<group>"; };
+		A9F12F1B1D4F71EF00E014DC /* Array+RandomItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Array+RandomItem.swift"; sourceTree = "<group>"; };
 		A9F603031D3FAAC900896E7D /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		A9F603081D3FD2F500896E7D /* ManagedPerson.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManagedPerson.swift; sourceTree = "<group>"; };
 		A9F603091D3FD2F500896E7D /* CoreDataStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
@@ -148,8 +148,8 @@
 			children = (
 				A9075F9F1D3E719200828C30 /* FileManager.swift */,
 				447807D41D43BA3C003304CF /* UIImage+Defaults+ReceivePhoto.swift */,
-				4444DF7A1D43C40E005D7CE0 /* Array+Safe.swift */,
 				4444DF7C1D43CA62005D7CE0 /* UIViewController+Alerts.swift */,
+				A9F12F1B1D4F71EF00E014DC /* Array+RandomItem.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -462,6 +462,7 @@
 				A9DC52F21D46295E00A1F284 /* NSEntityDescription.swift in Sources */,
 				4444DF7D1D43CA62005D7CE0 /* UIViewController+Alerts.swift in Sources */,
 				A981DBC01D490B4A00C0ED97 /* SettingsCell.swift in Sources */,
+				A9F12F1C1D4F71EF00E014DC /* Array+RandomItem.swift in Sources */,
 				4444DF871D43F502005D7CE0 /* Team.swift in Sources */,
 				A94D32501D38E3E9008B2927 /* PenaltyForColleague.xcdatamodeld in Sources */,
 				A9D857541D4A533000267353 /* TeamDBManager.swift in Sources */,
@@ -477,7 +478,6 @@
 				A9D857521D49F41C00267353 /* BaseDBManager.swift in Sources */,
 				A9CFE5571D47441D004E357C /* TeamMembersCell.swift in Sources */,
 				A9CFE5611D47697F004E357C /* Penalty+Convert.swift in Sources */,
-				4444DF7B1D43C40E005D7CE0 /* Array+Safe.swift in Sources */,
 				A93A89311D3D11F000A6228E /* AddOrEditPersonVC.swift in Sources */,
 				A9075FA01D3E719200828C30 /* FileManager.swift in Sources */,
 				A94D32621D39091D008B2927 /* SettingsVC.swift in Sources */,

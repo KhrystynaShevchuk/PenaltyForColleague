@@ -20,35 +20,23 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="sd9-da-wfG">
-                                <rect key="frame" x="26" y="102" width="50" height="50"/>
+                                <rect key="frame" x="128" y="105" width="65" height="65"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <accessibility key="accessibilityConfiguration">
                                     <accessibilityTraits key="traits" image="YES" notEnabled="YES"/>
                                 </accessibility>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="50" id="Z14-Li-5t0"/>
-                                    <constraint firstAttribute="height" constant="50" id="opK-2p-Oh3"/>
+                                    <constraint firstAttribute="width" constant="65" id="Z14-Li-5t0"/>
+                                    <constraint firstAttribute="height" constant="65" id="opK-2p-Oh3"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add people on settings" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dJ3-tY-0Zy">
-                                <rect key="frame" x="100" y="116" width="192" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add people on settings" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dJ3-tY-0Zy">
+                                <rect key="frame" x="58" y="209" width="208" height="21"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleAspectFill" layoutMarginsFollowReadableWidth="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MqE-fv-tc2">
-                                <rect key="frame" x="84" y="112" width="208" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="Vwb-Hy-1ep"/>
-                                </constraints>
-                                <state key="normal" title="Pick person  :)">
-                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="tappedPickPersonButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Y4S-1d-zzV"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bdo-v8-ae6">
                                 <rect key="frame" x="68" y="443" width="185" height="68"/>
                                 <constraints>
@@ -72,18 +60,30 @@
                                     <action selector="tappedGetPenaltyButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ddt-Wp-3UN"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleAspectFill" layoutMarginsFollowReadableWidth="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MqE-fv-tc2">
+                                <rect key="frame" x="16" y="205" width="288" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="Vwb-Hy-1ep"/>
+                                </constraints>
+                                <state key="normal" title="Pick person  :)">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="tappedPickPersonButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Y4S-1d-zzV"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="bdo-v8-ae6" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="80Q-RV-vTN"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="MqE-fv-tc2" secondAttribute="trailing" constant="12" id="E13-Ea-9au"/>
-                            <constraint firstItem="MqE-fv-tc2" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="48" id="NAq-qu-Tz6"/>
-                            <constraint firstItem="sd9-da-wfG" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="38" id="ShO-Pc-8nW"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="dJ3-tY-0Zy" secondAttribute="trailing" constant="12" id="UTk-XK-Bus"/>
-                            <constraint firstItem="dJ3-tY-0Zy" firstAttribute="leading" secondItem="sd9-da-wfG" secondAttribute="trailing" constant="24" id="VBx-MO-p0i"/>
-                            <constraint firstItem="MqE-fv-tc2" firstAttribute="leading" secondItem="sd9-da-wfG" secondAttribute="trailing" constant="8" id="cde-n6-jWe"/>
-                            <constraint firstItem="sd9-da-wfG" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="10" id="lrB-Db-qf3"/>
-                            <constraint firstItem="dJ3-tY-0Zy" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="52" id="sJX-CM-8rE"/>
+                            <constraint firstItem="MqE-fv-tc2" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="141" id="NAq-qu-Tz6"/>
+                            <constraint firstItem="sd9-da-wfG" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="41" id="ShO-Pc-8nW"/>
+                            <constraint firstItem="sd9-da-wfG" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="TqW-oq-6sk"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="dJ3-tY-0Zy" secondAttribute="trailing" constant="38" id="c0G-eW-VUm"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="MqE-fv-tc2" secondAttribute="leading" id="d1A-46-xMc"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="MqE-fv-tc2" secondAttribute="trailing" id="kOg-yT-2sM"/>
+                            <constraint firstItem="dJ3-tY-0Zy" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="145" id="sJX-CM-8rE"/>
+                            <constraint firstItem="dJ3-tY-0Zy" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="42" id="tBG-Yl-z58"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="bdo-v8-ae6" secondAttribute="bottom" constant="57" id="xB4-VS-QRP"/>
                         </constraints>
                     </view>
@@ -275,28 +275,27 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="penalty" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c7i-CO-ZYK">
-                                <rect key="frame" x="29" y="215" width="263" height="21"/>
-                                <accessibility key="accessibilityConfiguration">
-                                    <accessibilityTraits key="traits" staticText="YES" updatesFrequently="YES"/>
-                                </accessibility>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="penalty" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Icc-WY-Ohg">
+                                <rect key="frame" x="25" y="209" width="271" height="150"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="150" id="bQ2-hs-O4b"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="0.92183576218034013" blue="0.97552038856548273" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.97226445107420068" green="1" blue="0.98189737643027497" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="tgi-M1-KZh" firstAttribute="leading" secondItem="948-6I-bdf" secondAttribute="leadingMargin" constant="38" id="1fI-N7-I6k"/>
                             <constraint firstItem="Fmy-LW-qdp" firstAttribute="top" secondItem="SEL-2x-45w" secondAttribute="bottom" constant="28" id="3VS-Wd-z7B"/>
                             <constraint firstItem="tgi-M1-KZh" firstAttribute="centerX" secondItem="948-6I-bdf" secondAttribute="centerX" id="6fK-RK-UD3"/>
+                            <constraint firstItem="Icc-WY-Ohg" firstAttribute="leading" secondItem="948-6I-bdf" secondAttribute="leadingMargin" constant="9" id="BfI-9S-ZDh"/>
                             <constraint firstItem="tgi-M1-KZh" firstAttribute="top" secondItem="Fmy-LW-qdp" secondAttribute="bottom" constant="44" id="Cv1-ZQ-0lJ"/>
-                            <constraint firstItem="c7i-CO-ZYK" firstAttribute="centerX" secondItem="948-6I-bdf" secondAttribute="centerX" id="F3c-n2-OrP"/>
-                            <constraint firstItem="c7i-CO-ZYK" firstAttribute="top" secondItem="tgi-M1-KZh" secondAttribute="bottom" constant="37" id="FBL-7G-UhR"/>
                             <constraint firstItem="Fmy-LW-qdp" firstAttribute="leading" secondItem="948-6I-bdf" secondAttribute="leadingMargin" constant="13" id="Mz5-vm-dS7"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="c7i-CO-ZYK" secondAttribute="trailing" constant="12" id="ZSm-ak-w0u"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Icc-WY-Ohg" secondAttribute="trailing" constant="8" id="PIy-Bf-1y2"/>
+                            <constraint firstItem="Icc-WY-Ohg" firstAttribute="top" secondItem="tgi-M1-KZh" secondAttribute="bottom" constant="31" id="Vdy-dv-Ge3"/>
                             <constraint firstAttribute="trailingMargin" secondItem="tgi-M1-KZh" secondAttribute="trailing" constant="37" id="hU4-Il-pqN"/>
-                            <constraint firstItem="c7i-CO-ZYK" firstAttribute="leading" secondItem="948-6I-bdf" secondAttribute="leadingMargin" constant="13" id="rJv-3k-nwM"/>
                             <constraint firstItem="Fmy-LW-qdp" firstAttribute="centerX" secondItem="948-6I-bdf" secondAttribute="centerX" id="s0K-Xh-9Gl"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Fmy-LW-qdp" secondAttribute="trailing" constant="12" id="tu6-R1-AfB"/>
                         </constraints>
@@ -304,7 +303,7 @@
                     <navigationItem key="navigationItem" id="AyW-gv-PFa"/>
                     <connections>
                         <outlet property="nameLabel" destination="Fmy-LW-qdp" id="VHp-oR-3wK"/>
-                        <outlet property="penaltyLabel" destination="c7i-CO-ZYK" id="m2A-dg-JfC"/>
+                        <outlet property="penaltyTextView" destination="Icc-WY-Ohg" id="Uiz-lT-0xs"/>
                         <outlet property="shouldDoLabel" destination="tgi-M1-KZh" id="nPp-rA-tIQ"/>
                     </connections>
                 </viewController>

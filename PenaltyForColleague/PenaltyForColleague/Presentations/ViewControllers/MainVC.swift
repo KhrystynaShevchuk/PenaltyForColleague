@@ -20,8 +20,12 @@ class MainVC: UIViewController {
     @IBOutlet weak var getPenaltyButton: UIButton!
     
     let personDBManager = PersonDBManager()
+    let penaltyDBmanager = PenaltyDBManager()
+    
     var persons: [Person]?
+    var penalties: [Penalty]?
     var person: Person?
+    var randomPenalty = Penalty()
     
     // MARK: - VC life cycle
     
@@ -33,6 +37,7 @@ class MainVC: UIViewController {
         super.viewWillAppear(true)
         
         getPersons()
+        getPenalties()
         prefillPersonData()
     }
     
@@ -56,7 +61,6 @@ class MainVC: UIViewController {
     }
     
     private func dataToPrefill() {
-        
         guard let pickedPerson = person else {
             getPenaltyButton.hidden = true
             pickPersonButton.setTitle("Pick failer  :)", forState: UIControlState.Normal)
@@ -74,6 +78,21 @@ class MainVC: UIViewController {
         }
     }
     
+    private func getPenalties() {
+        penaltyDBmanager.getAllPenalties { (penalties) in
+            self.penalties = penalties
+        }
+    }
+    
+    private func getRandomPenalty() {
+        guard let existPenalties = penalties else {
+            presentAlertWithTitle("There are no penalties.", message: "Add penalties in settings.")
+            return
+        }
+        
+        randomPenalty = existPenalties.randomItem()
+    }
+    
     // MARK: - Actions
     
     @IBAction func tapSettingButton(sender: UIBarButtonItem) {
@@ -85,6 +104,7 @@ class MainVC: UIViewController {
     }
     
     @IBAction func tappedGetPenaltyButton(sender: UIButton) {
+        getRandomPenalty()
         navigateToRandomPenalty(sender)
     }
     
@@ -94,13 +114,14 @@ class MainVC: UIViewController {
         if segue.identifier == segueToTeamMembersVC {
             if let vc = segue.destinationViewController as? TeamMembersVC {
                 vc.delegate = self
-                vc.vc = self
+                vc.mode = ModeVC.Main
             }
         }
         
         if segue.identifier == segueToRandomPenaltyVC {
-            if let vc = segue.destinationViewController as? RandomPenaltyVC {
-                vc.person = person!
+            if let vc = segue.destinationViewController as? RandomPenaltyVC, let person = person {
+                vc.person = person
+                vc.penalty = randomPenalty
             }
         }
     }

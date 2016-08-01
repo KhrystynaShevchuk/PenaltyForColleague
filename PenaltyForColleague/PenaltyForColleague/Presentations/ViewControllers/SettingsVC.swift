@@ -49,7 +49,7 @@ class SettingsVC: UIViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == segueToMembersVC {
             if let vc = segue.destinationViewController as? TeamMembersVC {
-                vc.vc = self
+                vc.mode = ModeVC.Settings
             }
         }
     }

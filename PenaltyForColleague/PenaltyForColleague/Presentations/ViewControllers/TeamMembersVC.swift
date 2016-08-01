@@ -9,6 +9,11 @@
 import UIKit
 import CoreData
 
+enum ModeVC {
+    case Main
+    case Settings
+}
+
 private let segueToAddPerson = "addPersonSegue"
 private let segueToEditPerson = "editPersonSegue"
 
@@ -19,8 +24,8 @@ class TeamMembersVC: UIViewController {
     
     let personDBManager = PersonDBManager()
     
-    var vc: UIViewController?
     var delegate: GetPersonProtocol?
+    var mode: ModeVC = .Main
     
     var members = [Person]()
     var selectedPerson: Person?
@@ -30,14 +35,9 @@ class TeamMembersVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        switch vc {
-        case is MainVC:
-            self.addPersonBarButton?.tintColor = UIColor.clearColor()
-            self.addPersonBarButton?.enabled = false
-        default:
-            return
+        if mode == .Main {
+            navigationItem.rightBarButtonItem = nil
         }
-
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -103,18 +103,13 @@ extension TeamMembersVC: UITableViewDataSource, UITableViewDelegate {
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         selectedPerson = members[indexPath.row]        
         
-        switch vc {
-        case is MainVC:
+        if mode == .Main {
             if let person = selectedPerson {
                 delegate?.getPerson(person)
             }
             navigationController?.popToRootViewControllerAnimated(true)
-
-        case is SettingsVC:
+        } else {
             navigateToEditPerson()
-            
-        default:
-            return
         }
     }
 }
