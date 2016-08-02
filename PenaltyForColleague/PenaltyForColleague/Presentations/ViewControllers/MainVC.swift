@@ -84,13 +84,18 @@ class MainVC: UIViewController {
         }
     }
     
-    private func getRandomPenalty() {
-        guard let existPenalties = penalties else {
+    private func getRandomPenalty(sender: UIButton) {
+        if penalties?.count > 0 {
+            guard let existPenalties = penalties else {
+                return
+            }
+            
+            randomPenalty = existPenalties.randomItem()
+            navigateToRandomPenalty(sender)
+            
+        } else {
             presentAlertWithTitle("There are no penalties.", message: "Add penalties in settings.")
-            return
         }
-        
-        randomPenalty = existPenalties.randomItem()
     }
     
     // MARK: - Actions
@@ -104,8 +109,7 @@ class MainVC: UIViewController {
     }
     
     @IBAction func tappedGetPenaltyButton(sender: UIButton) {
-        getRandomPenalty()
-        navigateToRandomPenalty(sender)
+        getRandomPenalty(sender)
     }
     
     // MARK: - Navigation

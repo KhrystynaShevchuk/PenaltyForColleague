@@ -23,6 +23,14 @@ extension PenaltiesCell {
         }
         penaltyLabel.text = "\(penalty.penaltyDescription ?? "")"
     }
+    
+    func isEditable(editable: Bool) {
+        if !editable {
+            penaltyLabel.enabled = true
+        } else {
+            penaltyLabel.enabled = false
+        }
+    }
 }
 
 extension PenaltiesCell: BaseCellProtocol {

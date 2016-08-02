@@ -19,6 +19,7 @@ class PenaltiesVC: UIViewController {
     
     var penalties = [Penalty]()
     var selectedPenalty: Penalty?
+    var constantPenalty = Penalty()
     
     // MARK: - VC life cycle
     
@@ -35,8 +36,17 @@ class PenaltiesVC: UIViewController {
     // MARK: - Private
     
     private func receiveData() {
+        
         penaltyDBManager.getAllPenalties { (penalties) in
-            self.penalties = penalties
+            if penalties.isEmpty {
+                self.constantPenalty.penaltyDescription = "nothing to do."
+                self.penaltyDBManager.savePenalty(self.constantPenalty, completion: { (success) in
+                    self.penalties.append(self.constantPenalty)
+                })
+                
+            } else {
+                self.penalties = penalties
+            }
             
             dispatch_async(dispatch_get_main_queue(), {
                 self.tableView.reloadData()
@@ -62,11 +72,13 @@ class PenaltiesVC: UIViewController {
     }
     
     private func navigateToAddPenalty(sender: UIBarButtonItem) {
-        performSegueWithIdentifier(segueToAddPenalty, sender: sender)
+            performSegueWithIdentifier(segueToAddPenalty, sender: sender)
     }
 
     private func navigateToEditPenalty() {
-        performSegueWithIdentifier(segueToEditPenalty, sender: nil)
+        if penalties.count > 0 {
+            performSegueWithIdentifier(segueToEditPenalty, sender: nil)
+        }
     }
 }
 
@@ -79,16 +91,27 @@ extension PenaltiesVC: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier(PenaltiesCell.cellIdentifier) as! PenaltiesCell
         
-        cell.config(penalties[indexPath.row])
+        let cell = tableView.dequeueReusableCellWithIdentifier(PenaltiesCell.cellIdentifier, forIndexPath: indexPath) as! PenaltiesCell
         
+        if indexPath.row == 0 {
+            cell.isEditable(false)
+            cell.penaltyLabel.text = penalties[indexPath.row].penaltyDescription
+            
+        } else {
+            cell.config(penalties[indexPath.row])
+            
+        }
         return cell
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        selectedPenalty = penalties[indexPath.row]
-        
-        navigateToEditPenalty()
+        if indexPath.row == 0 {
+            return
+        } else {
+            selectedPenalty = penalties[indexPath.row]
+            
+            navigateToEditPenalty()
+        }
     }
 }
