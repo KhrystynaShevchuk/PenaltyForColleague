@@ -15,10 +15,11 @@ private let segueToRandomPenaltyVC = "generatePenaltyForFailerSegue"
 class MainVC: UIViewController {
     
     @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var viewWithButtons: UIView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var pickPersonButton: UIButton!
     @IBOutlet weak var getPenaltyButton: UIButton!
-    
+        
     let personDBManager = PersonDBManager()
     let penaltyDBmanager = PenaltyDBManager()
     
@@ -31,6 +32,8 @@ class MainVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        view.addSubview(viewWithButtons)
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -51,6 +54,7 @@ class MainVC: UIViewController {
             pickPersonButton.hidden = true
             nameLabel.hidden = false
             nameLabel.text = "Add people in settings. "
+            nameLabel.textColor = UIColor.blackColor()
             getPenaltyButton.hidden = true
             
         } else {

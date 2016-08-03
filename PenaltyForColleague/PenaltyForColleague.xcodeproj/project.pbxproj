@@ -17,6 +17,7 @@
 		646554801D3EC61C00FA6279 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6465547F1D3EC61C00FA6279 /* Assets.xcassets */; };
 		A9075FA01D3E719200828C30 /* FileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9075F9F1D3E719200828C30 /* FileManager.swift */; };
 		A92D2AE61D37918600D79A36 /* PenaltyForColleagueTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A92D2AE51D37918600D79A36 /* PenaltyForColleagueTests.swift */; };
+		A93178931D51F2C300659F8E /* GCD.swift in Sources */ = {isa = PBXBuildFile; fileRef = A93178921D51F2C300659F8E /* GCD.swift */; };
 		A93A892F1D3CF55200A6228E /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = A93A892E1D3CF55200A6228E /* Person.swift */; };
 		A93A89311D3D11F000A6228E /* AddOrEditPersonVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A93A89301D3D11F000A6228E /* AddOrEditPersonVC.swift */; };
 		A94D32491D38E3D4008B2927 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A94D32471D38E3D4008B2927 /* AppDelegate.swift */; };
@@ -79,6 +80,7 @@
 		A92D2AE11D37918600D79A36 /* PenaltyForColleagueTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PenaltyForColleagueTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A92D2AE51D37918600D79A36 /* PenaltyForColleagueTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PenaltyForColleagueTests.swift; sourceTree = "<group>"; };
 		A92D2AE71D37918600D79A36 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A93178921D51F2C300659F8E /* GCD.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GCD.swift; sourceTree = "<group>"; };
 		A93A892E1D3CF55200A6228E /* Person.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
 		A93A89301D3D11F000A6228E /* AddOrEditPersonVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddOrEditPersonVC.swift; sourceTree = "<group>"; };
 		A94D32471D38E3D4008B2927 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -150,6 +152,7 @@
 				447807D41D43BA3C003304CF /* UIImage+Defaults+ReceivePhoto.swift */,
 				4444DF7C1D43CA62005D7CE0 /* UIViewController+Alerts.swift */,
 				A9F12F1B1D4F71EF00E014DC /* Array+RandomItem.swift */,
+				A93178921D51F2C300659F8E /* GCD.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -240,8 +243,8 @@
 		A94D32511D38E3EF008B2927 /* Presentations */ = {
 			isa = PBXGroup;
 			children = (
-				A9FF57661D4B81DF000ACEDE /* Protocols */,
 				A9CFE5531D4741A3004E357C /* Cells */,
+				A9FF57661D4B81DF000ACEDE /* Protocols */,
 				A94D32551D38E3EF008B2927 /* ViewControllers */,
 				A94D32521D38E3EF008B2927 /* StoryBoards */,
 			);
@@ -478,6 +481,7 @@
 				A9D857521D49F41C00267353 /* BaseDBManager.swift in Sources */,
 				A9CFE5571D47441D004E357C /* TeamMembersCell.swift in Sources */,
 				A9CFE5611D47697F004E357C /* Penalty+Convert.swift in Sources */,
+				A93178931D51F2C300659F8E /* GCD.swift in Sources */,
 				A93A89311D3D11F000A6228E /* AddOrEditPersonVC.swift in Sources */,
 				A9075FA01D3E719200828C30 /* FileManager.swift in Sources */,
 				A94D32621D39091D008B2927 /* SettingsVC.swift in Sources */,
