@@ -19,19 +19,19 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="sd9-da-wfG">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.90000000000000002" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="sd9-da-wfG">
+                                <rect key="frame" x="0.0" y="64" width="320" height="360"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <accessibility key="accessibilityConfiguration">
                                     <accessibilityTraits key="traits" image="YES" notEnabled="YES"/>
                                 </accessibility>
                             </imageView>
-                            <view clipsSubviews="YES" alpha="0.75" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="n0a-7H-QMj">
-                                <rect key="frame" x="0.0" y="433" width="320" height="135"/>
+                            <view opaque="NO" clipsSubviews="YES" alpha="0.94999999999999996" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" translatesAutoresizingMaskIntoConstraints="NO" id="n0a-7H-QMj">
+                                <rect key="frame" x="0.0" y="424" width="320" height="152"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" alpha="0.84999999999999998" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" enabled="NO" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="skA-xk-smE">
-                                        <rect key="frame" x="8" y="15" width="304" height="20"/>
-                                        <color key="backgroundColor" red="0.91265075689999997" green="0.93423281120000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <rect key="frame" x="8" y="21" width="304" height="20"/>
+                                        <color key="backgroundColor" red="0.65961411719999996" green="0.88659492620000002" blue="1" alpha="0.80114140069999995" colorSpace="calibratedRGB"/>
                                         <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                         <accessibility key="accessibilityConfiguration">
                                             <accessibilityTraits key="traits" staticText="YES"/>
@@ -48,48 +48,72 @@
                                         </attributedString>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" alpha="0.84999999999999998" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="omH-dw-KnU">
-                                        <rect key="frame" x="32" y="74" width="257" height="33"/>
-                                        <color key="backgroundColor" red="0.91265075689999997" green="0.93423281120000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" reversesTitleShadowWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vFj-Xm-iXp">
+                                        <rect key="frame" x="8" y="14" width="304" height="33"/>
+                                        <color key="backgroundColor" red="0.65961411720683061" green="0.88659492618457536" blue="1" alpha="0.80114140069999995" colorSpace="calibratedRGB"/>
                                         <accessibility key="accessibilityConfiguration">
                                             <accessibilityTraits key="traits" button="YES" selected="YES"/>
                                         </accessibility>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="tintColor" red="0.91265075689999997" green="0.93423281120000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                        <state key="normal" title="Get random penalty.">
-                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                            <color key="titleShadowColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="tappedGetPenaltyButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="af6-3a-35V"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" alpha="0.84999999999999998" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vFj-Xm-iXp">
-                                        <rect key="frame" x="8" y="11" width="304" height="33"/>
-                                        <color key="backgroundColor" red="0.91265075689999997" green="0.93423281120000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                        <accessibility key="accessibilityConfiguration">
-                                            <accessibilityTraits key="traits" button="YES" selected="YES"/>
-                                        </accessibility>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="tintColor" red="0.91265075689999997" green="0.93423281120000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                         <state key="normal" title="Pick person">
                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                             <color key="titleShadowColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="5"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
+                                                <integer key="value" value="1"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="button.layer.borderColor">
+                                                <color key="value" red="0.0" green="0.05852852396093474" blue="0.68913612565445026" alpha="1" colorSpace="calibratedRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                        </userDefinedRuntimeAttributes>
                                         <connections>
                                             <action selector="tappedPickPersonButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="HNd-QY-duT"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" reversesTitleShadowWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="omH-dw-KnU">
+                                        <rect key="frame" x="32" y="70" width="257" height="33"/>
+                                        <color key="backgroundColor" red="0.65961411719999996" green="0.88659492620000002" blue="1" alpha="0.80114140069999995" colorSpace="calibratedRGB"/>
+                                        <accessibility key="accessibilityConfiguration">
+                                            <accessibilityTraits key="traits" button="YES" selected="YES"/>
+                                        </accessibility>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                        <state key="normal" title="Get random penalty.">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="titleShadowColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="5"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
+                                                <integer key="value" value="1"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="button.layer.borderColor">
+                                                <color key="value" red="0.079219906861418624" green="0.04788117118357884" blue="0.65393897251308908" alpha="1" colorSpace="calibratedRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="tappedGetPenaltyButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="af6-3a-35V"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
-                                <color key="backgroundColor" red="0.91265075685099706" green="0.93423281122783419" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.88096336220000004" green="1" blue="0.86564361599999995" alpha="0.80114140069999995" colorSpace="calibratedRGB"/>
                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstItem="vFj-Xm-iXp" firstAttribute="leading" secondItem="n0a-7H-QMj" secondAttribute="leading" constant="8" id="30y-qH-MJp"/>
-                                    <constraint firstItem="vFj-Xm-iXp" firstAttribute="top" secondItem="n0a-7H-QMj" secondAttribute="top" constant="11" id="BHo-xV-PxH"/>
+                                    <constraint firstItem="vFj-Xm-iXp" firstAttribute="top" secondItem="n0a-7H-QMj" secondAttribute="top" constant="14" id="BHo-xV-PxH"/>
                                     <constraint firstAttribute="trailing" secondItem="vFj-Xm-iXp" secondAttribute="trailing" constant="8" id="Jl4-H7-PrP"/>
-                                    <constraint firstAttribute="height" constant="135" id="Kqd-Bk-tlI"/>
-                                    <constraint firstItem="omH-dw-KnU" firstAttribute="top" secondItem="vFj-Xm-iXp" secondAttribute="bottom" constant="30" id="LuE-Uu-ZI0"/>
-                                    <constraint firstItem="skA-xk-smE" firstAttribute="top" secondItem="n0a-7H-QMj" secondAttribute="top" constant="15" id="SdY-ub-y1v"/>
+                                    <constraint firstAttribute="height" constant="152" id="Kqd-Bk-tlI"/>
+                                    <constraint firstItem="omH-dw-KnU" firstAttribute="top" secondItem="vFj-Xm-iXp" secondAttribute="bottom" constant="23" id="LuE-Uu-ZI0"/>
+                                    <constraint firstItem="skA-xk-smE" firstAttribute="top" secondItem="n0a-7H-QMj" secondAttribute="top" constant="21" id="SdY-ub-y1v"/>
                                     <constraint firstItem="omH-dw-KnU" firstAttribute="leading" secondItem="n0a-7H-QMj" secondAttribute="leading" constant="32" id="ZnW-L5-N3L"/>
                                     <constraint firstItem="skA-xk-smE" firstAttribute="leading" secondItem="n0a-7H-QMj" secondAttribute="leading" constant="8" id="mJA-Bb-Okh"/>
                                     <constraint firstAttribute="trailing" secondItem="omH-dw-KnU" secondAttribute="trailing" constant="31" id="tsL-lv-zJW"/>
@@ -97,12 +121,12 @@
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.94703776152819041" green="1" blue="0.97114682050949441" alpha="0.80114140069999995" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="sd9-da-wfG" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="-64" id="Bn7-ym-WTg"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="n0a-7H-QMj" secondAttribute="bottom" id="I8c-jD-GKQ"/>
+                            <constraint firstItem="sd9-da-wfG" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="Bn7-ym-WTg"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="n0a-7H-QMj" secondAttribute="bottom" constant="-8" id="I8c-jD-GKQ"/>
                             <constraint firstItem="n0a-7H-QMj" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="Q7I-Vi-gCV"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="sd9-da-wfG" secondAttribute="bottom" id="TqL-OS-qWd"/>
+                            <constraint firstItem="n0a-7H-QMj" firstAttribute="top" secondItem="sd9-da-wfG" secondAttribute="bottom" id="Qmm-Ja-hCP"/>
                             <constraint firstItem="sd9-da-wfG" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="ftF-SD-hgh"/>
                             <constraint firstAttribute="trailing" secondItem="sd9-da-wfG" secondAttribute="trailing" id="iPE-kn-Qrz"/>
                             <constraint firstAttribute="trailing" secondItem="n0a-7H-QMj" secondAttribute="trailing" id="ph8-lM-eg3"/>
@@ -129,7 +153,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="610" y="471"/>
+            <point key="canvasLocation" x="610" y="470"/>
         </scene>
         <!--Settings-->
         <scene sceneID="GIz-74-ztj">
@@ -196,7 +220,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8Rm-jY-gig" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1005" y="471"/>
+            <point key="canvasLocation" x="1005" y="470.99999999999989"/>
         </scene>
         <!--Team settings-->
         <scene sceneID="rFJ-YM-mtb">
@@ -349,7 +373,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="T9w-P1-SwS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="610" y="1154"/>
+            <point key="canvasLocation" x="610" y="1153.9999999999995"/>
         </scene>
         <!--PenaltiesVC-->
         <scene sceneID="c0J-bl-dCY">
@@ -673,7 +697,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Dac-d3-w8c" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1861" y="3"/>
+            <point key="canvasLocation" x="1861" y="2.9999999999999991"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="ahr-SB-zRm">
@@ -683,6 +707,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="GEQ-ec-ZQv">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.88727090621900639" green="1" blue="0.87428873360868053" alpha="0.80114140069999995" colorSpace="calibratedRGB"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -691,7 +716,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gUg-fg-AqG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="209.06666666666666" y="471.44"/>
+            <point key="canvasLocation" x="209.06666666666666" y="471.43999999999988"/>
         </scene>
     </scenes>
     <resources>
@@ -700,8 +725,9 @@
         <image name="userIcon" width="50" height="50"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Cmj-LC-C2h"/>
         <segue reference="qX0-L5-cFS"/>
         <segue reference="wWW-BM-O4w"/>
+        <segue reference="xhs-yQ-n1w"/>
     </inferredMetricsTieBreakers>
+    <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
 </document>
