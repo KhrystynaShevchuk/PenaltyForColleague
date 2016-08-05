@@ -38,6 +38,9 @@ class TeamMembersVC: UIViewController {
         if mode == .Main {
             navigationItem.rightBarButtonItem = nil
         }
+        
+        tableView.estimatedRowHeight = 70.0
+        tableView.rowHeight = UITableViewAutomaticDimension
     }
     
     override func viewWillAppear(animated: Bool) {

@@ -34,7 +34,7 @@ class TeamSettingsVC: UIViewController {
     // MARK: - Private 
     
     private func prefillTeamData() {
-        logoImageView.image = team.photo ?? UIImage(named: "teamIcon")
+        logoImageView.image = team.photo ?? UIImage(named: "teamImage")
         nameTextField.text = team.name
     }
     

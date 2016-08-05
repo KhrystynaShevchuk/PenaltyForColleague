@@ -54,7 +54,6 @@ class MainVC: UIViewController {
             pickPersonButton.hidden = true
             nameLabel.hidden = false
             nameLabel.text = "Add people in settings. "
-            nameLabel.textColor = UIColor.blackColor()
             getPenaltyButton.hidden = true
             
         } else {
@@ -67,7 +66,7 @@ class MainVC: UIViewController {
     private func dataToPrefill() {
         guard let pickedPerson = person else {
             getPenaltyButton.hidden = true
-            pickPersonButton.setTitle("Pick failer  :)", forState: UIControlState.Normal)
+            pickPersonButton.setTitle("Pick failer", forState: UIControlState.Normal)
             return
         }
         

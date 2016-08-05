@@ -47,6 +47,7 @@ class AddOrEditPenaltyVC: UIViewController {
         
         isDeleteButtonVisible(true)
         penaltyToSave.updatePenaltyWithPenalty(existPenalty)
+        penaltyTextView.layer.borderColor = UIColor.lightGrayColor().CGColor
         penaltyTextView.text = penaltyToSave.penaltyDescription
     }
     

@@ -13,7 +13,7 @@ extension UIImage {
     // MARK: - Default icons
     
     class func defaultPersonIcon() -> UIImage? {
-        return UIImage(named: "memberIcon")
+        return UIImage(named: "nobody")
     }
     
     // MARK: - Receive photo
